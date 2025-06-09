@@ -1,0 +1,94 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id           Int          @id @default(autoincrement())
+    email        String       @unique
+    name         String
+    password     String
+    avatar       String?
+    posts        Post[]
+    comments     Comment[]
+    likes        Like[]
+    subscribers  Subscriber[] @relation("UserSubscribers")
+    subscribedTo Subscriber[] @relation("UserSubscriptions")
+
+    verificationCode VerificationCode?
+    verified         DateTime?
+    provider         String?
+    providerId       String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model VerificationCode {
+    id Int @id @default(autoincrement())
+
+    user   User @relation(fields: [userId], references: [id])
+    userId Int  @unique
+
+    code String
+
+    createdAt DateTime @default(now())
+
+    @@unique([userId, code])
+}
+
+model Post {
+    id        Int       @id @default(autoincrement())
+    title     String
+    content   String
+    image     String?
+    published Boolean   @default(false)
+    userId    Int
+    user      User      @relation(fields: [userId], references: [id])
+    comments  Comment[]
+    likes     Like[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Comment {
+    id      Int    @id @default(autoincrement())
+    content String
+    postId  Int
+    userId  Int
+    post    Post   @relation(fields: [postId], references: [id])
+    user    User   @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Like {
+    id     Int  @id @default(autoincrement())
+    postId Int
+    userId Int
+    post   Post @relation(fields: [postId], references: [id])
+    user   User @relation(fields: [userId], references: [id])
+
+    createdAt DateTime @default(now())
+
+    @@unique([postId, userId])
+}
+
+model Subscriber {
+    id             Int  @id @default(autoincrement())
+    subscriberId   Int
+    subscribedToId Int
+    subscriber     User @relation("UserSubscribers", fields: [subscriberId], references: [id])
+    subscribedTo   User @relation("UserSubscriptions", fields: [subscribedToId], references: [id])
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@unique([subscriberId, subscribedToId])
+}
