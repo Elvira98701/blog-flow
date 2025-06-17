@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Marquee } from "../shared";
+import { Marquee } from "@/components/shared";
 
 interface StatsSectionProps {
   className?: string;

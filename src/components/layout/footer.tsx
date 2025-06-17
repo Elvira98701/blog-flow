@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/ui";
 import { Container } from "./container";
-import { Logo } from "../ui";
 import { Github, Twitter, Youtube } from "lucide-react";
 
 interface FooterProps {

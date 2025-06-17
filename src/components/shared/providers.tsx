@@ -3,8 +3,8 @@
 import { SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
 import { ReactNode } from "react";
-import { ThemeProvider } from "./theme";
 import { Toaster } from "react-hot-toast";
+import { ThemeProvider } from "./theme";
 
 interface ProvidersProps {
   children: ReactNode;

@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Container, Gradient } from "../layout";
+import { Container, Gradient } from "@/components/layout";
 import Image from "next/image";
 import { motion } from "motion/react";
 

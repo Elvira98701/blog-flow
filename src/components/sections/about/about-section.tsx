@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
+import { fetchUsers } from "@/services/api";
 import { Container, Gradient } from "@/components/layout";
 import { UserCard } from "@/components/shared";
 import { AboutAccordion } from "./about-accordion";
-import { fetchUsers } from "@/services/api";
 
 interface AboutSectionProps {
   className?: string;

@@ -1,10 +1,10 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Container } from "../layout";
 import Image from "next/image";
-import { ButtonLink } from "../ui";
 import { useSession } from "next-auth/react";
+import { Container } from "@/components/layout";
+import { ButtonLink } from "@/components/ui";
 
 interface JoinSectionProps {
   className?: string;

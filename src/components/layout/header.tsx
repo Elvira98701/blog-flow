@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { Logo } from "../ui";
-import { ActionsButtons } from "../shared";
+import { Logo } from "@/components/ui";
+import { ActionsButtons } from "@/components/shared";
 
 interface HeaderProps {
   className?: string;
