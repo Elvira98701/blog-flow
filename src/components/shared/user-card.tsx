@@ -1,11 +1,22 @@
 import { cn } from "@/lib/utils";
 
 interface UserCardProps {
+  name: string;
+  avatar: string | null;
+  postsLength: number;
+  subscribersLength: number;
   active?: boolean;
   className?: string;
 }
 
-export const UserCard = ({ active = false, className }: UserCardProps) => {
+export const UserCard = ({
+  name,
+  avatar,
+  postsLength,
+  subscribersLength,
+  active = false,
+  className,
+}: UserCardProps) => {
   return (
     <article
       className={cn(
@@ -19,19 +30,24 @@ export const UserCard = ({ active = false, className }: UserCardProps) => {
           "bg-background": active,
         })}
       >
-        <div className="h-1/3 rounded-lg bg-[url(/images/11.jpg)] bg-cover bg-center relative" />
+        <div
+          className="h-1/3 rounded-lg bg-cover bg-center relative"
+          style={{ backgroundImage: `url(${avatar})` }}
+        />
         <div className="pt-4 flex flex-col gap-5">
           <div>
-            <h3 className="text-2xl text-center font-semibold">Doodles</h3>
+            <h3 className="text-2xl text-center font-semibold">{name}</h3>
             <p className="text-center">Created by Doodles</p>
           </div>
           <div className="flex items-center">
             <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-4xl font-semibold">100</span>
+              <span className="text-4xl font-semibold">{postsLength}</span>
               <span className="text-foreground/50">posts</span>
             </div>
             <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-4xl font-semibold">5</span>
+              <span className="text-4xl font-semibold">
+                {subscribersLength}
+              </span>
               <span className="text-foreground/50">subscribers</span>
             </div>
           </div>

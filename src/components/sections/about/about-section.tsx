@@ -1,24 +1,43 @@
 import { cn } from "@/lib/utils";
-import { Container, Gradient } from "../../layout";
-import { UserCard } from "../../shared";
+import { Container, Gradient } from "@/components/layout";
+import { UserCard } from "@/components/shared";
 import { AboutAccordion } from "./about-accordion";
+import { fetchUsers } from "@/services/api";
 
 interface AboutSectionProps {
   className?: string;
 }
 
-export const AboutSection = ({ className }: AboutSectionProps) => {
+export const AboutSection = async ({ className }: AboutSectionProps) => {
+  const users = await fetchUsers();
+
   return (
     <section className={cn("py-32 relative", className)}>
       <Container className="flex items-center gap-16">
         <div className="flex gap-5 flex-1">
           <div className="flex-1 mt-15">
-            <UserCard className="mb-5" />
-            <UserCard />
+            {users?.slice(0, 2).map((user) => (
+              <UserCard
+                key={user.id}
+                className="mb-5"
+                name={user.name}
+                avatar={user.avatar}
+                postsLength={user.posts.length}
+                subscribersLength={user.subscribers.length}
+              />
+            ))}
           </div>
           <div className="flex-1">
-            <UserCard className="scale-125 mb-5 z-10" active />
-            <UserCard />
+            {users?.slice(2).map((user) => (
+              <UserCard
+                key={user.id}
+                className="mb-5"
+                name={user.name}
+                avatar={user.avatar}
+                postsLength={user.posts.length}
+                subscribersLength={user.subscribers.length}
+              />
+            ))}
           </div>
         </div>
         <div className="flex-1">
