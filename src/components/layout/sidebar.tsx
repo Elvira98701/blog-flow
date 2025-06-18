@@ -3,8 +3,8 @@
 import { cn } from "@/lib/utils";
 import {
   LayoutDashboard,
-  StickyNote,
-  UserRoundCheck,
+  NotebookPen,
+  ScrollText,
   UserRoundPen,
 } from "lucide-react";
 import Link from "next/link";
@@ -58,7 +58,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
               }
             )}
           >
-            <StickyNote size={18} />
+            <NotebookPen size={18} />
             <span>Posts</span>
           </Link>
         </li>
@@ -72,7 +72,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
               }
             )}
           >
-            <UserRoundCheck size={18} />
+            <ScrollText size={18} />
             <span>Subscribers</span>
           </Link>
         </li>

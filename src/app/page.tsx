@@ -2,9 +2,9 @@ import { Footer } from "@/components/layout";
 import {
   AboutSection,
   FaqSection,
+  FeaturedSection,
   HeroSection,
   JoinSection,
-  SliderSection,
   StatsSection,
 } from "@/components/sections";
 
@@ -14,7 +14,7 @@ export default function Home() {
       <HeroSection />
       <StatsSection />
       <AboutSection />
-      <SliderSection />
+      <FeaturedSection />
       <FaqSection />
       <StatsSection />
       <JoinSection />

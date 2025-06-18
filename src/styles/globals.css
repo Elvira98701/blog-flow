@@ -202,7 +202,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground w-full;
+    @apply bg-background text-foreground w-screen;
   }
 }
 
@@ -211,7 +211,7 @@ body {
   scrollbar-color: var(--accent) transparent;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  overflow-z: hidden;
+  overflow-x: hidden;
 }
 
 p {

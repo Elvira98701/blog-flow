@@ -15,30 +15,36 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
     <section className={cn("py-32 relative", className)}>
       <Container className="flex items-center gap-16">
         <div className="flex gap-5 flex-1">
-          <div className="flex-1 mt-15">
-            {users?.slice(0, 2).map((user) => (
-              <UserCard
-                key={user.id}
-                className="mb-5"
-                name={user.name}
-                avatar={user.avatar}
-                postsLength={user.posts.length}
-                subscribersLength={user.subscribers.length}
-              />
-            ))}
-          </div>
-          <div className="flex-1">
-            {users?.slice(2).map((user) => (
-              <UserCard
-                key={user.id}
-                className="mb-5"
-                name={user.name}
-                avatar={user.avatar}
-                postsLength={user.posts.length}
-                subscribersLength={user.subscribers.length}
-              />
-            ))}
-          </div>
+          {!users || users.length === 0 ? (
+            <p>Error</p>
+          ) : (
+            <>
+              <div className="flex-1 mt-15">
+                {users?.slice(0, 2).map((user) => (
+                  <UserCard
+                    key={user.id}
+                    className="mb-5"
+                    name={user.name}
+                    avatar={user.avatar}
+                    postsLength={user.posts.length}
+                    subscribersLength={user.subscribers.length}
+                  />
+                ))}
+              </div>
+              <div className="flex-1">
+                {users?.slice(2).map((user) => (
+                  <UserCard
+                    key={user.id}
+                    className="mb-5"
+                    name={user.name}
+                    avatar={user.avatar}
+                    postsLength={user.posts.length}
+                    subscribersLength={user.subscribers.length}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
         <div className="flex-1">
           <h2 className="font-bold text-7xl">

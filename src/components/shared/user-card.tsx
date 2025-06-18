@@ -20,7 +20,7 @@ export const UserCard = ({
   return (
     <article
       className={cn(
-        "w-full rounded-lg h-80 p-[3px] relative",
+        "w-full rounded-lg h-80 p-[3px] relative hover:scale-105 transition-transform duration-300",
         { "bg-gradient-to-br from-accent to-primary": active },
         className
       )}

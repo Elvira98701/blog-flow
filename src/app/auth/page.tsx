@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Auth() {
   return (
-    <main className="min-h-screen flex">
+    <main className="min-h-screen flex justify-between">
       <div className="flex-1 flex justify-center items-center">
         <AuthWrapper className="w-96" />
       </div>

@@ -1,12 +1,15 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout";
-import { PostCard } from "@/components/shared";
+import { fetchPosts } from "@/services/api";
+import { FeaturedCarousel } from "./featured-carousel";
 
-interface SliderSectionProps {
+interface FeaturedSectionProps {
   className?: string;
 }
 
-export const SliderSection = ({ className }: SliderSectionProps) => {
+export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
+  const posts = await fetchPosts();
+
   return (
     <section className={cn("py-32 relative", className)}>
       <Container>
@@ -23,10 +26,12 @@ export const SliderSection = ({ className }: SliderSectionProps) => {
             this space keeps your content in motion.
           </p>
         </div>
-        <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5">
-          <PostCard active className="scale-110 z-10" />
-          <PostCard />
-          <PostCard />
+        <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5 w-[50%]">
+          {!posts || posts.length === 0 ? (
+            <div>There are no posts</div>
+          ) : (
+            <FeaturedCarousel posts={posts} />
+          )}
         </div>
       </Container>
     </section>

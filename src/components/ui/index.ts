@@ -5,3 +5,4 @@ export { Input } from "./input";
 export { Label } from "./label";
 export * from "./accordion";
 export * from "./dialog";
+export * from "./carousel";

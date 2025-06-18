@@ -1,5 +1,4 @@
 import { prisma } from "@/prisma/prisma-client";
-import { notFound } from "next/navigation";
 
 export const fetchUsers = async () => {
   try {
@@ -14,11 +13,9 @@ export const fetchUsers = async () => {
       },
     });
 
-    if (!users.length) notFound();
-
     return users;
   } catch (error) {
-    console.error("", error);
+    console.error("Error receiving users", error);
     return null;
   }
 };
