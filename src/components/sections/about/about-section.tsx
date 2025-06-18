@@ -12,9 +12,9 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
   const users = await fetchUsers();
 
   return (
-    <section className={cn("py-32 relative", className)}>
-      <Container className="flex items-center gap-16">
-        <div className="flex gap-5 flex-1">
+    <section className={cn("py-16 md:py-32 relative", className)}>
+      <Container className="flex flex-col-reverse md:flex-row items-center gap-6 lg:gap-16">
+        <div className="flex gap-2 lg:gap-5 flex-1">
           {!users || users.length === 0 ? (
             <p>Error</p>
           ) : (
@@ -23,7 +23,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(0, 2).map((user) => (
                   <UserCard
                     key={user.id}
-                    className="mb-5"
+                    className="mb-2 lg:mb-5"
                     name={user.name}
                     avatar={user.avatar}
                     postsLength={user.posts.length}
@@ -35,7 +35,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(2).map((user) => (
                   <UserCard
                     key={user.id}
-                    className="mb-5"
+                    className="mb-2 lg:mb-5"
                     name={user.name}
                     avatar={user.avatar}
                     postsLength={user.posts.length}
@@ -47,13 +47,13 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
           )}
         </div>
         <div className="flex-1">
-          <h2 className="font-bold text-7xl">
+          <h2 className="font-bold text-4xl sm:text-7xl">
             About{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
               BlogFlow
             </span>
           </h2>
-          <p className="py-8">
+          <p className="py-4 sm:py-8">
             Tired of juggling drafts, posts, and subscriber lists in different
             places? BlogFlow brings it all together in one clean, powerful
             dashboard. Whether you&apos;re writing your next big post, managing

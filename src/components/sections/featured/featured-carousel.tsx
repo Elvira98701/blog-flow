@@ -35,8 +35,6 @@ export const FeaturedCarousel = ({
     });
   }, [api]);
 
-  console.log(current);
-
   return (
     <div className={cn("w-full", className)}>
       <Carousel setApi={setApi}>

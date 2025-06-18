@@ -13,9 +13,9 @@ interface FaqSectionProps {
 
 export const FaqSection = ({ className }: FaqSectionProps) => {
   return (
-    <section className={cn("py-32 relative", className)}>
+    <section className={cn("py-16 md:py-32 relative", className)}>
       <Container>
-        <h2 className="font-bold text-7xl text-center">
+        <h2 className="font-bold text-4xl sm:text-7xl text-center">
           Frequerntly Asked Questions
         </h2>
         <p className="text-center py-8 max-w-2xl mx-auto">
@@ -23,12 +23,12 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
           things people ask about using BlogFlow.
         </p>
         <div>
-          <Accordion type="single" collapsible className="w-2/3 mx-auto">
+          <Accordion type="single" collapsible className="sm:w-2/3 mx-auto">
             <AccordionItem
               value="item-1"
               className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
             >
-              <AccordionTrigger className="font-bold text-2xl">
+              <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Do I need coding skills to use BlogFlow?
               </AccordionTrigger>
               <AccordionContent>
@@ -40,7 +40,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
               value="item-2"
               className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
             >
-              <AccordionTrigger className="font-bold text-2xl">
+              <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Can I schedule posts for later?
               </AccordionTrigger>
               <AccordionContent>
@@ -52,7 +52,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
               value="item-3"
               className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none"
             >
-              <AccordionTrigger className="font-bold text-2xl">
+              <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Is there a way to see how my posts are performing?
               </AccordionTrigger>
               <AccordionContent>

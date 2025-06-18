@@ -218,6 +218,11 @@ p {
   @apply font-mono text-foreground/70;
 }
 
+h1 {
+  font-size: clamp(2.5rem, 1.4rem + 5.5vw, 8rem);
+  @apply leading-none;
+}
+
 @-webkit-keyframes marquee {
   from {
     transform: translateX(0);

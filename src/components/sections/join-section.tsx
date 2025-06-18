@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout";
 import { ButtonLink } from "@/components/ui";
 
@@ -14,7 +14,7 @@ export const JoinSection = ({ className }: JoinSectionProps) => {
   const { data: session } = useSession();
 
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("py-16 md:py-32", className)}>
       <Container className="flex flex-col justify-center items-center gap-10">
         <h2 className="font-bold text-8xl max-w-1/2 text-center">
           Join the{" "}

@@ -11,10 +11,10 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
   const posts = await fetchPosts();
 
   return (
-    <section className={cn("py-32 relative", className)}>
+    <section className={cn("py-16 md:py-32 relative", className)}>
       <Container>
         <div className="w-1/3">
-          <h2 className="font-bold text-7xl">
+          <h2 className="font-bold text-4xl sm:text-7xl">
             Featured{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
               Posts

@@ -12,7 +12,7 @@ export const AboutAccordion = () => {
         value="item-1"
         className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
       >
-        <AccordionTrigger className="font-bold text-2xl">
+        <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           How does post editing work?
         </AccordionTrigger>
         <AccordionContent>
@@ -25,7 +25,7 @@ export const AboutAccordion = () => {
         value="item-2"
         className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
       >
-        <AccordionTrigger className="font-bold text-2xl">
+        <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           Can I manage my subscribers?
         </AccordionTrigger>
         <AccordionContent>
@@ -37,7 +37,7 @@ export const AboutAccordion = () => {
         value="item-3"
         className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none"
       >
-        <AccordionTrigger className="font-bold text-2xl">
+        <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           Does it show analytics?
         </AccordionTrigger>
         <AccordionContent>
