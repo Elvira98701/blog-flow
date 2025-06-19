@@ -47,7 +47,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
           )}
         </div>
         <div className="flex-1">
-          <h2 className="font-bold text-4xl sm:text-7xl">
+          <h2>
             About{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
               BlogFlow

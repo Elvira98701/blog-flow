@@ -16,7 +16,7 @@ export const JoinSection = ({ className }: JoinSectionProps) => {
   return (
     <section className={cn("py-10 md:py-20 lg:py-32", className)}>
       <Container className="flex flex-col justify-center items-center gap-10">
-        <h2 className="font-bold text-8xl max-w-1/2 text-center">
+        <h2 className="big-title max-w-1/2 text-center">
           Join the{" "}
           <Image
             src="/images/home/2.png"

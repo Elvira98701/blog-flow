@@ -49,13 +49,13 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
   console.log(data);
   return (
     <div className={cn("", className)}>
-      <h2 className="font-bold text-5xl pb-5">Posts</h2>
+      <h2 className="font-bold text-5xl">Posts</h2>
       {isLoading ? (
         <p>Loading</p>
       ) : isError ? (
         <p>{error.message}</p>
       ) : (
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-2 mt-5">
           {data?.pages.map((page, pageIndex) => {
             return page.posts.map((post, postIndex) => {
               const isLastPage = pageIndex === data.pages.length - 1;

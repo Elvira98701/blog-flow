@@ -14,7 +14,7 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
       <Container>
         <div className="w-1/3">
-          <h2 className="font-bold text-4xl sm:text-7xl">
+          <h2>
             Featured{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
               Posts

@@ -15,7 +15,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
   return (
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
       <Container>
-        <h2 className="font-bold text-4xl sm:text-7xl text-center">
+        <h2 className="text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
             Frequerntly{" "}
           </span>
