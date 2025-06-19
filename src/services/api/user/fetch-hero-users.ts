@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/prisma-client";
 
-export const fetchUsers = async () => {
+export const fetchHeroUsers = async () => {
   try {
     const users = await prisma.user.findMany({
       take: 4,

@@ -16,7 +16,10 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
       <Container>
         <h2 className="font-bold text-4xl sm:text-7xl text-center">
-          Frequerntly Asked Questions
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
+            Frequerntly{" "}
+          </span>
+          Asked Questions
         </h2>
         <p className="text-center py-8 max-w-2xl mx-auto">
           Got questions? We’ve got answers. Here are some of the most common

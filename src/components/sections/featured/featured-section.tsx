@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout";
-import { fetchPosts } from "@/services/api";
+import { fetchSliderPosts } from "@/services/api";
 import { FeaturedCarousel } from "./featured-carousel";
 
 interface FeaturedSectionProps {
@@ -8,7 +8,7 @@ interface FeaturedSectionProps {
 }
 
 export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
-  const posts = await fetchPosts();
+  const posts = await fetchSliderPosts();
 
   return (
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>

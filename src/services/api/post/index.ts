@@ -1,1 +1,2 @@
-export { fetchPosts } from "./fetch-posts";
+export { fetchSliderPosts } from "./fetch-slider-posts";
+export { fetchFeedPosts } from "./fetch-feed-posts";

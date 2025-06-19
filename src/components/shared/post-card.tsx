@@ -21,7 +21,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
       )}
     >
       <div
-        className={cn("bg-background/30 h-full rounded-lg p-3 border ", {
+        className={cn("bg-background/30 h-full rounded-lg p-2 border", {
           "bg-background": active,
         })}
       >
@@ -30,22 +30,16 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
           width={500}
           height={500}
           alt="user"
-          className="w-full h-2/3 rounded-lg object-cover"
+          className="w-full h-3/4 rounded-lg object-cover"
         />
-        <div className="pt-2 flex flex-col gap-2">
+        <div className="py-3 flex flex-col justify-between gap-2 h-1/4">
           <div>
             <h3 className="text-xl text-center font-semibold">{post.title}</h3>
-            <p className="text-center">Created by Doodles</p>
           </div>
-          <div className="flex items-center">
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-2xl font-semibold">9.9K</span>
-              <span className="text-foreground/50">likes</span>
-            </div>
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-2xl font-semibold">9.9K</span>
-              <span className="text-foreground/50">likes</span>
-            </div>
+
+          <div className="flex justify-center items-center gap-1">
+            <span className="text-2xl font-semibold">9.9K</span>
+            <span className="text-foreground/50">likes</span>
           </div>
         </div>
       </div>

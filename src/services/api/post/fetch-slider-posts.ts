@@ -1,6 +1,6 @@
 import { prisma } from "@/prisma/prisma-client";
 
-export const fetchPosts = async () => {
+export const fetchSliderPosts = async () => {
   try {
     const posts = await prisma.post.findMany({
       take: 6,

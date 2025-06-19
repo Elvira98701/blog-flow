@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { fetchUsers } from "@/services/api";
+import { fetchHeroUsers } from "@/services/api";
 import { Container, Gradient } from "@/components/layout";
 import { UserCard } from "@/components/shared";
 import { AboutAccordion } from "./about-accordion";
@@ -9,7 +9,7 @@ interface AboutSectionProps {
 }
 
 export const AboutSection = async ({ className }: AboutSectionProps) => {
-  const users = await fetchUsers();
+  const users = await fetchHeroUsers();
 
   return (
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>

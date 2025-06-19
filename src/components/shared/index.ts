@@ -6,6 +6,8 @@ export { PostCard } from "./post-card";
 export { ProfileButton } from "./profile-button";
 export { Providers } from "./providers";
 export { UserCard } from "./user-card";
+export { FeedPosts } from "./feed-posts";
+export { FeedUsers } from "./feed-users";
 export * from "./theme";
 export * from "./form";
 export * from "./auth";

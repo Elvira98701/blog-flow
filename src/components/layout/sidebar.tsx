@@ -64,16 +64,16 @@ export const Sidebar = ({ className }: SidebarProps) => {
         </li>
         <li>
           <Link
-            href="/dashboard/subscribers"
+            href="/dashboard/feed"
             className={cn(
               "flex items-center gap-2 hover:text-primary transition-colors",
               {
-                "text-primary": pathname === "/dashboard/subscribers",
+                "text-primary": pathname === "/dashboard/feed",
               }
             )}
           >
             <ScrollText size={18} />
-            <span>Subscribers</span>
+            <span>Feed</span>
           </Link>
         </li>
       </ul>
