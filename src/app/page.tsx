@@ -1,4 +1,4 @@
-import { Footer } from "@/components/layout";
+import { Footer, Gradient } from "@/components/layout";
 import {
   AboutSection,
   FaqSection,
@@ -10,7 +10,8 @@ import {
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
+      <Gradient className="absolute top-0 right-0 -z-10" />
       <HeroSection />
       <StatsSection />
       <AboutSection />

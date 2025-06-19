@@ -40,7 +40,7 @@ export const FeaturedCarousel = ({
       <Carousel setApi={setApi}>
         <CarouselContent className="px-2 py-7">
           {posts.map((post, index) => (
-            <CarouselItem key={post.id} className="md:basis-1/2 lg:basis-1/3">
+            <CarouselItem key={post.id} className="lg:basis-1/2 xl:basis-1/3">
               <PostCard
                 post={post}
                 active={current === index + 1}

@@ -10,7 +10,7 @@ export const AboutAccordion = () => {
     <Accordion type="single" collapsible className="w-full">
       <AccordionItem
         value="item-1"
-        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
+        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2 border"
       >
         <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           How does post editing work?
@@ -23,7 +23,7 @@ export const AboutAccordion = () => {
       </AccordionItem>
       <AccordionItem
         value="item-2"
-        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2"
+        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2 border"
       >
         <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           Can I manage my subscribers?
@@ -35,7 +35,7 @@ export const AboutAccordion = () => {
       </AccordionItem>
       <AccordionItem
         value="item-3"
-        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none"
+        className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none border"
       >
         <AccordionTrigger className="font-bold text-lg lg:text-2xl">
           Does it show analytics?

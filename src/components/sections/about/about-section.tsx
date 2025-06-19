@@ -12,9 +12,9 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
   const users = await fetchUsers();
 
   return (
-    <section className={cn("py-16 md:py-32 relative", className)}>
-      <Container className="flex flex-col-reverse md:flex-row items-center gap-6 lg:gap-16">
-        <div className="flex gap-2 lg:gap-5 flex-1">
+    <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
+      <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
+        <div className="flex gap-2 lg:gap-5 flex-1 w-full">
           {!users || users.length === 0 ? (
             <p>Error</p>
           ) : (

@@ -11,7 +11,7 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
   const posts = await fetchPosts();
 
   return (
-    <section className={cn("py-16 md:py-32 relative", className)}>
+    <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
       <Container>
         <div className="w-1/3">
           <h2 className="font-bold text-4xl sm:text-7xl">
@@ -26,7 +26,7 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
             this space keeps your content in motion.
           </p>
         </div>
-        <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5 w-[50%]">
+        <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5 w-1/2">
           {!posts || posts.length === 0 ? (
             <div>There are no posts</div>
           ) : (

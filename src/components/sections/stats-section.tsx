@@ -10,7 +10,7 @@ const firstRow = ["10k Posts", "2k Users", "5k Collections", "40k Messages"];
 export const StatsSection = ({ className }: StatsSectionProps) => {
   return (
     <section className={cn("", className)}>
-      <div className="relative overflow-hidden h-60">
+      <div className="relative overflow-hidden h-60 -z-20">
         <div className="rotate-3 origin-center absolute top-1/2 -translate-y-1/2 w-full">
           <Marquee
             pauseOnHover

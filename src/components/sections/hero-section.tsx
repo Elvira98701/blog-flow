@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Container, Gradient } from "@/components/layout";
+import { Container } from "@/components/layout";
 
 interface HeroSectionProps {
   className?: string;
@@ -53,7 +53,7 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
             width={900}
             height={400}
             alt=""
-            className="rounded-full h-24 xl:h-28 object-cover object-center inline-block flex-1"
+            className="rounded-full h-24 xl:h-28 object-cover object-center inline-block flex-1 xl:ml-12"
           />
           <motion.p
             initial={{ y: 100, opacity: 0 }}
@@ -67,7 +67,6 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
           </motion.p>
         </div>
       </Container>
-      <Gradient className="absolute bottom-0 -right-1/2 sm:right-0 -z-10" />
     </section>
   );
 };
