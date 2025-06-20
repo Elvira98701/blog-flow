@@ -1,7 +1,7 @@
-import { Post } from "@prisma/client";
+import { PostWithLikes } from "@/types";
 
 type FeedResponse = {
-  posts: Post[];
+  posts: PostWithLikes[];
   nextCursor: string | null;
 };
 
@@ -11,7 +11,7 @@ export const fetchFeedPosts = async ({
   pageParam?: string | null;
 }): Promise<FeedResponse> => {
   const url = new URL("/api/posts", window.location.origin);
-  url.searchParams.set("limit", "6");
+  url.searchParams.set("limit", "10");
   if (pageParam) {
     url.searchParams.set("cursor", pageParam);
   }

@@ -1,12 +1,7 @@
 "use client";
 
+import { pagesConfig } from "@/constants/pages-config";
 import { cn } from "@/lib/utils";
-import {
-  LayoutDashboard,
-  NotebookPen,
-  ScrollText,
-  UserRoundPen,
-} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,62 +15,22 @@ export const Sidebar = ({ className }: SidebarProps) => {
   return (
     <aside className={cn("border-r min-h-screen py-5", className)}>
       <ul className="flex flex-col gap-2 font-semibold text-lg">
-        <li>
-          <Link
-            href="/dashboard"
-            className={cn(
-              "flex items-center gap-2 hover:text-primary transition-colors",
-              {
-                "text-primary": pathname === "/dashboard",
-              }
-            )}
-          >
-            <LayoutDashboard size={18} />
-            <span>Dashboard</span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/dashboard/profile"
-            className={cn(
-              "flex items-center gap-2 hover:text-primary transition-colors",
-              {
-                "text-primary": pathname === "/dashboard/profile",
-              }
-            )}
-          >
-            <UserRoundPen size={18} />
-            <span>Profile</span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/dashboard/posts"
-            className={cn(
-              "flex items-center gap-2 hover:text-primary transition-colors",
-              {
-                "text-primary": pathname === "/dashboard/posts",
-              }
-            )}
-          >
-            <NotebookPen size={18} />
-            <span>Posts</span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/dashboard/feed"
-            className={cn(
-              "flex items-center gap-2 hover:text-primary transition-colors",
-              {
-                "text-primary": pathname === "/dashboard/feed",
-              }
-            )}
-          >
-            <ScrollText size={18} />
-            <span>Feed</span>
-          </Link>
-        </li>
+        {pagesConfig.map((page) => (
+          <li key={page.id}>
+            <Link
+              href={`/dashboard${page.link}`}
+              className={cn(
+                "flex items-center gap-2 hover:text-primary transition-colors",
+                {
+                  "text-primary": pathname === `/dashboard${page.link}`,
+                }
+              )}
+            >
+              {page.icon}
+              <span>{page.name}</span>
+            </Link>
+          </li>
+        ))}
       </ul>
     </aside>
   );

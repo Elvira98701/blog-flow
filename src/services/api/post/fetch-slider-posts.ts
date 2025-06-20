@@ -4,6 +4,14 @@ export const fetchSliderPosts = async () => {
   try {
     const posts = await prisma.post.findMany({
       take: 6,
+      include: {
+        user: {
+          select: {
+            name: true,
+          },
+        },
+        likes: true,
+      },
     });
 
     return posts;

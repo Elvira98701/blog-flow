@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface UserCardProps {
   name: string;
@@ -20,7 +21,7 @@ export const UserCard = ({
   return (
     <article
       className={cn(
-        "w-full rounded-lg h-80 p-[3px] relative hover:scale-105 transition-transform duration-300",
+        "w-full max-w-[339px] rounded-lg h-80 p-[3px] relative hover:scale-105 transition-transform duration-300",
         { "bg-gradient-to-br from-accent to-primary": active },
         className
       )}
@@ -30,9 +31,12 @@ export const UserCard = ({
           "bg-background": active,
         })}
       >
-        <div
-          className="h-1/3 rounded-lg bg-cover bg-center relative"
-          style={{ backgroundImage: `url(${avatar})` }}
+        <Image
+          src={avatar || ""}
+          width={500}
+          height={500}
+          alt={name}
+          className="rounded-lg h-1/3 object-cover object-center"
         />
         <div className="pt-4 flex flex-col gap-5">
           <div>

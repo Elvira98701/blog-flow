@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "6");
+    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "10");
     const cursor = parseInt(req.nextUrl.searchParams.get("cursor") || "1");
 
     const posts = await prisma.post.findMany({
@@ -13,6 +13,14 @@ export async function GET(req: NextRequest) {
         skip: 1,
       }),
       orderBy: { createdAt: "desc" },
+      include: {
+        user: {
+          select: {
+            name: true,
+          },
+        },
+        likes: true,
+      },
     });
 
     const hasNextPage = posts.length > limit;

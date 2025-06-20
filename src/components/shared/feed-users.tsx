@@ -5,5 +5,9 @@ interface FeedUsersProps {
 }
 
 export const FeedUsers = ({ className }: FeedUsersProps) => {
-  return <div className={cn("", className)}>FeedUsers</div>;
+  return (
+    <div className={cn("", className)}>
+      <h2>Top Users</h2>
+    </div>
+  );
 };

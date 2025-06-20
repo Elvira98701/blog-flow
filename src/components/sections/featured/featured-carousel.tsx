@@ -9,10 +9,10 @@ import {
 } from "@/components/ui";
 import { PostCard } from "@/components/shared";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
-import { Post } from "@prisma/client";
+import { PostWithLikes } from "@/types";
 
 interface FeaturedCarouselProps {
-  posts: Post[];
+  posts: PostWithLikes[];
   className?: string;
 }
 
