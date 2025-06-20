@@ -46,7 +46,6 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
     [isFetchingNextPage, fetchNextPage, hasNextPage]
   );
 
-  console.log(data);
   return (
     <section className={cn("", className)}>
       <h2>Top Posts</h2>

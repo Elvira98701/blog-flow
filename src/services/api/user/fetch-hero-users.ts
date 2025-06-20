@@ -4,10 +4,7 @@ export const fetchHeroUsers = async () => {
   try {
     const users = await prisma.user.findMany({
       take: 4,
-      select: {
-        id: true,
-        name: true,
-        avatar: true,
+      include: {
         posts: true,
         subscribers: true,
       },

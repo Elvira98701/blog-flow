@@ -1,10 +1,9 @@
-export default async function Post({
+export default async function User({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
 
-  console.log(id);
-  return <div></div>;
+  return <div>{id}</div>;
 }

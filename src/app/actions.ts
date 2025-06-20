@@ -1,5 +1,6 @@
 "use server";
 
+import { getRandomNumber } from "@/lib/get-random-number";
 import { getUserSession } from "@/lib/get-user-session";
 import { sendEmail } from "@/lib/send-email";
 import { prisma } from "@/prisma/prisma-client";
@@ -59,6 +60,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
         name: body.name,
         email: body.email,
         password: hashSync(body.password, 10),
+        avatar: `/images/anonim/${getRandomNumber(1, 8)}.jpg`,
       },
     });
 

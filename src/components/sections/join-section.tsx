@@ -1,17 +1,15 @@
-"use client";
-
 import Image from "next/image";
-import { useSession } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout";
 import { ButtonLink } from "@/components/ui";
+import { getUserSession } from "@/lib/get-user-session";
 
 interface JoinSectionProps {
   className?: string;
 }
 
-export const JoinSection = ({ className }: JoinSectionProps) => {
-  const { data: session } = useSession();
+export const JoinSection = async ({ className }: JoinSectionProps) => {
+  const session = await getUserSession();
 
   return (
     <section className={cn("py-10 md:py-20 lg:py-32", className)}>

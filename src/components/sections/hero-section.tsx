@@ -49,7 +49,7 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
         </h1>
         <div className="hidden sm:flex items-center gap-8">
           <Image
-            src="/images/home/auth.jpg"
+            src="/images/home/4.jpg"
             width={900}
             height={400}
             alt=""

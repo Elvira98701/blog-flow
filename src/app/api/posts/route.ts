@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const limit = parseInt(req.nextUrl.searchParams.get("limit") || "10");
-    const cursor = parseInt(req.nextUrl.searchParams.get("cursor") || "1");
+    const cursor = parseInt(req.nextUrl.searchParams.get("cursor") || "0");
 
     const posts = await prisma.post.findMany({
       take: limit + 1,
@@ -12,7 +12,11 @@ export async function GET(req: NextRequest) {
         cursor: { id: cursor },
         skip: 1,
       }),
-      orderBy: { createdAt: "desc" },
+      orderBy: {
+        likes: {
+          _count: "desc",
+        },
+      },
       include: {
         user: {
           select: {

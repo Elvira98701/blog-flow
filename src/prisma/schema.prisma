@@ -13,6 +13,7 @@ model User {
     name         String
     password     String
     avatar       String?
+    slogan       String?
     posts        Post[]
     comments     Comment[]
     likes        Like[]

@@ -3,6 +3,7 @@ import { fetchHeroUsers } from "@/services/api";
 import { Container, Gradient } from "@/components/layout";
 import { UserCard } from "@/components/shared";
 import { AboutAccordion } from "./about-accordion";
+import { getUserSession } from "@/lib/get-user-session";
 
 interface AboutSectionProps {
   className?: string;
@@ -10,6 +11,7 @@ interface AboutSectionProps {
 
 export const AboutSection = async ({ className }: AboutSectionProps) => {
   const users = await fetchHeroUsers();
+  const session = await getUserSession();
 
   return (
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
@@ -24,10 +26,8 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                   <UserCard
                     key={user.id}
                     className="mb-2 lg:mb-5"
-                    name={user.name}
-                    avatar={user.avatar}
-                    postsLength={user.posts.length}
-                    subscribersLength={user.subscribers.length}
+                    user={user}
+                    session={session}
                   />
                 ))}
               </div>
@@ -36,10 +36,8 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                   <UserCard
                     key={user.id}
                     className="mb-2 lg:mb-5"
-                    name={user.name}
-                    avatar={user.avatar}
-                    postsLength={user.posts.length}
-                    subscribersLength={user.subscribers.length}
+                    user={user}
+                    session={session}
                   />
                 ))}
               </div>

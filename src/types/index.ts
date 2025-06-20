@@ -1,4 +1,4 @@
-import { Post } from "@prisma/client";
+import { Post, Subscriber, User } from "@prisma/client";
 
 export type PostWithLikes = Post & {
   user: {
@@ -10,4 +10,9 @@ export type PostWithLikes = Post & {
     createdAt: Date;
     postId: number;
   }[];
+};
+
+export type UsersWithPosts = User & {
+  posts: Post[];
+  subscribers: Subscriber[];
 };
