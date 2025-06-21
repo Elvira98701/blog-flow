@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
       },
       include: {
         posts: true,
-        subscribers: true,
+        subscribedTo: true,
       },
     });
 

@@ -9,10 +9,10 @@ import {
 } from "@/components/ui";
 import { PostCard } from "@/components/shared";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
-import { PostWithLikes } from "@/types";
+import { PostWithLikesAndAuthor } from "@/types";
 
 interface FeaturedCarouselProps {
-  posts: PostWithLikes[];
+  posts: PostWithLikesAndAuthor[];
   className?: string;
 }
 

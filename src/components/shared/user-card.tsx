@@ -1,11 +1,11 @@
 import { cn } from "@/lib/utils";
-import { UsersWithPosts } from "@/types";
+import { UserWithPosts } from "@/types";
 import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 
 interface UserCardProps {
-  user: UsersWithPosts;
+  user: UserWithPosts;
   session:
     | {
         id: string;
@@ -61,7 +61,7 @@ export const UserCard = ({
             </div>
             <div className="flex-1 flex flex-col justify-center items-center">
               <span className="text-3xl sm:text-4xl font-semibold">
-                {user.subscribers.length}
+                {user.subscribedTo.length}
               </span>
               <span className="text-foreground/50">subscribers</span>
             </div>

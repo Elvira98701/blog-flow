@@ -37,6 +37,7 @@ export const RegisterForm = () => {
       });
     }
   };
+
   return (
     <FormProvider {...form}>
       <form

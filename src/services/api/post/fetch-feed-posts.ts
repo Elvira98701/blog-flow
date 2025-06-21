@@ -1,7 +1,7 @@
-import { PostWithLikes } from "@/types";
+import { PostWithLikesAndAuthor } from "@/types";
 
 type FeedResponse = {
-  posts: PostWithLikes[];
+  posts: PostWithLikesAndAuthor[];
   nextCursor: string | null;
 };
 

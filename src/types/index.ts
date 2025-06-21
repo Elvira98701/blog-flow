@@ -1,6 +1,6 @@
 import { Post, Subscriber, User } from "@prisma/client";
 
-export type PostWithLikes = Post & {
+export type PostWithLikesAndAuthor = Post & {
   user: {
     name: string;
   };
@@ -12,7 +12,11 @@ export type PostWithLikes = Post & {
   }[];
 };
 
-export type UsersWithPosts = User & {
+export type UserWithPosts = User & {
   posts: Post[];
+  subscribedTo: Subscriber[];
+};
+
+export type UserWithPostsAndSubscribers = UserWithPosts & {
   subscribers: Subscriber[];
 };

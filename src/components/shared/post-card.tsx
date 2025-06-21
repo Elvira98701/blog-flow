@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
-import { PostWithLikes } from "@/types";
+import { PostWithLikesAndAuthor } from "@/types";
 import { Heart } from "lucide-react";
 import Image from "next/image";
 
 interface PostCardProps {
-  post: PostWithLikes;
+  post: PostWithLikesAndAuthor;
   active?: boolean;
   className?: string;
 }

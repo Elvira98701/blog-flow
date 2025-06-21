@@ -232,6 +232,16 @@ h2 {
   font-size: clamp(2.5rem, 1.8rem + 3.5vw, 6rem);
 }
 
+.small-title {
+  font-size: clamp(1.25rem, 0.875rem + 1.88vw, 3.125rem);
+  @apply leading-none font-bold;
+}
+
+.xs-title {
+  font-size: clamp(1.125rem, 1.038rem + 0.44vw, 1.563rem);
+  @apply leading-none font-bold;
+}
+
 @-webkit-keyframes marquee {
   from {
     transform: translateX(0);

@@ -6,7 +6,7 @@ export const fetchHeroUsers = async () => {
       take: 4,
       include: {
         posts: true,
-        subscribers: true,
+        subscribedTo: true,
       },
     });
 

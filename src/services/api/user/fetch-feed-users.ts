@@ -1,7 +1,7 @@
-import { UsersWithPosts } from "@/types";
+import { UserWithPosts } from "@/types";
 
 type FeedResponse = {
-  users: UsersWithPosts[];
+  users: UserWithPosts[];
   nextCursor: string | null;
 };
 

@@ -22,7 +22,7 @@ export const LoginForm = () => {
       const response = await signIn("credentials", {
         ...data,
         callbackUrl: "/dashboard",
-        redirect: true,
+        redirect: false,
       });
 
       if (!response?.ok) {
