@@ -13,7 +13,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
   const pathname = usePathname();
 
   return (
-    <aside className={cn("border-r min-h-screen py-5", className)}>
+    <aside className={cn("border-r min-h-screen py-5 p-4", className)}>
       <ul className="flex flex-col gap-2 font-semibold text-lg">
         {pagesConfig.map((page) => (
           <li key={page.id}>

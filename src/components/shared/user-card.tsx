@@ -27,16 +27,19 @@ export const UserCard = ({
   return (
     <article
       className={cn(
-        "w-full max-w-[339px] rounded-lg h-80 p-[3px] relative hover:scale-105 transition-transform duration-300",
+        "w-full max-w-[339px] rounded-lg h-80 p-[3px] relative transition-transform duration-300",
         { "bg-gradient-to-br from-accent to-primary": active },
         className
       )}
     >
       <Link
         href={!session ? "/auth" : `/dashboard/user/${user.id}`}
-        className={cn("bg-background/30 h-full rounded-lg p-3 border block", {
-          "bg-background": active,
-        })}
+        className={cn(
+          "bg-background/30 h-full rounded-lg p-3 border block transition-colors duration-300 hover:bg-background",
+          {
+            "bg-background": active,
+          }
+        )}
       >
         <Image
           src={user.avatar || "/images/anonim/1.jpg"}

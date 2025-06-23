@@ -1,4 +1,5 @@
 export { ActionsButtons } from "./actions-buttons";
+export { BigPostCard } from "./big-post-card";
 export { ClearButton } from "./clear-button";
 export { ErrorText } from "./error-text";
 export { Marquee } from "./marquee";

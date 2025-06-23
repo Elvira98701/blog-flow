@@ -26,7 +26,12 @@ export const UserHead = ({ user, session, className }: UserHeadProps) => {
       <h1 className="small-title">{user.name}</h1>
       <p>{user.slogan}</p>
       {Number(session.id) === user.id ? (
-        <ButtonLink href="/dashboard/profile" size="lg" className="w-full">
+        <ButtonLink
+          href="/dashboard/profile"
+          size="lg"
+          className="w-full"
+          variant="default"
+        >
           Edit profile
         </ButtonLink>
       ) : (

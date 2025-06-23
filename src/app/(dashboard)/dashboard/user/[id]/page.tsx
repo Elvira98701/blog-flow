@@ -1,4 +1,8 @@
-import { UserHead, UserSubscribersList } from "@/components/shared";
+import {
+  BigPostCard,
+  UserHead,
+  UserSubscribersList,
+} from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/api";
 import { notFound, redirect } from "next/navigation";
@@ -19,8 +23,8 @@ export default async function User({
   if (!user) return notFound();
 
   return (
-    <section className="flex gap-5">
-      <div className="max-w-96">
+    <section className="flex gap-10 items-start min-h-screen">
+      <div className="max-w-96 bg-gradient-to-br from-primary/40 to-[#4B3BE4]/30 p-4 rounded-lg border">
         <UserHead user={user} session={session} className="mb-10" />
         {user.subscribedTo.length > 0 && (
           <UserSubscribersList
@@ -37,7 +41,15 @@ export default async function User({
           />
         )}
       </div>
-      <div>posts</div>
+      <div className="flex flex-col gap-5 items-center flex-1">
+        {user.posts.map((post) => (
+          <BigPostCard
+            key={post.id}
+            post={post}
+            edit={Number(session.id) === user.id}
+          />
+        ))}
+      </div>
     </section>
   );
 }

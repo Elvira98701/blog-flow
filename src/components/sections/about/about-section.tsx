@@ -32,12 +32,15 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 ))}
               </div>
               <div className="flex-1">
-                {users?.slice(2).map((user) => (
+                {users?.slice(2).map((user, index) => (
                   <UserCard
                     key={user.id}
-                    className="mb-2 lg:mb-5"
+                    className={cn("mb-2 lg:mb-5", {
+                      "scale-110 z-10": index === 0,
+                    })}
                     user={user}
                     session={session}
+                    active={index === 0}
                   />
                 ))}
               </div>
