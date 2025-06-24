@@ -5,6 +5,8 @@ import { fetchFeedPosts } from "@/services/api/post";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useRef } from "react";
 import { PostCard } from "./post-card";
+import { ErrorText } from "./error-text";
+import { Skeleton } from "../ui";
 
 interface FeedPostsProps {
   className?: string;
@@ -47,12 +49,16 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
   );
 
   return (
-    <section className={cn("", className)}>
+    <div className={cn("w-full", className)}>
       <h2>Top Posts</h2>
       {isLoading ? (
-        <p>Loading</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-5">
+          {Array.from({ length: 10 }, (_, i) => (
+            <Skeleton key={i} className="w-full rounded-lg h-[446px] border" />
+          ))}
+        </div>
       ) : isError ? (
-        <p>{error.message}</p>
+        <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 mt-5">
           {data?.pages.map((page, pageIndex) => {
@@ -70,6 +76,6 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
           })}
         </div>
       )}
-    </section>
+    </div>
   );
 };

@@ -27,7 +27,7 @@ export const UserCard = ({
   return (
     <article
       className={cn(
-        "w-full max-w-[339px] rounded-lg h-80 p-[3px] relative transition-transform duration-300",
+        "w-full rounded-lg h-80 p-[3px] relative transition-transform duration-300",
         { "bg-gradient-to-br from-accent to-primary": active },
         className
       )}

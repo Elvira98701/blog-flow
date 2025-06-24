@@ -1,6 +1,6 @@
 import { PostWithLikesAndAuthor } from "@/types";
 
-type FeedResponse = {
+export type FeedResponse = {
   posts: PostWithLikesAndAuthor[];
   nextCursor: string | null;
 };

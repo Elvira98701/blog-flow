@@ -13,7 +13,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
   return (
     <article
       className={cn(
-        "group rounded-lg h-[450px] max-w-72 p-1 relative",
+        "group rounded-lg h-[450px] p-1 relative",
         {
           "bg-gradient-to-br from-accent to-primary transition-transform duration-500":
             active,

@@ -67,7 +67,7 @@ export const FormInput = ({
         )}
       </div>
 
-      {errorText && <ErrorText text={errorText} className="mt-2" />}
+      {errorText && <ErrorText text={errorText} size="sm" className="mt-2" />}
     </div>
   );
 };

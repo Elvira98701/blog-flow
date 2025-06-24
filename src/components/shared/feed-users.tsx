@@ -6,6 +6,8 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useCallback, useRef } from "react";
 import { UserCard } from "./user-card";
 import { useSession } from "next-auth/react";
+import { Skeleton } from "../ui";
+import { ErrorText } from "./error-text";
 
 interface FeedUsersProps {
   className?: string;
@@ -49,12 +51,16 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
   );
 
   return (
-    <section className={cn("", className)}>
+    <section className={cn("w-full", className)}>
       <h2>Top Users</h2>
       {isLoading ? (
-        <p>Loading</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
+          {Array.from({ length: 8 }, (_, i) => (
+            <Skeleton key={i} className="w-full rounded-lg h-80 border" />
+          ))}
+        </div>
       ) : isError ? (
-        <p>{error.message}</p>
+        <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
           {data?.pages.map((page, pageIndex) => {

@@ -25,7 +25,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(0, 2).map((user) => (
                   <UserCard
                     key={user.id}
-                    className="mb-2 lg:mb-5"
+                    className="mb-2 lg:mb-5 max-w-[339px]"
                     user={user}
                     session={session}
                   />
@@ -35,7 +35,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(2).map((user, index) => (
                   <UserCard
                     key={user.id}
-                    className={cn("mb-2 lg:mb-5", {
+                    className={cn("mb-2 lg:mb-5 max-w-[339px]", {
                       "scale-110 z-10": index === 0,
                     })}
                     user={user}
