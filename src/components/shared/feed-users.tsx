@@ -62,21 +62,29 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
       ) : isError ? (
         <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
-          {data?.pages.map((page, pageIndex) => {
-            return page.users.map((user, userIndex) => {
-              const isLastPage = pageIndex === data.pages.length - 1;
-              const isLastPost = userIndex === page.users.length - 1;
-              const ref = isLastPage && isLastPost ? lastRowRef : null;
+        <>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+            {data?.pages.map((page, pageIndex) => {
+              return page.users.map((user, userIndex) => {
+                const isLastPage = pageIndex === data.pages.length - 1;
+                const isLastPost = userIndex === page.users.length - 1;
+                const ref = isLastPage && isLastPost ? lastRowRef : null;
 
-              return (
-                <div key={user.id} ref={ref}>
-                  <UserCard user={user} session={session} />
-                </div>
-              );
-            });
-          })}
-        </div>
+                return (
+                  <div key={user.id} ref={ref}>
+                    <UserCard user={user} session={session} />
+                  </div>
+                );
+              });
+            })}
+          </div>
+          {isFetchingNextPage && <p className="text-center py-3">Loading...</p>}
+          {data?.pages[0].users.length === 0 && (
+            <div className="flex items-center min-h-[80vh]">
+              <p>There are no users yet</p>
+            </div>
+          )}
+        </>
       )}
     </section>
   );

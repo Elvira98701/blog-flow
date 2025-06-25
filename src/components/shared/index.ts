@@ -12,6 +12,7 @@ export { UserHead } from "./user-head";
 export { UserSubscribersList } from "./user-subscribers-list";
 export { FeedPosts } from "./feed-posts";
 export { FeedUsers } from "./feed-users";
+export { UserPosts } from "./user-posts";
 export * from "./theme";
 export * from "./form";
 export * from "./auth";

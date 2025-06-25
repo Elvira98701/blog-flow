@@ -1,15 +1,10 @@
-import { PostWithLikesAndAuthor } from "@/types";
-
-export type FeedResponse = {
-  posts: PostWithLikesAndAuthor[];
-  nextCursor: string | null;
-};
+import { FeedPostResponse } from "@/types";
 
 export const fetchFeedPosts = async ({
   pageParam = null,
 }: {
   pageParam?: string | null;
-}): Promise<FeedResponse> => {
+}): Promise<FeedPostResponse> => {
   const url = new URL("/api/posts", window.location.origin);
   url.searchParams.set("limit", "10");
   if (pageParam) {

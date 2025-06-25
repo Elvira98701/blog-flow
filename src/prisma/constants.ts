@@ -98,15 +98,17 @@ export const users = [
 
 export const posts = [
   {
-    title: "First Post",
-    content: "This is the first post content.",
+    title: "Why is Go so weird",
+    content:
+      "Growth does not begin with a grade, but with an internal demand for development, new areas of responsibility and systematic thinking. There is no single recipe for an ideal architecture — the readability and liveliness of the project are important. Soft skills are no less important than hard skills, especially in distributed teams. You can switch to Go from any language — there is no big difference. But the transition itself will require not only experience, but also flexibility of thinking. Product thinking strengthens the developer and helps them speak the same language as the business. The oddities of Go are the compromises behind which conscious design stands. LLM is a useful tool that is useful to integrate into the workflow with due care. Composition in Go is not a limitation, but an opportunity to design easier. Reliability is achieved not only by the code, but also by the culture in the team.",
     image: "/images/posts/1.jpg",
     userId: 1,
     published: true,
   },
   {
-    title: "Second Post",
-    content: "Another post by Alice.",
+    title: "Who is a Data Analyst and how do I become one?",
+    content:
+      "A data analyst analyzes data and helps businesses make informed decisions based on the data. In this review, we'll look at exactly what he does, what specializations are available, and what skills are needed for the job. Let's talk about career growth and look at the training roadmap.",
     image: "/images/posts/2.jpg",
     userId: 1,
     published: true,
@@ -114,7 +116,7 @@ export const posts = [
   {
     title: "How to Learn JavaScript",
     content:
-      "Start with the basics and build real projects to strengthen your knowledge.",
+      "JavaScript is the most popular language among developers in 2022, according to a GitHub study, and it has a very large knowledge base. It is important not to get lost in it. Let's figure out how to start learning JavaScript from scratch and not get confused by the abundance of information.",
     image: "/images/posts/3.jpg",
     userId: 2,
     published: true,
@@ -128,9 +130,9 @@ export const posts = [
     published: true,
   },
   {
-    title: "10 Tips for Better Sleep",
+    title: "How do workshops help programmers find jobs?",
     content:
-      "Avoid screens before bed, establish a routine, and more advice for deep rest.",
+      "If practice is important to you, pay attention to workshops – this is a training format where you immediately work on tasks under the guidance of experienced developers. They help you improve your skills and make useful acquaintances that can help you find your first job. What is a workshop? What kind of workshops are there? What is the special feature of the workshop format? Who conducts workshops and why? Why would a beginner need a workshop? How are the workshops going? Useful tips for the workshop participant How to choose the right workshop? Where can I find workshops? FAQ In this article, we will tell you in detail what a workshop is, what its benefits and features are, how to participate, and how it can help you find employment.",
     image: "/images/posts/5.jpg",
     userId: 4,
     published: true,

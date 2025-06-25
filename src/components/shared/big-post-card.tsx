@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils";
-import { Post } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "../ui";
+import { Heart } from "lucide-react";
+import { PostWithLikesAndAuthor } from "@/types";
 
 interface BigPostCardProps {
-  post: Post;
+  post: PostWithLikesAndAuthor;
   edit: boolean;
   className?: string;
 }
@@ -18,7 +20,7 @@ export const BigPostCard = ({ edit, post, className }: BigPostCardProps) => {
       )}
     >
       <Link href={`/dashboard/post/${post.id}`}>
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-5">
           <Image
             src={post.image || ""}
             width={600}
@@ -28,17 +30,29 @@ export const BigPostCard = ({ edit, post, className }: BigPostCardProps) => {
           />
           <div>
             <h3 className="text-3xl font-bold">{post.title}</h3>
-            <p className="flex gap-4 mt-1 mb-10">
+            <p className="flex gap-4 mt-1">
               <span>
-                Created: <data value="">{post.createdAt.toDateString()}</data>
+                Created:{" "}
+                <data value="">{new Date(post.createdAt).toDateString()}</data>
               </span>
               <span>
-                Updated: <data value="">{post.updatedAt.toDateString()}</data>
+                Updated:{" "}
+                <data value="">{new Date(post.updatedAt).toDateString()}</data>
               </span>
             </p>
+            <span className="font-mono text-foreground/70">
+              Author: {post.user.name}
+            </span>
           </div>
         </div>
-        <p>{post.content}</p>
+        <p className="mb-5">{post.content}</p>
+        <div className="flex items-center gap-2">
+          {edit && <Button size="lg">Edit</Button>}
+          <Button size="lg" variant="outline">
+            <Heart />
+            {post.likes.length}
+          </Button>
+        </div>
       </Link>
     </article>
   );

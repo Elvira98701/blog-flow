@@ -20,3 +20,13 @@ export type UserWithPosts = User & {
 export type UserWithPostsAndSubscribers = UserWithPosts & {
   subscribers: Subscriber[];
 };
+
+export type FeedPostResponse = {
+  posts: PostWithLikesAndAuthor[];
+  nextCursor: string | null;
+};
+
+export type FeedUserResponse = {
+  users: UserWithPosts[];
+  nextCursor: string | null;
+};

@@ -1,15 +1,10 @@
-import { UserWithPosts } from "@/types";
-
-type FeedResponse = {
-  users: UserWithPosts[];
-  nextCursor: string | null;
-};
+import { FeedUserResponse } from "@/types";
 
 export const fetchFeedUsers = async ({
   pageParam = null,
 }: {
   pageParam?: string | null;
-}): Promise<FeedResponse> => {
+}): Promise<FeedUserResponse> => {
   const url = new URL("/api/users", window.location.origin);
   url.searchParams.set("limit", "8");
   if (pageParam) {

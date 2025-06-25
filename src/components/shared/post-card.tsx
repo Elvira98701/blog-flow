@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 import { Heart } from "lucide-react";
 import Image from "next/image";
+import { Button } from "../ui";
 
 interface PostCardProps {
   post: PostWithLikesAndAuthor;
@@ -45,10 +46,10 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
             </h4>
           </div>
 
-          <span className="flex justify-center items-center gap-1">
-            <span className="text-2xl font-semibold">{post.likes.length}</span>
-            <Heart size={18} />
-          </span>
+          <Button size="lg">
+            <Heart />
+            {post.likes.length}
+          </Button>
         </div>
       </div>
     </article>
