@@ -78,7 +78,7 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
               });
             })}
           </div>
-          {isFetchingNextPage && <p className="text-center py-3">Loading...</p>}
+          {isFetchingNextPage && <p className="text-center py-4">Loading...</p>}
           {data?.pages[0].users.length === 0 && (
             <div className="flex items-center min-h-[80vh]">
               <p>There are no users yet</p>

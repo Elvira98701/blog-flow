@@ -4,14 +4,21 @@ import Link from "next/link";
 import { Button } from "../ui";
 import { Heart } from "lucide-react";
 import { PostWithLikesAndAuthor } from "@/types";
+import { ClearButton } from "./clear-button";
 
 interface BigPostCardProps {
   post: PostWithLikesAndAuthor;
   edit: boolean;
+  deletePost: boolean;
   className?: string;
 }
 
-export const BigPostCard = ({ edit, post, className }: BigPostCardProps) => {
+export const BigPostCard = ({
+  edit,
+  deletePost,
+  post,
+  className,
+}: BigPostCardProps) => {
   return (
     <article
       className={cn(
@@ -46,14 +53,19 @@ export const BigPostCard = ({ edit, post, className }: BigPostCardProps) => {
           </div>
         </div>
         <p className="mb-5">{post.content}</p>
-        <div className="flex items-center gap-2">
-          {edit && <Button size="lg">Edit</Button>}
-          <Button size="lg" variant="outline">
-            <Heart />
-            {post.likes.length}
-          </Button>
-        </div>
       </Link>
+      <div className="flex items-center gap-2">
+        {edit && <Button size="lg">Edit</Button>}
+        <Button size="lg" variant="outline">
+          <Heart />
+          {post.likes.length}
+        </Button>
+      </div>
+      {deletePost && (
+        <div className="absolute top-4 right-4">
+          <ClearButton />
+        </div>
+      )}
     </article>
   );
 };

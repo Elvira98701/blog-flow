@@ -75,13 +75,14 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
                 <BigPostCard
                   post={post}
                   edit={Number(session.id) === post.userId}
+                  deletePost={Number(session.id) === post.userId}
                 />
               </div>
             );
           });
         })
       )}
-      {isFetchingNextPage && <p className="text-center py-3">Loading...</p>}
+      {isFetchingNextPage && <p className="text-center py-4">Loading...</p>}
       {data?.pages[0].posts.length === 0 && (
         <div className="flex items-center min-h-[80vh]">
           <p>The user doesn&apos;t have any posts yet</p>
