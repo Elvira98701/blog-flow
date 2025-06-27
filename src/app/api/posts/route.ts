@@ -39,3 +39,38 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Internal server error", { status: 500 });
   }
 }
+
+export async function POST(req: NextRequest) {
+  try {
+    const { title, content, userId } = await req.json();
+
+    const post = await prisma.post.create({
+      data: {
+        title,
+        content,
+        userId,
+        image: "/images/posts/1.jpg",
+      },
+    });
+
+    return NextResponse.json(post);
+  } catch (error) {
+    console.error("Server error:", error);
+    return new NextResponse("Internal server error", { status: 500 });
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { postId } = await req.json();
+
+    await prisma.post.delete({
+      where: {
+        id: postId,
+      },
+    });
+  } catch (error) {
+    console.error("Server error:", error);
+    return new NextResponse("Internal server error", { status: 500 });
+  }
+}

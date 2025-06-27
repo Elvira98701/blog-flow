@@ -5,7 +5,6 @@ export const fetchUserById = async (id: number) => {
     const user = await prisma.user.findFirst({
       where: { id },
       include: {
-        posts: true,
         subscribers: {
           include: {
             subscribedTo: true,

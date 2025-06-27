@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
-import { UserWithPostsAndSubscribers } from "@/types";
+import { UserWithSubscribers } from "@/types";
 import Image from "next/image";
 import { Button, ButtonLink } from "../ui";
 
 interface UserHeadProps {
-  user: UserWithPostsAndSubscribers;
+  user: UserWithSubscribers;
   session: {
     id: string;
     name: string;
