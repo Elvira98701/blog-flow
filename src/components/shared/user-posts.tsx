@@ -74,8 +74,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
               <div key={post.id} ref={ref} className="w-full">
                 <BigPostCard
                   post={post}
-                  edit={Number(session.id) === post.userId}
-                  deletePost={Number(session.id) === post.userId}
+                  isOwner={Number(session.id) === post.userId}
                   userId={userId}
                 />
               </div>

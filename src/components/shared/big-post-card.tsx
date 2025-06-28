@@ -14,16 +14,14 @@ import toast from "react-hot-toast";
 interface BigPostCardProps {
   userId: string;
   post: PostWithLikesAndAuthor;
-  edit: boolean;
-  deletePost: boolean;
+  isOwner: boolean;
   className?: string;
 }
 
 export const BigPostCard = ({
   userId,
-  edit,
-  deletePost,
   post,
+  isOwner,
   className,
 }: BigPostCardProps) => {
   const queryClient = useQueryClient();
@@ -31,12 +29,13 @@ export const BigPostCard = ({
     mutationFn: (postId: number) => deletePostById(postId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["user-posts", userId] });
-      toast.success("The post was created successfully");
+      toast.success("The post was successfully deleted");
     },
     onError: () => {
-      toast.error("Error when creating a post");
+      toast.error("Error when deleting a post");
     },
   });
+
   return (
     <article
       className={cn(
@@ -73,13 +72,13 @@ export const BigPostCard = ({
         <p className="mb-5">{post.content}</p>
       </Link>
       <div className="flex items-center gap-2">
-        {edit && <Button size="lg">Edit</Button>}
-        <Button size="lg" variant="outline">
+        {isOwner && <Button size="lg">Edit</Button>}
+        <Button size="lg" variant="outline" disabled={isOwner}>
           <Heart />
           {post.likes.length}
         </Button>
       </div>
-      {deletePost && (
+      {isOwner && (
         <div className="absolute top-4 right-4">
           <ClearButton
             onClick={() => {
