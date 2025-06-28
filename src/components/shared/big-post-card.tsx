@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,8 +7,12 @@ import { Button } from "../ui";
 import { Heart } from "lucide-react";
 import { PostWithLikesAndAuthor } from "@/types";
 import { ClearButton } from "./clear-button";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { deletePostById } from "@/services/api";
+import toast from "react-hot-toast";
 
 interface BigPostCardProps {
+  userId: string;
   post: PostWithLikesAndAuthor;
   edit: boolean;
   deletePost: boolean;
@@ -14,11 +20,23 @@ interface BigPostCardProps {
 }
 
 export const BigPostCard = ({
+  userId,
   edit,
   deletePost,
   post,
   className,
 }: BigPostCardProps) => {
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: (postId: number) => deletePostById(postId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-posts", userId] });
+      toast.success("The post was created successfully");
+    },
+    onError: () => {
+      toast.error("Error when creating a post");
+    },
+  });
   return (
     <article
       className={cn(
@@ -63,7 +81,11 @@ export const BigPostCard = ({
       </div>
       {deletePost && (
         <div className="absolute top-4 right-4">
-          <ClearButton />
+          <ClearButton
+            onClick={() => {
+              mutate(post.id);
+            }}
+          />
         </div>
       )}
     </article>

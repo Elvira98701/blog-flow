@@ -1,16 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { FormInput } from "../form-input";
 import { FormProvider, useForm } from "react-hook-form";
-import { formPostSchema, FormPostValue } from "./schemas";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui";
-import { FormTextarea } from "../form-textarea";
-import { useMutation } from "@tanstack/react-query";
-import { createPost } from "@/services/api";
-import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { formPostSchema, FormPostValue } from "./schemas";
+import { Button } from "@/components/ui";
+import { FormTextarea, FormInput } from "@/components/shared/form";
+import { createPost } from "@/services/api";
 
 interface PostFormProps {
   session: {
@@ -22,9 +20,17 @@ interface PostFormProps {
 }
 
 export const PostForm = ({ session, className }: PostFormProps) => {
-  const { isPending, isError, isSuccess, mutate } = useMutation({
+  const queryClient = useQueryClient();
+  const { isPending, mutate } = useMutation({
     mutationFn: (data: { title: string; content: string; userId: number }) =>
       createPost(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user-posts", session.id] });
+      toast.success("The post was created successfully");
+    },
+    onError: () => {
+      toast.error("Error when creating a post");
+    },
   });
 
   const form = useForm<FormPostValue>({
@@ -41,18 +47,8 @@ export const PostForm = ({ session, className }: PostFormProps) => {
       content: data.content,
       userId: Number(session.id),
     });
+    form.reset();
   };
-
-  useEffect(() => {
-    if (isSuccess) {
-      toast.success("The post was created successfully");
-      form.reset();
-    }
-
-    if (isError) {
-      toast.error("Error when creating a post");
-    }
-  }, [isError, isSuccess, form]);
 
   return (
     <div

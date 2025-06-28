@@ -1,4 +1,7 @@
+import { authOptions } from "@/constants/auth-options";
+import { getRandomNumber } from "@/lib/get-random-number";
 import { prisma } from "@/prisma/prisma-client";
+import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -42,6 +45,12 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
     const { title, content, userId } = await req.json();
 
     const post = await prisma.post.create({
@@ -49,7 +58,7 @@ export async function POST(req: NextRequest) {
         title,
         content,
         userId,
-        image: "/images/posts/1.jpg",
+        image: `/images/posts/${getRandomNumber(1, 28)}.jpg`,
       },
     });
 
@@ -62,13 +71,35 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
     const { postId } = await req.json();
 
-    await prisma.post.delete({
-      where: {
-        id: postId,
-      },
+    if (!postId) {
+      return new NextResponse("Post ID is required", { status: 400 });
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
     });
+
+    if (!post) {
+      return new NextResponse("Post not found", { status: 404 });
+    }
+
+    if (post.userId !== Number(session.user.id)) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    await prisma.post.delete({
+      where: { id: postId },
+    });
+
+    return NextResponse.json({ message: "Post deleted successfully" });
   } catch (error) {
     console.error("Server error:", error);
     return new NextResponse("Internal server error", { status: 500 });

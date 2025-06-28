@@ -76,6 +76,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
                   post={post}
                   edit={Number(session.id) === post.userId}
                   deletePost={Number(session.id) === post.userId}
+                  userId={userId}
                 />
               </div>
             );
