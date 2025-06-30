@@ -12,7 +12,7 @@ interface HeroSectionProps {
 export const HeroSection = ({ className }: HeroSectionProps) => {
   return (
     <section className={cn("relative", className)}>
-      <Container className="min-h-[60vh] xl:min-h-[75vh] flex flex-col justify-end gap-4">
+      <Container className="min-h-[60vh] sm:min-h-[80vh] flex flex-col justify-center gap-4">
         <h1 className="font-bold text-center">
           Welcome{" "}
           <Image

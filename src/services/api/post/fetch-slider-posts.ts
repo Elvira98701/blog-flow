@@ -8,6 +8,7 @@ export const fetchSliderPosts = async () => {
         user: {
           select: {
             name: true,
+            avatar: true,
           },
         },
         likes: true,

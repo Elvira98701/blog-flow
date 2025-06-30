@@ -35,7 +35,7 @@ export const UserCard = ({
       <Link
         href={!session ? "/auth" : `/dashboard/user/${user.id}`}
         className={cn(
-          "bg-background/30 h-full rounded-lg p-3 border block transition-colors duration-300 hover:bg-background",
+          "bg-background/30 h-full rounded-lg p-3 border block transition-colors duration-300 hover:bg-background relative",
           {
             "bg-background": active,
           }
@@ -46,28 +46,24 @@ export const UserCard = ({
           width={500}
           height={500}
           alt={user.name}
-          className="rounded-lg h-1/3 object-cover object-center"
+          className="rounded-lg h-full w-full object-cover object-center"
         />
-        <div className="pt-4 flex flex-col gap-5">
-          <div>
-            <h3 className="text-2xl text-center font-semibold">{user.name}</h3>
-            {user.slogan && (
-              <p className="text-center text-xs md:text-sm">{user.slogan}</p>
-            )}
+        <div className="absolute top-6 left-6">
+          <h3 className="text-2xl font-semibold">{user.name}</h3>
+          {user.slogan && <p className="text-xs md:text-sm">{user.slogan}</p>}
+        </div>
+        <div className="flex absolute bottom-5 left-5 right-5 text-foreground rounded-full py-2 bg-background/70 backdrop-blur-xs">
+          <div className="flex-1 flex flex-col justify-center items-center">
+            <span className="text-xl font-semibold leading-none">
+              {user.posts.length}
+            </span>
+            <span className="text-foreground/50 text-xs">posts</span>
           </div>
-          <div className="flex items-center">
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-3xl sm:text-4xl font-semibold">
-                {user.posts.length}
-              </span>
-              <span className="text-foreground/50">posts</span>
-            </div>
-            <div className="flex-1 flex flex-col justify-center items-center">
-              <span className="text-3xl sm:text-4xl font-semibold">
-                {user.subscribedTo.length}
-              </span>
-              <span className="text-foreground/50">subscribers</span>
-            </div>
+          <div className="flex-1 flex flex-col justify-center items-center">
+            <span className="text-xl font-semibold leading-none">
+              {user.subscribedTo.length}
+            </span>
+            <span className="text-foreground/50 text-xs">followers</span>
           </div>
         </div>
       </Link>

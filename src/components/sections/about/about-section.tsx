@@ -10,13 +10,13 @@ interface AboutSectionProps {
 }
 
 export const AboutSection = async ({ className }: AboutSectionProps) => {
-  const users = await fetchHeroUsers();
+  const users = await fetchHeroUsers(4);
   const session = await getUserSession();
 
   return (
     <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
       <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
-        <div className="flex gap-2 lg:gap-5 flex-1 w-full">
+        <div className="flex gap-1 flex-1 w-full">
           {!users || users.length === 0 ? (
             <p>Error</p>
           ) : (
@@ -25,7 +25,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(0, 2).map((user) => (
                   <UserCard
                     key={user.id}
-                    className="mb-2 lg:mb-5 max-w-[339px]"
+                    className="mb-1 lg:mb-4 max-w-[339px]"
                     user={user}
                     session={session}
                   />
@@ -35,7 +35,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(2).map((user, index) => (
                   <UserCard
                     key={user.id}
-                    className={cn("mb-2 lg:mb-5 max-w-[339px]", {
+                    className={cn("mb-1 lg:mb-4 max-w-[339px]", {
                       "scale-110 z-10": index === 0,
                     })}
                     user={user}

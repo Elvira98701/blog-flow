@@ -23,7 +23,7 @@ export async function GET(
         },
       },
       include: {
-        user: { select: { name: true } },
+        user: { select: { name: true, avatar: true } },
         likes: true,
       },
     });

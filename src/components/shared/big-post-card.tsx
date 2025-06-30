@@ -39,37 +39,35 @@ export const BigPostCard = ({
   return (
     <article
       className={cn(
-        "relative rounded-lg bg-background/30 border p-4 w-full transition-colors duration-300 hover:bg-background",
+        "relative rounded-lg bg-background/30 border p-4 w-full",
         className
       )}
     >
-      <Link href={`/dashboard/post/${post.id}`}>
-        <div className="flex items-center gap-4 mb-5">
-          <Image
-            src={post.image || ""}
-            width={600}
-            height={600}
-            alt={post.title}
-            className="w-1/2 h-96 object-cover rounded-lg"
-          />
-          <div>
-            <h3 className="text-3xl font-bold">{post.title}</h3>
-            <p className="flex gap-4 mt-1">
-              <span>
-                Created:{" "}
-                <data value="">{new Date(post.createdAt).toDateString()}</data>
-              </span>
-              <span>
-                Updated:{" "}
-                <data value="">{new Date(post.updatedAt).toDateString()}</data>
-              </span>
-            </p>
-            <span className="font-mono text-foreground/70">
-              Author: {post.user.name}
-            </span>
-          </div>
-        </div>
+      <div>
+        <h3 className="text-3xl font-bold">{post.title}</h3>
+        <p className="flex gap-4 mt-1">
+          <span>
+            Created:{" "}
+            <data value="">{new Date(post.createdAt).toDateString()}</data>
+          </span>
+          <span>
+            Updated:{" "}
+            <data value="">{new Date(post.updatedAt).toDateString()}</data>
+          </span>
+        </p>
+        <span className="font-mono text-foreground/70">
+          Author: {post.user.name}
+        </span>
         <p className="mb-5">{post.content}</p>
+      </div>
+      <Link href={`/dashboard/post/${post.id}`}>
+        <Image
+          src={post.image || ""}
+          width={600}
+          height={600}
+          alt={post.title}
+          className="w-full h-96 object-cover rounded-lg"
+        />
       </Link>
       <div className="flex items-center gap-2">
         {isOwner && <Button size="lg">Edit</Button>}

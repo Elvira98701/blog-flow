@@ -7,8 +7,11 @@ import { Button } from "@/components/ui";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { FormInput } from "@/components/shared";
+import { useRouter } from "next/navigation";
 
 export const LoginForm = () => {
+  const router = useRouter();
+
   const form = useForm<FormLoginValues>({
     resolver: zodResolver(formLoginSchema),
     defaultValues: {
@@ -32,6 +35,8 @@ export const LoginForm = () => {
       toast.success("You have successfully logged in to your account", {
         icon: "✅",
       });
+
+      router.push("/dashboard");
     } catch (error) {
       console.error("Error [LOGIN]", error);
       toast.error("Couldn't log in to account", {

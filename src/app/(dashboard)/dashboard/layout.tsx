@@ -1,13 +1,21 @@
 import { Gradient, Sidebar } from "@/components/layout";
+import { getUserSession } from "@/lib/get-user-session";
+import { redirect } from "next/navigation";
 
-export default function Layout({
+export default async function DashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getUserSession();
+
+  if (!session) {
+    return redirect("/not-auth");
+  }
+
   return (
-    <div className="flex gap-5 mt-20 px-2 sm:px-6 border rounded-tl-3xl rounded-tr-3xl mx-2 relative overflow-hidden">
-      <Sidebar className="min-w-[200px] hidden sm:block" />
+    <div className="flex gap-3 mx-2 relative overflow-hidden">
+      <Sidebar className="w-[230px] hidden sm:block" />
       <main className="py-5 flex-1">{children}</main>
       <Gradient className="fixed top-0 right-0 -z-10" />
     </div>

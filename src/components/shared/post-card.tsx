@@ -36,7 +36,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
             className="size-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
-        <div className="py-3 flex flex-col justify-between gap-2 h-1/4">
+        <div className="pt-3 flex flex-col justify-end gap-2 h-1/4 relative">
           <div>
             <h3 className="text-xl text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
               {post.title}
@@ -50,6 +50,14 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
             <Heart />
             {post.likes.length}
           </Button>
+
+          <Image
+            src={post.user.avatar}
+            width={50}
+            height={50}
+            alt={post.user.name}
+            className="rounded-full absolute -top-[40px] left-0"
+          />
         </div>
       </div>
     </article>
