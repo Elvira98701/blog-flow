@@ -15,11 +15,6 @@ export async function GET(req: NextRequest) {
         cursor: { id: cursor },
         skip: 1,
       }),
-      orderBy: {
-        likes: {
-          _count: "desc",
-        },
-      },
       include: {
         user: {
           select: {

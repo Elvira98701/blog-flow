@@ -7,6 +7,7 @@ import { useCallback, useRef } from "react";
 import { Skeleton } from "../ui";
 import { ErrorText } from "./error-text";
 import { BigPostCard } from "./big-post-card";
+import { PostForm } from "./form";
 
 interface UserPostsProps {
   userId: string;
@@ -57,6 +58,9 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
 
   return (
     <div className={cn("flex flex-col gap-5 items-center", className)}>
+      {userId === session.id && (
+        <PostForm session={session} className="w-full" />
+      )}
       {isLoading ? (
         Array.from({ length: 10 }, (_, i) => (
           <Skeleton key={i} className="w-full rounded-lg h-[446px] border" />

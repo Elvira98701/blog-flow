@@ -54,7 +54,7 @@ export const FormTextarea: FC<Props> = ({
 
       <div className="relative">
         <Textarea
-          className="text-md bg-background shadow-none min-h-60"
+          className="text-md bg-background shadow-none min-h-28"
           {...register(name)}
           {...props}
         />

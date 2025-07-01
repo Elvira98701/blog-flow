@@ -23,9 +23,12 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
       )}
     >
       <div
-        className={cn("bg-background/30 h-full rounded-lg p-2 border", {
-          "bg-background": active,
-        })}
+        className={cn(
+          "bg-card/70 h-full rounded-lg p-2 border transition-colors",
+          {
+            "bg-card": active,
+          }
+        )}
       >
         <div className="overflow-hidden rounded-lg h-3/4">
           <Image

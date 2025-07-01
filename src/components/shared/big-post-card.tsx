@@ -38,10 +38,7 @@ export const BigPostCard = ({
 
   return (
     <article
-      className={cn(
-        "relative rounded-lg bg-background/30 border p-4 w-full",
-        className
-      )}
+      className={cn("relative rounded-lg bg-card border p-4 w-full", className)}
     >
       <div>
         <h3 className="text-3xl font-bold">{post.title}</h3>

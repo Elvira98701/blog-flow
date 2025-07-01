@@ -26,7 +26,7 @@ export default async function User({
 
   return (
     <section className="flex gap-5 items-start min-h-screen">
-      <div className="max-w-96 bg-gradient-to-br from-primary/40 to-[#4B3BE4]/30 p-4 rounded-lg border">
+      <div className="max-w-96 bg-gradient-to-b from-card via-card to-accent/70 p-4 rounded-lg border">
         <UserHead user={user} session={session} className="mb-10" />
         {user.subscribedTo.length > 0 && (
           <UserSubscribersList
@@ -48,7 +48,7 @@ export default async function User({
         session={session}
         className="flex-1"
       />
-      <div className="min-w-96 bg-background/30 p-4 rounded-lg border mb-5">
+      <div className="min-w-96 bg-gradient-to-b from-card via-card to-accent/70 p-4 rounded-lg border mb-5">
         <h3 className="text-3xl font-bold mb-5">Top users</h3>
         {users?.map((user) => (
           <UserRow

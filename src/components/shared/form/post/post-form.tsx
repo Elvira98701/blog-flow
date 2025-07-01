@@ -51,20 +51,14 @@ export const PostForm = ({ session, className }: PostFormProps) => {
   };
 
   return (
-    <div
-      className={cn(
-        "border p-4 rounded-lg bg-gradient-to-br from-primary/40 to-[#4B3BE4]/30",
-        className
-      )}
-    >
+    <div className={cn("border p-4 rounded-lg bg-card", className)}>
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
-          <h3 className="font-bold text-2xl">New post</h3>
           <FormInput name="title" label="Title" required />
-          <FormTextarea name="content" label="Content" rows={10} required />
+          <FormTextarea name="content" label="Content" rows={5} required />
           <Button
             loading={isPending}
             disabled={isPending}

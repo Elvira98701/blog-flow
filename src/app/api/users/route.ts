@@ -12,11 +12,6 @@ export async function GET(req: NextRequest) {
         cursor: { id: cursor },
         skip: 1,
       }),
-      orderBy: {
-        posts: {
-          _count: "desc",
-        },
-      },
       include: {
         posts: true,
         subscribedTo: true,

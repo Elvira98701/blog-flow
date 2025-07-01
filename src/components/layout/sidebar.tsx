@@ -16,7 +16,7 @@ export const Sidebar = ({ className }: SidebarProps) => {
 
   return (
     <aside className={cn("relative", className)}>
-      <div className="px-4 py-5 rounded-xl bg-gradient-to-b bg-[#09090B] h-[97vh] border fixed top-4 w-[230px] flex flex-col justify-between">
+      <div className="px-4 py-5 rounded-xl bg-gradient-to-b bg-sidebar h-[97vh] border fixed top-4 w-[230px] flex flex-col justify-between">
         <div>
           <Logo className="text-white" />
           <ul className="flex flex-col gap-2 font-semibold text-lg text-white mt-10">

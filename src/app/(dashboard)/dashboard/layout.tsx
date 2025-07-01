@@ -1,4 +1,4 @@
-import { Gradient, Sidebar } from "@/components/layout";
+import { Sidebar } from "@/components/layout";
 import { getUserSession } from "@/lib/get-user-session";
 import { redirect } from "next/navigation";
 
@@ -17,7 +17,6 @@ export default async function DashboardLayout({
     <div className="flex gap-3 mx-2 relative overflow-hidden">
       <Sidebar className="w-[230px] hidden sm:block" />
       <main className="py-5 flex-1">{children}</main>
-      <Gradient className="fixed top-0 right-0 -z-10" />
     </div>
   );
 }

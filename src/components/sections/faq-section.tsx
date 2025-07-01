@@ -29,7 +29,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
           <Accordion type="single" collapsible className="sm:w-2/3 mx-auto">
             <AccordionItem
               value="item-1"
-              className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2 border"
+              className="rounded-lg bg-card/50 border-b-0 px-5 shadow-none mb-2 border"
             >
               <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Do I need coding skills to use BlogFlow?
@@ -41,7 +41,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
             </AccordionItem>
             <AccordionItem
               value="item-2"
-              className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none mb-2 border"
+              className="rounded-lg bg-card/50 border-b-0 px-5 shadow-none mb-2 border"
             >
               <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Can I schedule posts for later?
@@ -53,7 +53,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
             </AccordionItem>
             <AccordionItem
               value="item-3"
-              className="rounded-lg bg-background/40 border-b-0 px-5 shadow-none border"
+              className="rounded-lg bg-card/50 border-b-0 px-5 shadow-none border"
             >
               <AccordionTrigger className="font-bold text-lg lg:text-2xl">
                 Is there a way to see how my posts are performing?
