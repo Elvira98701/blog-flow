@@ -1,9 +1,10 @@
-import { cn } from "@/lib/utils";
-import { fetchHeroUsers } from "@/services/api";
 import { Container, Gradient } from "@/components/layout";
 import { UserCard } from "@/components/shared";
-import { AboutAccordion } from "./about-accordion";
 import { getUserSession } from "@/lib/get-user-session";
+import { cn } from "@/lib/utils";
+import { fetchHeroUsers } from "@/services/api";
+
+import { AboutAccordion } from "./about-accordion";
 
 interface AboutSectionProps {
   className?: string;

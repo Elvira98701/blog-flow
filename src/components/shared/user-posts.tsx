@@ -1,13 +1,13 @@
 "use client";
 
+import { useCallback, useRef } from "react";
+
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { BigPostCard, ErrorText, PostForm } from "@/components/shared";
+import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchPostsByUserId } from "@/services/api";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useCallback, useRef } from "react";
-import { Skeleton } from "../ui";
-import { ErrorText } from "./error-text";
-import { BigPostCard } from "./big-post-card";
-import { PostForm } from "./form";
 
 interface UserPostsProps {
   userId: string;

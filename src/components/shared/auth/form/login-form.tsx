@@ -1,13 +1,15 @@
 "use client";
 
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
-import { formLoginSchema, FormLoginValues } from "./schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui";
-import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
-import { FormInput } from "@/components/shared";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
+import { FormInput } from "@/components/shared";
+import { Button } from "@/components/ui";
+
+import { formLoginSchema, FormLoginValues } from "./schemas";
 
 export const LoginForm = () => {
   const router = useRouter();

@@ -1,6 +1,7 @@
+import { ButtonHTMLAttributes } from "react";
+
 import { ITheme } from "@/constants/theme";
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes } from "react";
 
 interface ThemeButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   theme: ITheme;

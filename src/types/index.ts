@@ -3,7 +3,7 @@ import { Post, Subscriber, User } from "@prisma/client";
 export type PostWithLikesAndAuthor = Post & {
   user: {
     name: string;
-    avatar: string;
+    avatar: string | null;
   };
   likes: {
     id: number;

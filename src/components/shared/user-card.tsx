@@ -1,8 +1,9 @@
-import { cn } from "@/lib/utils";
-import { UserWithPosts } from "@/types";
-import { Session } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import { Session } from "next-auth";
+
+import { cn } from "@/lib/utils";
+import { UserWithPosts } from "@/types";
 
 interface UserCardProps {
   user: UserWithPosts;

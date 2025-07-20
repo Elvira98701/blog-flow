@@ -1,12 +1,13 @@
 "use client";
 
+import { useCallback, useRef } from "react";
+
+import { useInfiniteQuery } from "@tanstack/react-query";
+
+import { ErrorText, PostCard } from "@/components/shared";
+import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchFeedPosts } from "@/services/api/post";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useCallback, useRef } from "react";
-import { PostCard } from "./post-card";
-import { ErrorText } from "./error-text";
-import { Skeleton } from "../ui";
 
 interface FeedPostsProps {
   className?: string;

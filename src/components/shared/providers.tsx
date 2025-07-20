@@ -1,11 +1,13 @@
 "use client";
 
+import { ReactNode } from "react";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
-import { ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import { ThemeProvider } from "./theme";
+
+import { ThemeProvider } from "@/components/shared";
 
 interface ProvidersProps {
   children: ReactNode;

@@ -1,8 +1,9 @@
-import { cn } from "@/lib/utils";
-import { PostWithLikesAndAuthor } from "@/types";
 import { Heart } from "lucide-react";
 import Image from "next/image";
-import { Button } from "../ui";
+
+import { Button } from "@/components/ui";
+import { cn } from "@/lib/utils";
+import { PostWithLikesAndAuthor } from "@/types";
 
 interface PostCardProps {
   post: PostWithLikesAndAuthor;
@@ -55,7 +56,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
           </Button>
 
           <Image
-            src={post.user.avatar}
+            src={post.user.avatar || ""}
             width={50}
             height={50}
             alt={post.user.name}

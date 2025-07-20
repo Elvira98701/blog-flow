@@ -1,14 +1,17 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
+
+import { PostCard } from "@/components/shared";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
   CarouselNext,
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui";
-import { PostCard } from "@/components/shared";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui";
+import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface FeaturedCarouselProps {

@@ -1,6 +1,7 @@
+import { notFound, redirect } from "next/navigation";
+
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchPostById } from "@/services/api";
-import { notFound, redirect } from "next/navigation";
 
 export default async function Post({
   params,

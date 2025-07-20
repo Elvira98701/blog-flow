@@ -3,10 +3,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Button } from "@/components/ui";
-import { formRegisterSchema, FormRegisterValues } from "./schemas";
-import { FormInput } from "@/components/shared";
+
 import { registerUser } from "@/app/actions";
+import { FormInput } from "@/components/shared";
+import { Button } from "@/components/ui";
+
+import { formRegisterSchema, FormRegisterValues } from "./schemas";
 
 export const RegisterForm = () => {
   const form = useForm<FormRegisterValues>({

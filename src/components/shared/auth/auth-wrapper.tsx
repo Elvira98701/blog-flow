@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+
 import { signIn } from "next-auth/react";
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui";
+import { cn } from "@/lib/utils";
+
 import { LoginForm } from "./form/login-form";
 import { RegisterForm } from "./form/register-form";
 

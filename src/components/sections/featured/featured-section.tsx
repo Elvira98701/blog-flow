@@ -1,6 +1,8 @@
-import { cn } from "@/lib/utils";
 import { Container } from "@/components/layout";
+import { ErrorText } from "@/components/shared";
+import { cn } from "@/lib/utils";
 import { fetchSliderPosts } from "@/services/api";
+
 import { FeaturedCarousel } from "./featured-carousel";
 
 interface FeaturedSectionProps {
@@ -28,7 +30,7 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
         </div>
         <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5 w-1/2">
           {!posts || posts.length === 0 ? (
-            <div>There are no posts</div>
+            <ErrorText text="There are no posts" />
           ) : (
             <FeaturedCarousel posts={posts} />
           )}

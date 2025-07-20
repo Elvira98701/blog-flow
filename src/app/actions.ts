@@ -1,11 +1,12 @@
 "use server";
 
+import { Prisma } from "@prisma/client";
+import { hashSync } from "bcrypt";
+
 import { getRandomNumber } from "@/lib/get-random-number";
 import { getUserSession } from "@/lib/get-user-session";
 import { sendEmail } from "@/lib/send-email";
 import { prisma } from "@/prisma/prisma-client";
-import { Prisma } from "@prisma/client";
-import { hashSync } from "bcrypt";
 
 export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
   try {

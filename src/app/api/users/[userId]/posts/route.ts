@@ -1,5 +1,6 @@
-import { prisma } from "@/prisma/prisma-client";
 import { NextRequest, NextResponse } from "next/server";
+
+import { prisma } from "@/prisma/prisma-client";
 
 export async function GET(
   req: NextRequest,
@@ -37,6 +38,6 @@ export async function GET(
     });
   } catch (error) {
     console.error("Server error:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse("[USER_POSTS_GET] Server error", { status: 500 });
   }
 }

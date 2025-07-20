@@ -1,7 +1,8 @@
+import Image from "next/image";
+
+import { Button, ButtonLink } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { UserWithSubscribers } from "@/types";
-import Image from "next/image";
-import { Button, ButtonLink } from "../ui";
 
 interface UserHeadProps {
   user: UserWithSubscribers;

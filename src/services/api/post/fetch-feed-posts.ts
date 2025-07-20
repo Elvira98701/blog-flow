@@ -7,6 +7,7 @@ export const fetchFeedPosts = async ({
 }): Promise<FeedPostResponse> => {
   const url = new URL("/api/posts", window.location.origin);
   url.searchParams.set("limit", "10");
+
   if (pageParam) {
     url.searchParams.set("cursor", pageParam);
   }

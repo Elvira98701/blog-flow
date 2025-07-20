@@ -1,9 +1,10 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { motion } from "motion/react";
+import Image from "next/image";
+
 import { Container } from "@/components/layout";
+import { cn } from "@/lib/utils";
 
 interface HeroSectionProps {
   className?: string;

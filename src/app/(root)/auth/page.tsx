@@ -1,5 +1,6 @@
-import { AuthWrapper } from "@/components/shared";
 import Image from "next/image";
+
+import { AuthWrapper } from "@/components/shared";
 
 export default function Auth() {
   return (

@@ -9,6 +9,7 @@ export const fetchPostsByUserId = async ({
 }): Promise<FeedPostResponse> => {
   const url = new URL(`/api/users/${userId}/posts`, window.location.origin);
   url.searchParams.set("limit", "3");
+
   if (pageParam) {
     url.searchParams.set("cursor", pageParam);
   }

@@ -1,10 +1,12 @@
 "use client";
 
-import { LogOut } from "lucide-react";
 import { useEffect } from "react";
-import toast from "react-hot-toast";
-import { signOut, useSession } from "next-auth/react";
+
+import { LogOut } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
+import toast from "react-hot-toast";
+
 import { Button, ButtonLink } from "@/components/ui";
 
 export const ProfileButton = () => {

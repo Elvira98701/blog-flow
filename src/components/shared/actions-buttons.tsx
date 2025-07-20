@@ -1,6 +1,5 @@
+import { ProfileButton, ThemeToggle } from "@/components/shared";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./theme";
-import { ProfileButton } from "./profile-button";
 
 interface ActionsButtonsProps {
   className?: string;

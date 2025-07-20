@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+
 import {
   Dialog,
   DialogContent,
@@ -10,6 +11,7 @@ import {
   DialogTrigger,
 } from "@/components/ui";
 import { themeData } from "@/constants/theme";
+
 import { ThemeButton } from "./theme-button";
 
 export const ThemeToggle = () => {

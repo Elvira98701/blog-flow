@@ -1,6 +1,7 @@
-import { cn } from "@/lib/utils";
-import { UserRow } from "./user-row";
 import { Subscriber, User } from "@prisma/client";
+
+import { UserRow } from "@/components/shared";
+import { cn } from "@/lib/utils";
 
 type SubscriberWithUser =
   | (Subscriber & { subscriber: User; subscribedTo?: undefined })

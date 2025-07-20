@@ -1,4 +1,3 @@
-import { cn } from "@/lib/utils";
 import { Container, Gradient } from "@/components/layout";
 import {
   Accordion,
@@ -6,6 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 interface FaqSectionProps {
   className?: string;

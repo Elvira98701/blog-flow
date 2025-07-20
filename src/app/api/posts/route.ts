@@ -1,8 +1,9 @@
+import { NextRequest, NextResponse } from "next/server";
+import { getServerSession } from "next-auth";
+
 import { authOptions } from "@/constants/auth-options";
 import { getRandomNumber } from "@/lib/get-random-number";
 import { prisma } from "@/prisma/prisma-client";
-import { getServerSession } from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
@@ -35,7 +36,7 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error("Server error:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse("[POSTS_GET] Server error", { status: 500 });
   }
 }
 
@@ -61,7 +62,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(post);
   } catch (error) {
     console.error("Server error:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse("[DATA_POST] Server error", { status: 500 });
   }
 }
 
@@ -98,6 +99,6 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ message: "Post deleted successfully" });
   } catch (error) {
     console.error("Server error:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return new NextResponse("[DATA_DELETE] Server error", { status: 500 });
   }
 }

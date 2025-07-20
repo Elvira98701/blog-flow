@@ -1,13 +1,14 @@
 "use client";
 
+import { useCallback, useRef } from "react";
+
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
+
+import { ErrorText, UserCard } from "@/components/shared";
+import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchFeedUsers } from "@/services/api";
-import { useInfiniteQuery } from "@tanstack/react-query";
-import { useCallback, useRef } from "react";
-import { UserCard } from "./user-card";
-import { useSession } from "next-auth/react";
-import { Skeleton } from "../ui";
-import { ErrorText } from "./error-text";
 
 interface FeedUsersProps {
   className?: string;

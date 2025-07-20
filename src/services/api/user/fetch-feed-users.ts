@@ -7,6 +7,7 @@ export const fetchFeedUsers = async ({
 }): Promise<FeedUserResponse> => {
   const url = new URL("/api/users", window.location.origin);
   url.searchParams.set("limit", "8");
+
   if (pageParam) {
     url.searchParams.set("cursor", pageParam);
   }
