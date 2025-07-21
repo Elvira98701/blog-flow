@@ -15,7 +15,10 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
   const session = await getUserSession();
 
   return (
-    <section className={cn("py-10 md:py-20 lg:py-32 relative", className)}>
+    <section
+      className={cn("py-10 md:py-20 lg:py-32 relative", className)}
+      aria-labelledby="about-title"
+    >
       <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
         <div className="flex gap-1 flex-1 w-full">
           {!users || users.length === 0 ? (
@@ -49,7 +52,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
           )}
         </div>
         <div className="flex-1">
-          <h2>
+          <h2 id="about-title">
             About{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
               BlogFlow

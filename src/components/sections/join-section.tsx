@@ -13,9 +13,12 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
   const session = await getUserSession();
 
   return (
-    <section className={cn("py-10 md:py-20 lg:py-32", className)}>
+    <section
+      className={cn("py-10 md:py-20 lg:py-32", className)}
+      aria-labelledby="join-title"
+    >
       <Container className="flex flex-col justify-center items-center gap-10">
-        <h2 className="big-title max-w-1/2 text-center">
+        <h2 className="big-title max-w-1/2 text-center" id="join-title">
           Join the{" "}
           <Image
             src="/images/home/2.png"
