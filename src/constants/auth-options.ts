@@ -112,6 +112,7 @@ export const authOptions: AuthOptions = {
             verified: new Date(),
             provider: account?.provider,
             providerId: account?.providerAccountId,
+            avatar: user.image || null,
           },
         });
 

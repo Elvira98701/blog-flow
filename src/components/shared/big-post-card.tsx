@@ -44,7 +44,7 @@ export const BigPostCard = ({
       <header>
         <div className="flex gap-2 items-center mb-2">
           <Image
-            src={post.user.avatar}
+            src={post.user.avatar || "/images/anonim/1.jpg"}
             width={50}
             height={50}
             alt={post.user.name}
