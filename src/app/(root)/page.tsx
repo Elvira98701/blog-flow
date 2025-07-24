@@ -1,4 +1,4 @@
-import { Footer, Gradient } from "@/components/layout";
+import { Footer } from "@/components/layout";
 import {
   AboutSection,
   FaqSection,
@@ -7,6 +7,7 @@ import {
   JoinSection,
   StatsSection,
 } from "@/components/sections";
+import { Gradient } from "@/components/shared";
 
 export default function Home() {
   return (

@@ -16,6 +16,7 @@ export { FeedUsers } from "./feed-users";
 export { UserPosts } from "./user-posts";
 export { TopUsersWidget } from "./top-users-widget";
 export { UserWidget } from "./user-widget";
+export { Gradient } from "./gradient";
 export * from "./theme";
 export * from "./form";
 export * from "./auth";

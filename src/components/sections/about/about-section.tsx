@@ -1,5 +1,4 @@
-import { Gradient } from "@/components/layout";
-import { UserCard, Container } from "@/components/shared";
+import { UserCard, Container, Gradient } from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { cn } from "@/lib/utils";
 import { fetchHeroUsers } from "@/services/api";
