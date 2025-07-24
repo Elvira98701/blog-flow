@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 
-import { Container } from "@/components/layout";
+import { Container } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
 interface HeroSectionProps {

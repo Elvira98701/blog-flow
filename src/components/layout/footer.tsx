@@ -1,9 +1,8 @@
 import { Github, Twitter, Youtube } from "lucide-react";
 
+import { Container } from "@/components/shared";
 import { Logo } from "@/components/ui";
 import { cn } from "@/lib/utils";
-
-import { Container } from "./container";
 
 interface FooterProps {
   className?: string;

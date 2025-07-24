@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Container } from "@/components/layout";
+import { Container } from "@/components/shared";
 import { ButtonLink } from "@/components/ui";
 import { getUserSession } from "@/lib/get-user-session";
 import { cn } from "@/lib/utils";

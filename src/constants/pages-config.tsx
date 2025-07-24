@@ -1,10 +1,4 @@
-import {
-  LayoutDashboard,
-  NotebookPen,
-  ScrollText,
-  UserRoundPen,
-  Users,
-} from "lucide-react";
+import { LayoutDashboard, ScrollText, UserRoundPen, Users } from "lucide-react";
 
 export const pagesConfig = [
   {
@@ -21,18 +15,12 @@ export const pagesConfig = [
   },
   {
     id: 3,
-    name: "My posts",
-    link: "/posts",
-    icon: <NotebookPen size={18} />,
-  },
-  {
-    id: 4,
     name: "Feed",
     link: "/feed",
     icon: <ScrollText size={18} />,
   },
   {
-    id: 5,
+    id: 4,
     name: "Users",
     link: "/users",
     icon: <Users size={18} />,

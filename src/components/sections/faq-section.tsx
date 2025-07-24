@@ -1,4 +1,5 @@
-import { Container, Gradient } from "@/components/layout";
+import { Gradient } from "@/components/layout";
+import { Container } from "@/components/shared";
 import {
   Accordion,
   AccordionContent,

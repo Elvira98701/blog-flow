@@ -1,5 +1,4 @@
-import { Container } from "@/components/layout";
-import { ErrorText } from "@/components/shared";
+import { ErrorText, Container } from "@/components/shared";
 import { cn } from "@/lib/utils";
 import { fetchSliderPosts } from "@/services/api";
 

@@ -1,6 +1,7 @@
 export { ActionsButtons } from "./actions-buttons";
 export { BigPostCard } from "./big-post-card";
 export { ClearButton } from "./clear-button";
+export { Container } from "./container";
 export { ErrorText } from "./error-text";
 export { Marquee } from "./marquee";
 export { PostCard } from "./post-card";
