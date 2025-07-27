@@ -6,15 +6,11 @@ import { UserWithSubscribers } from "@/types";
 
 interface UserHeadProps {
   user: UserWithSubscribers;
-  session: {
-    id: string;
-    name: string;
-    image: string;
-  };
+  sessionUserId: number;
   className?: string;
 }
 
-export const UserHead = ({ user, session, className }: UserHeadProps) => {
+export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
   return (
     <div className={cn("flex flex-col gap-2 items-center", className)}>
       <Image
@@ -26,7 +22,7 @@ export const UserHead = ({ user, session, className }: UserHeadProps) => {
       />
       <h1 className="small-title">{user.name}</h1>
       <p>{user.slogan}</p>
-      {Number(session.id) === user.id ? (
+      {sessionUserId === user.id ? (
         <ButtonLink
           href="/dashboard/profile"
           size="lg"
@@ -41,14 +37,14 @@ export const UserHead = ({ user, session, className }: UserHeadProps) => {
           className="w-full"
           variant={
             user.subscribers.find(
-              (subscriber) => subscriber.id === Number(session.id)
+              (subscriber) => subscriber.id === sessionUserId
             )
               ? "destructive"
               : "default"
           }
         >
           {user.subscribers.find(
-            (subscriber) => subscriber.id === Number(session.id)
+            (subscriber) => subscriber.id === sessionUserId
           )
             ? "Unsubscribe"
             : "Subscribe"}

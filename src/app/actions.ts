@@ -76,7 +76,7 @@ export const registerUser = async (body: Prisma.UserCreateInput) => {
 
     await sendEmail(
       createdUser.email,
-      "Cyber / 📝 Confirmation of registration",
+      "Blog Flow / 📝 Confirmation of registration",
       `<div>
           <h2>Confirmation code: ${code}</h2>
           <p>

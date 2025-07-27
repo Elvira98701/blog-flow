@@ -59,7 +59,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
   return (
     <div className={cn("flex flex-col gap-5 items-center", className)}>
       {userId === session.id && (
-        <PostForm session={session} className="w-full" />
+        <PostForm sessionUserId={session.id} className="w-full" />
       )}
       {isLoading ? (
         Array.from({ length: 10 }, (_, i) => (

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { LogOut } from "lucide-react";
+import { Loader, LogOut } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
@@ -10,7 +10,7 @@ import toast from "react-hot-toast";
 import { Button, ButtonLink } from "@/components/ui";
 
 export const ProfileButton = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -25,6 +25,10 @@ export const ProfileButton = () => {
       toast.success("Mail has been successfully confirmed!");
     }
   }, [searchParams]);
+
+  if (status === "loading") {
+    return <Loader className="w-5 h-5 animate-spin" />;
+  }
 
   return (
     <>

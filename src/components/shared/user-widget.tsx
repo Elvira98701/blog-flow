@@ -17,7 +17,11 @@ interface UserWidgetProps {
 export const UserWidget = ({ user, session, className }: UserWidgetProps) => {
   return (
     <div className={cn("max-w-96 bg-card p-4 rounded-lg border", className)}>
-      <UserHead user={user} session={session} className="mb-10" />
+      <UserHead
+        user={user}
+        sessionUserId={Number(session.id)}
+        className="mb-10"
+      />
       {user.subscribedTo.length > 0 && (
         <UserSubscribersList
           className="w-full mb-10"

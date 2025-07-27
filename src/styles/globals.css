@@ -188,13 +188,11 @@
 }
 
 .theme-blue {
-  --background: oklch(0.9721 0 0);
   --primary: oklch(85.7% 0.196 126.665);
   --accent: oklch(69.9% 0.105 251.813);
 }
 
 .theme-peach {
-  --background: oklch(0.9721 0 0);
   --primary: oklch(75.24% 0.144 77.41);
   --accent: oklch(45.77% 0.107 295.59);
 }

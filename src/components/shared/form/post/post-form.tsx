@@ -13,21 +13,19 @@ import { createPost } from "@/services/api";
 import { formPostSchema, FormPostValue } from "./schemas";
 
 interface PostFormProps {
-  session: {
-    id: string;
-    name: string;
-    image: string;
-  };
+  sessionUserId: string;
   className?: string;
 }
 
-export const PostForm = ({ session, className }: PostFormProps) => {
+export const PostForm = ({ sessionUserId, className }: PostFormProps) => {
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
     mutationFn: (data: { title: string; content: string; userId: number }) =>
       createPost(data),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user-posts", session.id] });
+      queryClient.invalidateQueries({
+        queryKey: ["user-posts", sessionUserId],
+      });
       toast.success("The post was created successfully");
     },
     onError: () => {
@@ -47,7 +45,7 @@ export const PostForm = ({ session, className }: PostFormProps) => {
     mutate({
       title: data.title,
       content: data.content,
-      userId: Number(session.id),
+      userId: Number(sessionUserId),
     });
     form.reset();
   };
