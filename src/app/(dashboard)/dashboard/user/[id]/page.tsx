@@ -32,7 +32,7 @@ export default async function User({
   return (
     <section className="flex gap-5 items-start min-h-screen">
       <Suspense fallback={<div>Loading...</div>}>
-        <UserWidget user={user} session={session} />
+        <UserWidget user={user} sessionUserId={Number(session.id)} />
       </Suspense>
       <UserPosts
         userId={String(user.id)}

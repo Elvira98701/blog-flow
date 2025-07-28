@@ -1,5 +1,6 @@
 import { Heart } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -41,14 +42,14 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
           />
         </div>
         <div className="pt-3 flex flex-col justify-end gap-2 h-1/4 relative">
-          <div>
+          <Link href={`/dashboard/post/${post.id}`}>
             <h3 className="text-xl text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
               {post.title}
             </h3>
             <h4 className="font-medium text-center text-xs text-foreground/50">
               <span>Author:</span> <span>{post.user.name}</span>
             </h4>
-          </div>
+          </Link>
 
           <Button size="lg">
             <Heart />

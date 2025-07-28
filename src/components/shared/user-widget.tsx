@@ -6,21 +6,24 @@ import { UserSubscribersList } from "./user-subscribers-list";
 // исправить типы
 interface UserWidgetProps {
   user: any;
-  session: {
-    id: string;
-    name: string;
-    image: string;
-  };
+  sessionUserId: number;
+  isProfilePage?: boolean;
   className?: string;
 }
 
-export const UserWidget = ({ user, session, className }: UserWidgetProps) => {
+export const UserWidget = ({
+  user,
+  sessionUserId,
+  isProfilePage = false,
+  className,
+}: UserWidgetProps) => {
   return (
     <div className={cn("max-w-96 bg-card p-4 rounded-lg border", className)}>
       <UserHead
         user={user}
-        sessionUserId={Number(session.id)}
+        sessionUserId={sessionUserId}
         className="mb-10"
+        isProfilePage={isProfilePage}
       />
       {user.subscribedTo.length > 0 && (
         <UserSubscribersList

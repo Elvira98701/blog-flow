@@ -12,6 +12,7 @@ export const fetchPostById = async (postId: number) => {
         user: {
           select: {
             name: true,
+            avatar: true,
           },
         },
       },

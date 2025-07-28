@@ -7,10 +7,16 @@ import { UserWithSubscribers } from "@/types";
 interface UserHeadProps {
   user: UserWithSubscribers;
   sessionUserId: number;
+  isProfilePage?: boolean;
   className?: string;
 }
 
-export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
+export const UserHead = ({
+  user,
+  sessionUserId,
+  isProfilePage = false,
+  className,
+}: UserHeadProps) => {
   return (
     <div className={cn("flex flex-col gap-2 items-center", className)}>
       <Image
@@ -22,7 +28,7 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
       />
       <h1 className="small-title">{user.name}</h1>
       <p>{user.slogan}</p>
-      {sessionUserId === user.id ? (
+      {sessionUserId === user.id && !isProfilePage && (
         <ButtonLink
           href="/dashboard/profile"
           size="lg"
@@ -31,7 +37,8 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
         >
           Edit profile
         </ButtonLink>
-      ) : (
+      )}
+      {sessionUserId !== user.id && (
         <Button
           size="lg"
           className="w-full"
