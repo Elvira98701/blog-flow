@@ -15,7 +15,10 @@ export const ThemeButton = ({
 }: ThemeButtonProps) => {
   return (
     <button
-      className={cn("h-32 rounded-md font-bold text-black", className)}
+      className={cn(
+        "h-32 rounded-md font-bold text-black cursor-pointer",
+        className
+      )}
       style={{
         backgroundImage: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.accent})`,
       }}

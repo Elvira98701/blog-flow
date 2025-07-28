@@ -1,4 +1,4 @@
-import { UserCard, Container, Gradient } from "@/components/shared";
+import { UserCard, Container, Gradient, ErrorText } from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { cn } from "@/lib/utils";
 import { fetchHeroUsers } from "@/services/api";
@@ -21,7 +21,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
       <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
         <div className="flex gap-1 flex-1 w-full">
           {!users || users.length === 0 ? (
-            <p>Error</p>
+            <ErrorText text="There are no users" />
           ) : (
             <>
               <div className="flex-1 mt-15">

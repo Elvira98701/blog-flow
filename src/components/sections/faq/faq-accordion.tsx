@@ -4,12 +4,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui";
-import { aboutList } from "@/constants/about-list";
+import { faqList } from "@/constants/faq-list";
 
-export const AboutAccordion = () => {
+export const FaqAccordion = () => {
   return (
-    <Accordion type="single" collapsible className="w-full flex flex-col gap-2">
-      {aboutList.map((item) => (
+    <Accordion
+      type="single"
+      collapsible
+      className="sm:w-2/3 mx-auto flex flex-col gap-2"
+    >
+      {faqList.map((item) => (
         <AccordionItem
           key={item.id}
           value={`item-${item.id}`}
