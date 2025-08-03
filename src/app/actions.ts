@@ -28,7 +28,7 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
       },
       data: {
         name: body.name,
-        email: body.email,
+        slogan: body.slogan ? body.slogan : findUser?.slogan,
         password: body.password
           ? hashSync(body.password as string, 10)
           : findUser?.password,

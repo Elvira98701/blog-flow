@@ -14,7 +14,6 @@ export const ErrorText = ({
   return (
     <p
       className={cn(
-        "text-red-700",
         {
           "text-sm": size === "sm",
           "text-lg": size === "lg",
@@ -22,6 +21,7 @@ export const ErrorText = ({
         },
         className
       )}
+      style={{ color: "red" }}
     >
       {text}
     </p>

@@ -55,7 +55,7 @@ export const FormInput = ({
 
       <div className="relative">
         <Input
-          className="bg-background shadow-none"
+          className="bg-card shadow-none"
           id={name}
           {...register(name)}
           {...props}

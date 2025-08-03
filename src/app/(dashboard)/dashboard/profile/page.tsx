@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { redirect } from "next/navigation";
 
-import { UserWidget } from "@/components/shared";
+import { ProfileForm, UserWidget } from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/api";
 
@@ -14,8 +14,9 @@ export default async function Profile() {
   }
 
   const user = await fetchUserById(Number(session?.id));
+
   return (
-    <div>
+    <div className="flex">
       <Suspense fallback={<div>Loading...</div>}>
         <UserWidget
           user={user}
@@ -23,6 +24,9 @@ export default async function Profile() {
           isProfilePage={true}
         />
       </Suspense>
+      <div>
+        <ProfileForm />
+      </div>
     </div>
   );
 }
