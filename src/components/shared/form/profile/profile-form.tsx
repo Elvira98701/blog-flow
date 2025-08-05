@@ -28,12 +28,19 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
   });
 
   const onSubmit = async (data: FormUpdateValues) => {
+    const cleanedData = {
+      name: data.name?.trim() ? data.name : undefined,
+      slogan: data.slogan?.trim() ? data.slogan : undefined,
+      password: data.password?.trim() ? data.password : undefined,
+    };
+
+    if (!cleanedData.name && !cleanedData.slogan && !cleanedData.password) {
+      toast.error("Please enter at least one field to update");
+      return;
+    }
+
     try {
-      await updateUserInfo({
-        name: data.name,
-        slogan: data.slogan,
-        password: data.password,
-      });
+      await updateUserInfo(cleanedData);
       toast.error("Update is successful.", {
         icon: "✅",
       });
@@ -44,6 +51,7 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
       });
     }
   };
+
   return (
     <FormProvider {...form}>
       <form

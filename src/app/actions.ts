@@ -22,17 +22,21 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
       },
     });
 
+    if (!findUser) {
+      throw new Error("The user was not found");
+    }
+
+    const updatedData: Prisma.UserUpdateInput = {
+      ...(body.name && { name: body.name }),
+      ...(body.slogan && { slogan: body.slogan }),
+      ...(body.password && { password: hashSync(body.password as string, 10) }),
+    };
+
     await prisma.user.update({
       where: {
-        id: Number(currentUser.id),
+        id: findUser.id,
       },
-      data: {
-        name: body.name,
-        slogan: body.slogan ? body.slogan : findUser?.slogan,
-        password: body.password
-          ? hashSync(body.password as string, 10)
-          : findUser?.password,
-      },
+      data: updatedData,
     });
   } catch (error) {
     console.log("Error [CREATE_USER]", error);
