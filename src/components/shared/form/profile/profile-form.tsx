@@ -62,6 +62,8 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
 
     try {
       await updateUserInfo(cleanedData);
+      form.reset();
+
       toast.error("Update is successful.", {
         icon: "✅",
       });

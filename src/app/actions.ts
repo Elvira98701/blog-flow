@@ -3,6 +3,7 @@
 import { Prisma } from "@prisma/client";
 import { put } from "@vercel/blob";
 import { hashSync } from "bcrypt";
+import { revalidatePath } from "next/cache";
 
 import { getRandomNumber } from "@/lib/get-random-number";
 import { getUserSession } from "@/lib/get-user-session";
@@ -40,6 +41,8 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
       },
       data: updatedData,
     });
+
+    revalidatePath("/dashboard/profile");
   } catch (error) {
     console.log("Error [CREATE_USER]", error);
     throw error;
