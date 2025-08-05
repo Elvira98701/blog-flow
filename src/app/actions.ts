@@ -1,6 +1,7 @@
 "use server";
 
 import { Prisma } from "@prisma/client";
+import { put } from "@vercel/blob";
 import { hashSync } from "bcrypt";
 
 import { getRandomNumber } from "@/lib/get-random-number";
@@ -30,6 +31,7 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
       ...(body.name && { name: body.name }),
       ...(body.slogan && { slogan: body.slogan }),
       ...(body.password && { password: hashSync(body.password as string, 10) }),
+      ...(body.avatar && { avatar: body.avatar }),
     };
 
     await prisma.user.update({
@@ -42,6 +44,20 @@ export const updateUserInfo = async (body: Prisma.UserUpdateInput) => {
     console.log("Error [CREATE_USER]", error);
     throw error;
   }
+};
+
+export const uploadUserImage = async (formData: FormData) => {
+  const imageFile = formData.get("file") as File;
+
+  if (!imageFile || !(imageFile instanceof File)) {
+    throw new Error("No file found");
+  }
+
+  const blob = await put(imageFile.name, imageFile, {
+    access: "public",
+  });
+
+  return blob.url;
 };
 
 export const registerUser = async (body: Prisma.UserCreateInput) => {

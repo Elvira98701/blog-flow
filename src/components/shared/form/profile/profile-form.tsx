@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-import { updateUserInfo } from "@/app/actions";
+import { updateUserInfo, uploadUserImage } from "@/app/actions";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
@@ -28,15 +28,36 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
   });
 
   const onSubmit = async (data: FormUpdateValues) => {
-    const cleanedData = {
+    const cleanedData: Omit<FormUpdateValues, "image" | "confirmPassword"> & {
+      avatar?: string;
+    } = {
       name: data.name?.trim() ? data.name : undefined,
       slogan: data.slogan?.trim() ? data.slogan : undefined,
       password: data.password?.trim() ? data.password : undefined,
     };
 
-    if (!cleanedData.name && !cleanedData.slogan && !cleanedData.password) {
+    if (
+      !cleanedData.name &&
+      !cleanedData.slogan &&
+      !cleanedData.password &&
+      !data.image?.length
+    ) {
       toast.error("Please enter at least one field to update");
       return;
+    }
+
+    if (data.image?.[0]) {
+      const formData = new FormData();
+      formData.append("file", data.image[0]);
+
+      try {
+        const imageUrl = await uploadUserImage(formData);
+        cleanedData.avatar = imageUrl;
+      } catch (error) {
+        console.error("Upload error:", error);
+        toast.error("Image upload failed");
+        return;
+      }
     }
 
     try {
@@ -79,6 +100,12 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           label="Confirm password"
           type="password"
           placeholder="password123"
+        />
+        <FormInput
+          name="image"
+          label="Image"
+          type="file"
+          accept="image/jpeg, image/png, image/webp"
         />
         <Button
           loading={form.formState.isSubmitting}

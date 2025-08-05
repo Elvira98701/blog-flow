@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const ACCEPTED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+
 export const formUpdateSchema = z
   .object({
     name: z
@@ -14,6 +17,22 @@ export const formUpdateSchema = z
       .optional()
       .or(z.literal("")),
     confirmPassword: z.string().optional().or(z.literal("")),
+    image: z
+      .any()
+      .optional()
+      .refine(
+        (fileList) => {
+          if (!fileList || fileList.length === 0) return true; // not required
+          const file = fileList[0];
+          return (
+            file.size <= MAX_FILE_SIZE && ACCEPTED_TYPES.includes(file.type)
+          );
+        },
+        {
+          message: "Invalid image file",
+          path: ["image"],
+        }
+      ),
   })
   .refine(
     (data) => {
