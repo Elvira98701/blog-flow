@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-import { User } from "@prisma/client";
+import { Post } from "@prisma/client";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,19 +10,19 @@ import { useClickAway, useDebounce } from "react-use";
 
 import { Input } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { searchUsers } from "@/services/api";
+import { searchPosts } from "@/services/api";
 
-interface UsersSearchInputProps {
+interface PostsSearchInputProps {
   className?: string;
 }
 
-export const UsersSearchInput = ({
+export const PostsSearchInput = ({
   className,
   ...props
-}: UsersSearchInputProps) => {
+}: PostsSearchInputProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [focused, setFocused] = useState(false);
-  const [users, setUsers] = useState<User[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const ref = useRef(null);
 
   useClickAway(ref, () => {
@@ -32,8 +32,8 @@ export const UsersSearchInput = ({
   useDebounce(
     async () => {
       try {
-        const response = await searchUsers(searchQuery);
-        setUsers(response);
+        const response = await searchPosts(searchQuery);
+        setPosts(response);
       } catch (error) {
         console.warn(error);
       }
@@ -45,7 +45,7 @@ export const UsersSearchInput = ({
   const handleClickItem = () => {
     setFocused(false);
     setSearchQuery("");
-    setUsers([]);
+    setPosts([]);
   };
 
   return (
@@ -64,36 +64,36 @@ export const UsersSearchInput = ({
         <Input
           className="w-full pl-8 bg-background border border-foreground/20"
           type="search"
-          placeholder="Search user"
+          placeholder="Search post"
           onFocus={() => setFocused(true)}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           {...props}
         />
 
-        {users.length > 0 && (
+        {posts.length > 0 && (
           <div
             className={cn(
               "absolute w-full bg-background rounded-lg p-1 sm:p-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30 border",
               focused && "visible opacity-100 top-12"
             )}
           >
-            {users.map((user) => (
+            {posts.map((post) => (
               <Link
-                key={user.id}
+                key={post.id}
                 className="flex items-center gap-3 rounded-lg w-full px-2 sm:px-3 py-2 hover:bg-accent/90 transition-all"
-                href={`/dashboard/user/${user.id}`}
+                href={`/dashboard/post/${post.id}`}
                 onClick={handleClickItem}
               >
                 <Image
                   className="rounded-sm h-8 w-8 object-cover"
-                  src={user.avatar || ""}
-                  alt={user.name}
+                  src={post.image || ""}
+                  alt={post.title}
                   width={32}
                   height={32}
                 />
                 <span className="text-xs sm:text-sm lg:text-base">
-                  {user.name}
+                  {post.title}
                 </span>
               </Link>
             ))}

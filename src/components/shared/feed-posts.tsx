@@ -4,7 +4,7 @@ import { useCallback, useRef } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { ErrorText, PostCard } from "@/components/shared";
+import { ErrorText, PostCard, PostsSearchInput } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchFeedPosts } from "@/services/api/post";
@@ -51,7 +51,11 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
 
   return (
     <section className={cn("w-full", className)}>
-      <h2>Top Posts</h2>
+      <div className="flex justify-between items-center">
+        <h2>Top Posts</h2>
+        <PostsSearchInput />
+      </div>
+
       {isLoading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 mt-5">
           {Array.from({ length: 10 }, (_, i) => (

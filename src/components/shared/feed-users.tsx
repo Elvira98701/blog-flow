@@ -57,6 +57,7 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
         <h2>Top Users</h2>
         <UsersSearchInput />
       </div>
+
       {isLoading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
           {Array.from({ length: 8 }, (_, i) => (
