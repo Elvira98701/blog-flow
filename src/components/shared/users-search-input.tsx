@@ -81,12 +81,12 @@ export const UsersSearchInput = ({
             {users.map((user) => (
               <Link
                 key={user.id}
-                className="flex items-center gap-3 rounded-lg w-full px-2 sm:px-3 py-2 hover:bg-accent/90 transition-all"
+                className="flex items-center gap-3 rounded-full w-full p-1 hover:bg-accent/90 hover:text-white transition-all"
                 href={`/dashboard/user/${user.id}`}
                 onClick={handleClickItem}
               >
                 <Image
-                  className="rounded-sm h-8 w-8 object-cover"
+                  className="rounded-full h-8 w-8 object-cover"
                   src={user.avatar || ""}
                   alt={user.name}
                   width={32}

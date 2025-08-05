@@ -81,18 +81,18 @@ export const PostsSearchInput = ({
             {posts.map((post) => (
               <Link
                 key={post.id}
-                className="flex items-center gap-3 rounded-lg w-full px-2 sm:px-3 py-2 hover:bg-accent/90 transition-all"
+                className="flex items-center gap-3 rounded-full w-full p-1 hover:bg-accent/90 hover:text-white transition-all"
                 href={`/dashboard/post/${post.id}`}
                 onClick={handleClickItem}
               >
                 <Image
-                  className="rounded-sm h-8 w-8 object-cover"
+                  className="rounded-full h-8 w-8 object-cover"
                   src={post.image || ""}
                   alt={post.title}
                   width={32}
                   height={32}
                 />
-                <span className="text-xs sm:text-sm lg:text-base">
+                <span className="text-xs sm:text-sm lg:text-base overflow-hidden text-ellipsis whitespace-nowrap">
                   {post.title}
                 </span>
               </Link>
