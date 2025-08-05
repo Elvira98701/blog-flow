@@ -5,7 +5,7 @@ import { useCallback, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
-import { ErrorText, UserCard } from "@/components/shared";
+import { ErrorText, UserCard, UsersSearchInput } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchFeedUsers } from "@/services/api";
@@ -53,7 +53,10 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
 
   return (
     <section className={cn("w-full", className)}>
-      <h2>Top Users</h2>
+      <div className="flex justify-between items-center">
+        <h2>Top Users</h2>
+        <UsersSearchInput />
+      </div>
       {isLoading ? (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
           {Array.from({ length: 8 }, (_, i) => (
