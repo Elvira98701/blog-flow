@@ -6,12 +6,17 @@ import toast from "react-hot-toast";
 
 import { updateUserInfo } from "@/app/actions";
 import { Button } from "@/components/ui";
+import { cn } from "@/lib/utils";
 
 import { FormInput } from "../form-input";
 
 import { formUpdateSchema, FormUpdateValues } from "./schemas";
 
-export const ProfileForm = () => {
+interface ProfileFormProps {
+  className?: string;
+}
+
+export const ProfileForm = ({ className }: ProfileFormProps) => {
   const form = useForm<FormUpdateValues>({
     resolver: zodResolver(formUpdateSchema),
     defaultValues: {
@@ -41,9 +46,20 @@ export const ProfileForm = () => {
   };
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <FormInput name="name" label="Name" placeholder="Ivan" />
-        <FormInput name="slogan" label="Slogan" placeholder="I am a designer" />
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={cn(
+          "bg-card p-4 rounded-lg border flex flex-col gap-5",
+          className
+        )}
+      >
+        <FormInput name="name" label="Name" placeholder="Ivan" type="text" />
+        <FormInput
+          name="slogan"
+          label="Slogan"
+          placeholder="I am a designer"
+          type="text"
+        />
         <FormInput
           name="password"
           label="Password"

@@ -58,7 +58,13 @@ export const RegisterForm = () => {
           placeholder="your@mail.ru"
           type="email"
         />
-        <FormInput name="name" label="Name" required placeholder="Ivan" />
+        <FormInput
+          name="name"
+          label="Name"
+          required
+          placeholder="Ivan"
+          type="text"
+        />
         <FormInput
           name="password"
           label="Password"

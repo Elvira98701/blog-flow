@@ -16,7 +16,7 @@ export default async function Profile() {
   const user = await fetchUserById(Number(session?.id));
 
   return (
-    <div className="flex">
+    <div className="flex gap-5 items-start min-h-screen">
       <Suspense fallback={<div>Loading...</div>}>
         <UserWidget
           user={user}
@@ -24,8 +24,8 @@ export default async function Profile() {
           isProfilePage={true}
         />
       </Suspense>
-      <div>
-        <ProfileForm />
+      <div className="flex-1">
+        <ProfileForm className="max-w-2xl w-full" />
       </div>
     </div>
   );
