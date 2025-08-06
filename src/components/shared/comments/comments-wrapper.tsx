@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { ErrorText } from "@/components/shared";
+import { ErrorText, Loader } from "@/components/shared";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { fetchComments } from "@/services/api";
@@ -24,7 +24,7 @@ export const CommentsWrapper = ({
   return (
     <div className={cn("pt-4", className)}>
       {isLoading ? (
-        <p>loading</p>
+        <Loader />
       ) : isError ? (
         <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (

@@ -2,12 +2,14 @@
 
 import { useEffect } from "react";
 
-import { Loader, LogOut } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
 import { Button, ButtonLink } from "@/components/ui";
+
+import { Loader } from "./loader";
 
 export const ProfileButton = () => {
   const { data: session, status } = useSession();
@@ -27,7 +29,7 @@ export const ProfileButton = () => {
   }, [searchParams]);
 
   if (status === "loading") {
-    return <Loader className="w-5 h-5 animate-spin" />;
+    return <Loader />;
   }
 
   return (

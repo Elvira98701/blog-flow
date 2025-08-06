@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { redirect } from "next/navigation";
 
-import { Gradient, ProfileForm, UserWidget } from "@/components/shared";
+import { Gradient, Loader, ProfileForm, UserWidget } from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/api";
 
@@ -17,7 +17,7 @@ export default async function Profile() {
 
   return (
     <div className="flex gap-5 items-start min-h-screen relative">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <UserWidget
           user={user}
           sessionUserId={Number(session.id)}

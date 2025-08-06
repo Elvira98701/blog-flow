@@ -2,7 +2,12 @@ import { Suspense } from "react";
 
 import { notFound, redirect } from "next/navigation";
 
-import { TopUsersWidget, UserPosts, UserWidget } from "@/components/shared";
+import {
+  Loader,
+  TopUsersWidget,
+  UserPosts,
+  UserWidget,
+} from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchHeroUsers, fetchUserById } from "@/services/api";
 
@@ -31,7 +36,7 @@ export default async function User({
 
   return (
     <section className="flex gap-5 items-start min-h-screen">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <UserWidget user={user} sessionUserId={Number(session.id)} />
       </Suspense>
       <UserPosts
@@ -39,7 +44,7 @@ export default async function User({
         session={session}
         className="flex-1"
       />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         {users && <TopUsersWidget users={users} className="mb-5" />}
       </Suspense>
     </section>

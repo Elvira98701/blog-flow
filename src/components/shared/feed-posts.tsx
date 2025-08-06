@@ -4,7 +4,12 @@ import { useCallback, useRef } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { ErrorText, PostCard, PostsSearchInput } from "@/components/shared";
+import {
+  ErrorText,
+  Loader,
+  PostCard,
+  PostsSearchInput,
+} from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchFeedPosts } from "@/services/api/post";
@@ -81,7 +86,7 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
               });
             })}
           </div>
-          {isFetchingNextPage && <p className="text-center py-4">Loading...</p>}
+          {isFetchingNextPage && <Loader className="py-4" />}
           {data?.pages[0].posts.length === 0 && (
             <div className="flex items-center min-h-[80vh]">
               <p>There are no posts yet</p>

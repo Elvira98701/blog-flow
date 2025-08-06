@@ -4,7 +4,7 @@ import { useCallback, useRef } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { BigPostCard, ErrorText, PostForm } from "@/components/shared";
+import { BigPostCard, ErrorText, Loader, PostForm } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { fetchPostsByUserId } from "@/services/api";
@@ -86,7 +86,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
           });
         })
       )}
-      {isFetchingNextPage && <p className="text-center py-4">Loading...</p>}
+      {isFetchingNextPage && <Loader />}
       {data?.pages[0].posts.length === 0 && (
         <div className="flex items-center min-h-[80vh]">
           <p>The user doesn&apos;t have any posts yet</p>
