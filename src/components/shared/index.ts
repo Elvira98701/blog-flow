@@ -19,7 +19,7 @@ export { UserWidget } from "./user-widget";
 export { Gradient } from "./gradient";
 export { UsersSearchInput } from "./users-search-input";
 export { PostsSearchInput } from "./posts-search-input";
-export { Comments } from "./comments";
+export { CommentsWrapper } from "./comments";
 export * from "./theme";
 export * from "./form";
 export * from "./auth";

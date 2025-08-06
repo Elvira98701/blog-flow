@@ -7,8 +7,6 @@ export const fetchComments = async ({
 }): Promise<CommentsWithUser[]> => {
   const response = await fetch(`/api/posts/${postId}/comments`);
 
-  console.log(postId);
-
   if (!response.ok) {
     throw new Error(`API error: ${response.status}`);
   }

@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { ClearButton, Comments } from "@/components/shared";
+import { ClearButton, CommentsWrapper } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { deletePostById } from "@/services/api";
@@ -99,7 +99,7 @@ export const BigPostCard = ({
           <MessageCircle />
         </Button>
       </div>
-      {isOpenComments && <Comments postId={String(post.id)} />}
+      {isOpenComments && <CommentsWrapper postId={String(post.id)} />}
       {isOwner && (
         <div className="absolute top-4 right-4">
           <ClearButton
