@@ -1,12 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart, MessageCircle, Pencil } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { ClearButton } from "@/components/shared";
+import { ClearButton, Comments } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { deletePostById } from "@/services/api";
@@ -25,6 +27,7 @@ export const BigPostCard = ({
   isOwner,
   className,
 }: BigPostCardProps) => {
+  const [isOpenComments, setIsOpenComments] = useState(false);
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: (postId: number) => deletePostById(postId),
@@ -88,10 +91,15 @@ export const BigPostCard = ({
           <Heart />
           {post.likes.length}
         </Button>
-        <Button size="lg" variant="outline">
+        <Button
+          size="lg"
+          variant="outline"
+          onClick={() => setIsOpenComments(!isOpenComments)}
+        >
           <MessageCircle />
         </Button>
       </div>
+      {isOpenComments && <Comments postId={String(post.id)} />}
       {isOwner && (
         <div className="absolute top-4 right-4">
           <ClearButton

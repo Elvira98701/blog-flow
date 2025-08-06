@@ -8,7 +8,6 @@ export const fetchPostById = async (postId: number) => {
       },
       include: {
         likes: true,
-        comments: true,
         user: {
           select: {
             name: true,
