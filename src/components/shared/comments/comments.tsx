@@ -5,19 +5,22 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { CommentsWithUser } from "@/types";
 
+import { CommentForm } from "../form/comment";
+
 interface CommentsProps {
+  postId: number;
   comments: CommentsWithUser[];
   className?: string;
 }
 
-export const Comments = ({ comments, className }: CommentsProps) => {
+export const Comments = ({ postId, comments, className }: CommentsProps) => {
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       {comments.length > 0 ? (
         comments.map((comment) => (
           <div
             key={comment.id}
-            className="flex gap-3 items-start p-2 bg-background/40 rounded-lg"
+            className="flex gap-3 items-start p-2 border-t border-dotted border-foreground/10"
           >
             <Image
               src={comment.user.avatar || "/images/anonim/1.jpg"}
@@ -38,6 +41,7 @@ export const Comments = ({ comments, className }: CommentsProps) => {
       ) : (
         <p>No comments</p>
       )}
+      <CommentForm postId={postId} />
     </div>
   );
 };

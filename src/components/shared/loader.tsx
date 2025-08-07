@@ -9,7 +9,7 @@ interface LoaderProps {
 export const Loader = ({ className }: LoaderProps) => {
   return (
     <div className={cn("flex justify-center items-center", className)}>
-      <Spinner className="w-5 h-5 animate-spin" />;
+      <Spinner className="w-5 h-5 animate-spin" />
     </div>
   );
 };

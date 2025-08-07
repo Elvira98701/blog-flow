@@ -28,7 +28,7 @@ export const CommentsWrapper = ({
       ) : isError ? (
         <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (
-        data && <Comments comments={data} />
+        data && <Comments comments={data} postId={Number(postId)} />
       )}
     </div>
   );
