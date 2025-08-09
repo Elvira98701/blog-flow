@@ -95,6 +95,7 @@ export const BigPostCard = ({
           size="lg"
           variant="outline"
           onClick={() => setIsOpenComments(!isOpenComments)}
+          title="open comments"
         >
           <MessageCircle />
         </Button>

@@ -55,3 +55,40 @@ export async function POST(
     return new NextResponse("[COMMENT_POST] Server error", { status: 500 });
   }
 }
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const { commentId } = await req.json();
+
+    if (!commentId) {
+      return new NextResponse("Comment ID is required", { status: 400 });
+    }
+
+    const comment = await prisma.comment.findUnique({
+      where: { id: commentId },
+    });
+
+    if (!comment) {
+      return new NextResponse("Comment not found", { status: 404 });
+    }
+
+    if (comment.userId !== Number(session.user.id)) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    await prisma.comment.delete({
+      where: { id: commentId },
+    });
+
+    return NextResponse.json({ message: "Comment deleted successfully" });
+  } catch (error) {
+    console.error("Server error:", error);
+    return new NextResponse("[COMMENT_DELETE] Server error", { status: 500 });
+  }
+}

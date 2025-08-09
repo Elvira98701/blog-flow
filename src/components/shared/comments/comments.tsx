@@ -1,11 +1,15 @@
 "use client";
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
+import { ClearButton, CommentForm } from "@/components/shared";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
+import { deleteCommentById } from "@/services/api";
 import { CommentsWithUser } from "@/types";
-
-import { CommentForm } from "../form/comment";
 
 interface CommentsProps {
   postId: number;
@@ -14,13 +18,28 @@ interface CommentsProps {
 }
 
 export const Comments = ({ postId, comments, className }: CommentsProps) => {
+  const { data: session } = useSession();
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: (commentId: number) => deleteCommentById(postId, commentId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.COMMENTS, String(postId)],
+      });
+      toast.success("The post was successfully deleted");
+    },
+    onError: () => {
+      toast.error("Error when deleting a post");
+    },
+  });
+
   return (
     <div className={cn("flex flex-col gap-2", className)}>
       {comments.length > 0 ? (
         comments.map((comment) => (
           <div
             key={comment.id}
-            className="flex gap-3 items-start p-2 border-t border-dotted border-foreground/10"
+            className="flex gap-3 items-start p-2 border-t border-dotted border-foreground/10 relative"
           >
             <Image
               src={comment.user.avatar || "/images/anonim/1.jpg"}
@@ -36,6 +55,14 @@ export const Comments = ({ postId, comments, className }: CommentsProps) => {
                 {new Date(comment.createdAt).toDateString()}
               </span>
             </div>
+            {session?.user.id === String(comment.userId) && (
+              <ClearButton
+                className="absolute right-2 top-2"
+                onClick={() => {
+                  mutate(comment.id);
+                }}
+              />
+            )}
           </div>
         ))
       ) : (
