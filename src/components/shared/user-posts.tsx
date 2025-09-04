@@ -79,7 +79,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
                 <BigPostCard
                   post={post}
                   isOwner={Number(session.id) === post.userId}
-                  userId={userId}
+                  sessionUserId={session.id}
                 />
               </div>
             );

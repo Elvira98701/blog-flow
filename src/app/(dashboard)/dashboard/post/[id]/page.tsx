@@ -24,7 +24,7 @@ export default async function Post({
       <BigPostCard
         post={post}
         isOwner={Number(session.id) === post.userId}
-        userId={String(post.userId)}
+        sessionUserId={session.id}
       />
     </div>
   );

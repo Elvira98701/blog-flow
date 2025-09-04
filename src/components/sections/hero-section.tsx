@@ -3,8 +3,11 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 
-import { Container } from "@/components/shared";
+import { Container, Gradient } from "@/components/shared";
 import { cn } from "@/lib/utils";
+
+import DotGrid from "../shared/dot-grid";
+import { Button } from "../ui";
 
 interface HeroSectionProps {
   className?: string;
@@ -13,24 +16,25 @@ interface HeroSectionProps {
 export const HeroSection = ({ className }: HeroSectionProps) => {
   return (
     <section className={cn("relative", className)} aria-labelledby="hero-title">
-      <Container className="min-h-[60vh] sm:min-h-[80vh] flex flex-col justify-center gap-4">
-        <h1 className="font-bold text-center" id="hero-title">
-          Welcome{" "}
-          <Image
-            src="/images/home/1.jpg"
-            width={500}
-            height={400}
-            alt=""
-            className="rounded-full h-10 sm:h-14 lg:h-24 xl:h-28 w-full max-w-28 lg:max-w-96 xl:max-w-[500px] object-cover object-center inline-block"
-          />{" "}
-          to{" "}
-          <Image
-            src="/images/home/2.png"
-            width={100}
-            height={100}
-            alt=""
-            className="rounded-full h-10 sm:h-14 lg:h-24 xl:h-28 w-full max-w-[100px] object-cover object-center inline-block"
-          />
+      <div className="w-full h-screen absolute top-0 left-1/2 -translate-x-1/2 -z-20">
+        <DotGrid
+          dotSize={2}
+          gap={15}
+          baseColor="#5227FF"
+          activeColor="#5227FF"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
+      </div>
+      <Container className="min-h-full flex flex-col justify-center items-center gap-4 pt-[20vh]">
+        <p className="border px-4 py-1 rounded-full text-sm bg-background">
+          Discover the all-new ClickUp 3.0
+        </p>
+        <h1 className="font-bold text-center max-w-5xl" id="hero-title">
+          Welcome to{" "}
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -40,34 +44,29 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
             BlogFlow
           </motion.span>{" "}
           your Content Management tool{" "}
-          <Image
-            src="/images/home/3.jpg"
-            width={280}
-            height={400}
-            alt=""
-            className="rounded-full h-10 sm:h-14 lg:h-24 xl:h-28 w-full max-w-[280px] object-cover object-center inline-block"
-          />
         </h1>
-        <div className="hidden sm:flex items-center gap-8">
-          <Image
-            src="/images/home/4.jpg"
-            width={900}
-            height={400}
-            alt=""
-            className="rounded-full h-24 xl:h-28 object-cover object-center inline-block flex-1 xl:ml-12"
-          />
-          <motion.p
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl my-6 font-mono flex-1"
-          >
-            Create, edit, and analyze – all in one place. Take full control of
-            your blog with a powerful, intuitive admin panel designed to
-            streamline your content management process.
-          </motion.p>
-        </div>
+
+        <motion.p
+          initial={{ y: 100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-xl font-mono text-center"
+        >
+          Create, edit, and analyze – all in one place. Take full control of
+          your blog with a powerful, intuitive admin panel designed to
+          streamline your content management process.
+        </motion.p>
+        <Button size="lg">Get start</Button>
+        <Image
+          src="/images/Main.png"
+          width={1191}
+          height={693}
+          alt=""
+          className="mt-5"
+        />
       </Container>
+      <Gradient className="absolute bottom-0 left-0 -z-10" />
+      <Gradient className="absolute bottom-0 right-0 -z-10" />
     </section>
   );
 };

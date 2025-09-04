@@ -11,34 +11,63 @@ import toast from "react-hot-toast";
 import { ClearButton, CommentsWrapper } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { deletePostById } from "@/services/api";
+import { deletePostById, toggleLike } from "@/services/api";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface BigPostCardProps {
-  userId: string;
+  sessionUserId: string;
   post: PostWithLikesAndAuthor;
   isOwner: boolean;
   className?: string;
 }
 
 export const BigPostCard = ({
-  userId,
+  sessionUserId,
   post,
   isOwner,
   className,
 }: BigPostCardProps) => {
   const [isOpenComments, setIsOpenComments] = useState(false);
+  const [isLiked, setIsLiked] = useState(() =>
+    post.likes.some((like) => like.userId === Number(sessionUserId))
+  );
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: (postId: number) => deletePostById(postId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user-posts", userId] });
+      queryClient.invalidateQueries({
+        queryKey: ["user-posts", sessionUserId],
+      });
       toast.success("The post was successfully deleted");
     },
     onError: () => {
       toast.error("Error when deleting a post");
     },
   });
+
+  console.log(sessionUserId);
+
+  const toggleLikeMutation = useMutation({
+    mutationFn: (postId: number) => toggleLike(postId),
+    onSuccess: ({ liked, likesCount }) => {
+      // queryClient.setQueryData<PostWithLikesAndAuthor[]>(
+      //   ["user-posts", userId],
+      //   (oldData) => {
+      //     if (!oldData) return oldData;
+      //     return oldData.map((p) =>
+      //       p.id === post.id ? { ...p, likes: Array(likesCount).fill(null) } : p
+      //     );
+      //   }
+      // );
+      setIsLiked(liked);
+      toast.success("Like");
+    },
+    onError: () => {
+      toast.error("Error when toggling like");
+    },
+  });
+
+  console.log(isLiked);
 
   return (
     <article
@@ -87,8 +116,13 @@ export const BigPostCard = ({
             <Pencil />
           </Button>
         )}
-        <Button size="lg" variant="outline" disabled={isOwner}>
-          <Heart />
+        <Button
+          size="lg"
+          variant="outline"
+          disabled={isOwner}
+          onClick={() => toggleLikeMutation.mutate(post.id)}
+        >
+          <Heart className={cn(isLiked ? "text-red-500" : "")} />
           {post.likes.length}
         </Button>
         <Button
