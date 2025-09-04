@@ -14,31 +14,22 @@ interface PostCardProps {
 
 export const PostCard = ({ post, active, className }: PostCardProps) => {
   return (
-    <article
-      className={cn(
-        "group rounded-lg h-[450px] p-1 relative",
-        {
-          "bg-gradient-to-br from-accent to-primary transition-transform duration-500":
-            active,
-        },
-        className
-      )}
-    >
+    <article className={cn("group rounded-md h-[450px] relative", className)}>
       <div
         className={cn(
-          "bg-card/70 h-full rounded-lg p-2 border transition-colors",
+          "bg-card/70 h-full rounded-md p-2 border transition-colors",
           {
             "bg-card": active,
           }
         )}
       >
-        <div className="overflow-hidden rounded-lg h-3/4">
+        <div className="overflow-hidden rounded-md h-3/4">
           <Image
             src={post.image || ""}
             width={600}
             height={600}
             alt="user"
-            className="size-full rounded-lg object-cover transition-transform duration-500 group-hover:scale-110"
+            className="size-full rounded-md object-cover transition-transform duration-500 group-hover:scale-110"
           />
         </div>
         <div className="pt-3 flex flex-col justify-end gap-2 h-1/4 relative">

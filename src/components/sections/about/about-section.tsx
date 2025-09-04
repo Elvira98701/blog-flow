@@ -39,7 +39,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                   <UserCard
                     key={user.id}
                     className={cn("mb-1 lg:mb-4 max-w-[339px]", {
-                      "scale-110 z-10": index === 0,
+                      "scale-120 z-10": index === 0,
                     })}
                     user={user}
                     session={session}

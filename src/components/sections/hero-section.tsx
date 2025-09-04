@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import Image from "next/image";
 
@@ -30,8 +31,8 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
         />
       </div>
       <Container className="min-h-full flex flex-col justify-center items-center gap-4 pt-[20vh]">
-        <p className="border px-4 py-1 rounded-full text-sm bg-background">
-          Discover the all-new ClickUp 3.0
+        <p className="border px-4 py-1 rounded-full text-sm bg-background flex gap-2 items-center">
+          Discover the all-new ClickUp 3.0 <ArrowRight size={12} />
         </p>
         <h1 className="font-bold text-center max-w-5xl" id="hero-title">
           Welcome to{" "}
@@ -56,13 +57,15 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
           your blog with a powerful, intuitive admin panel designed to
           streamline your content management process.
         </motion.p>
-        <Button size="lg">Get start</Button>
+        <Button size="lg" variant="secondary">
+          Get start
+        </Button>
         <Image
           src="/images/Main.png"
           width={1191}
           height={693}
           alt=""
-          className="mt-5"
+          className="mt-10"
         />
       </Container>
       <Gradient className="absolute bottom-0 left-0 -z-10" />

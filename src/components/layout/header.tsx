@@ -10,11 +10,11 @@ export const Header = ({ className }: HeaderProps) => {
   return (
     <header
       className={cn(
-        "absolute w-screen top-0 left-0 z-30 border-b bg-background",
+        "absolute w-screen top-0 left-0 z-30 flex justify-center pt-4",
         className
       )}
     >
-      <div className="flex justify-between items-center min-h-16 px-2 sm:px-6">
+      <div className="flex justify-between items-center min-h-16 px-2 sm:px-4 max-w-4xl w-full border bg-background/10 rounded-md backdrop-blur-xs">
         <Logo />
         <ActionsButtons />
       </div>
