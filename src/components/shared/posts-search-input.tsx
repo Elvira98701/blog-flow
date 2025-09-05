@@ -55,7 +55,7 @@ export const PostsSearchInput = ({
       )}
       <div
         ref={ref}
-        className={cn("relative w-full rounded-lg z-30 max-w-96", className)}
+        className={cn("relative w-full rounded-md z-30 max-w-96", className)}
       >
         <Search
           className="absolute top-1/2 -translate-y-1/2 left-2 text-zinc-400 z-30"
@@ -74,7 +74,7 @@ export const PostsSearchInput = ({
         {posts.length > 0 && (
           <div
             className={cn(
-              "absolute w-full bg-background rounded-lg p-1 sm:p-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30 border",
+              "absolute w-full bg-background rounded-md p-1 sm:p-2 top-14 shadow-md transition-all duration-200 invisible opacity-0 z-30 border",
               focused && "visible opacity-100 top-12"
             )}
           >

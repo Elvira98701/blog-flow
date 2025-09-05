@@ -35,15 +35,11 @@ export const ProfileButton = () => {
   return (
     <>
       {!session ? (
-        <ButtonLink href="/auth" size="lg">
-          Log in
-        </ButtonLink>
+        <ButtonLink href="/auth">Log in</ButtonLink>
       ) : (
         <>
           {!pathname.startsWith("/dashboard") && (
-            <ButtonLink size="lg" href="/dashboard">
-              Dashboard
-            </ButtonLink>
+            <ButtonLink href="/dashboard">Dashboard</ButtonLink>
           )}
           <Button size="icon" onClick={handleClickSignOut} title="log out">
             <LogOut />

@@ -63,7 +63,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
       )}
       {isLoading ? (
         Array.from({ length: 10 }, (_, i) => (
-          <Skeleton key={i} className="w-full rounded-lg h-[446px] border" />
+          <Skeleton key={i} className="w-full rounded-md h-[446px] border" />
         ))
       ) : isError ? (
         <ErrorText text={error.message} size="lg" className="mt-10" />

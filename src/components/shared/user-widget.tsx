@@ -18,7 +18,7 @@ export const UserWidget = ({
   className,
 }: UserWidgetProps) => {
   return (
-    <div className={cn("max-w-96 bg-card p-4 rounded-lg border", className)}>
+    <div className={cn("max-w-96 bg-card p-4 rounded-md border", className)}>
       <UserHead
         user={user}
         sessionUserId={sessionUserId}

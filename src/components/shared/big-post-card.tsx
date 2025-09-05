@@ -71,7 +71,7 @@ export const BigPostCard = ({
 
   return (
     <article
-      className={cn("relative rounded-lg bg-card border p-4 w-full", className)}
+      className={cn("relative rounded-md bg-card border p-4 w-full", className)}
     >
       <header>
         <div className="flex gap-2 items-center mb-2">
@@ -108,7 +108,7 @@ export const BigPostCard = ({
         width={600}
         height={600}
         alt={post.title}
-        className="w-full h-96 object-cover rounded-lg"
+        className="w-full h-96 object-cover rounded-md"
       />
       <div className="flex items-center gap-2 pt-4">
         {isOwner && (
@@ -122,7 +122,7 @@ export const BigPostCard = ({
           disabled={isOwner}
           onClick={() => toggleLikeMutation.mutate(post.id)}
         >
-          <Heart className={cn(isLiked ? "text-red-500" : "")} />
+          <Heart className={cn(isLiked ? "text-red-500 fill-red-500" : "")} />
           {post.likes.length}
         </Button>
         <Button
