@@ -71,7 +71,10 @@ export const BigPostCard = ({
 
   return (
     <article
-      className={cn("relative rounded-md bg-card border p-4 w-full", className)}
+      className={cn(
+        "relative rounded-md bg-card/40 border p-4 w-full",
+        className
+      )}
     >
       <header>
         <div className="flex gap-2 items-center mb-2">

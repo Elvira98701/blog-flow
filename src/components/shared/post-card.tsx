@@ -14,7 +14,12 @@ interface PostCardProps {
 
 export const PostCard = ({ post, active, className }: PostCardProps) => {
   return (
-    <article className={cn("group rounded-md h-[450px] relative", className)}>
+    <article
+      className={cn(
+        "group rounded-md h-[450px] relative transition-transform",
+        className
+      )}
+    >
       <div
         className={cn(
           "bg-card/70 h-full rounded-md p-2 border transition-colors",

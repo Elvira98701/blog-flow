@@ -22,7 +22,12 @@ export const AuthWrapper = ({ className }: AuthWrapperProps) => {
   };
 
   return (
-    <div className={cn("flex flex-col gap-4", className)}>
+    <div
+      className={cn(
+        "flex flex-col gap-4 border bg-background/10 rounded-md backdrop-blur-xs ring-3 ring-border/30 p-5",
+        className
+      )}
+    >
       {type === "login" ? <LoginForm /> : <RegisterForm />}
 
       <p className="mt-4">Or sign in with</p>

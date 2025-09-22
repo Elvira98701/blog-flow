@@ -1,7 +1,6 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
-import { motion } from "motion/react";
 import Image from "next/image";
 
 import { Container, Gradient } from "@/components/shared";
@@ -36,27 +35,17 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
         </p>
         <h1 className="font-bold text-center max-w-5xl" id="hero-title">
           Welcome to{" "}
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary"
-          >
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary underline decoration-accent/70 decoration-5 underline-offset-6">
             BlogFlow
-          </motion.span>{" "}
+          </span>{" "}
           your Content Management tool{" "}
         </h1>
 
-        <motion.p
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-xl font-mono text-center"
-        >
+        <p className="max-w-xl font-mono text-center">
           Create, edit, and analyze – all in one place. Take full control of
           your blog with a powerful, intuitive admin panel designed to
           streamline your content management process.
-        </motion.p>
+        </p>
         <Button size="lg" variant="secondary">
           Get start
         </Button>

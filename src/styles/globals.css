@@ -122,7 +122,7 @@
 .theme-green {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(0.1643 0 0);
+  --card: oklch(0.1543 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
@@ -143,7 +143,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar:  oklch(0.1643 0 0);
+  --sidebar:  oklch(0.1543 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.646 0.222 41.116);
   --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
@@ -154,19 +154,19 @@
 }
 
 .theme-midnight {
-  --background: oklch(13.73% 0.033 296.76);
+  --background: oklch(5.94% 0.027 328.36);
   --foreground: oklch(0.985 0 0);
-  --card: oklch(13.73% 0.033 296.76);
+  --card: oklch(10.63% 0.017 259.54);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(82.3% 0.12 346.018);
+  --primary: oklch(46.26% 0.186 350.55);
   --primary-foreground: oklch(0.98 0.016 73.684);
   --secondary: oklch(0.985 0 0);
   --secondary-foreground: oklch(0.13 0 0);
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.29 0.1183 280);
+  --accent: oklch(41.19% 0.249 279.99);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 15%);
@@ -177,7 +177,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(13.73% 0.033 296.76);
+  --sidebar: oklch(10.63% 0.017 259.54);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.646 0.222 41.116);
   --sidebar-primary-foreground: oklch(0.98 0.016 73.684);
@@ -193,8 +193,8 @@
 }
 
 .theme-peach {
-  --primary: oklch(37.67% 0.120 274.31);
-  --accent: oklch(81.20% 0.058 255.02);
+  --primary: oklch(60.89% 0.245 26.48);
+  --accent: oklch(70.24% 0.124 289.74);
 }
 
 @layer base {
@@ -219,7 +219,7 @@ p {
 }
 
 h1 {
-  font-size: clamp(1.875rem, 1.25rem + 3.13vw, 5rem);
+  font-size: clamp(1.875rem, 1.375rem + 2.5vw, 4.375rem);
   @apply leading-none;
 }
 

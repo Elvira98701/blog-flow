@@ -152,7 +152,7 @@ const DotGrid: React.FC<DotGridProps> = ({
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
 
-        let style = "rgba(82, 39, 255, 0.3)";
+        let style = "rgba(82, 39, 255, 0.4)";
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
           const t = 1 - dist / proximity;
@@ -181,7 +181,9 @@ const DotGrid: React.FC<DotGridProps> = ({
     let ro: ResizeObserver | null = null;
     if ("ResizeObserver" in window) {
       ro = new ResizeObserver(buildGrid);
-      wrapperRef.current && ro.observe(wrapperRef.current);
+      if (wrapperRef.current) {
+        ro.observe(wrapperRef.current);
+      }
     } else {
       (window as Window).addEventListener("resize", buildGrid);
     }
