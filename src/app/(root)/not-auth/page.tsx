@@ -10,7 +10,7 @@ export default function NotAuth() {
         You are not authorized to access this resource.
       </p>
       <ButtonLink href="/" size="lg">
-        Go Back
+        Go Home
       </ButtonLink>
     </main>
   );

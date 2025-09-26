@@ -1,5 +1,4 @@
-import { AuthWrapper, Gradient } from "@/components/shared";
-import DotGrid from "@/components/shared/dot-grid";
+import { AuthWrapper, DotGrid, Gradient } from "@/components/shared";
 
 export default function Auth() {
   return (

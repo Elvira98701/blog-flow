@@ -1,19 +1,18 @@
-"use client";
-
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-import { Container, Gradient } from "@/components/shared";
+import { Container, Gradient, DotGrid } from "@/components/shared";
+import { ButtonLink } from "@/components/ui";
+import { getUserSession } from "@/lib/get-user-session";
 import { cn } from "@/lib/utils";
-
-import DotGrid from "../shared/dot-grid";
-import { Button } from "../ui";
 
 interface HeroSectionProps {
   className?: string;
 }
 
-export const HeroSection = ({ className }: HeroSectionProps) => {
+export const HeroSection = async ({ className }: HeroSectionProps) => {
+  const session = await getUserSession();
+
   return (
     <section className={cn("relative", className)} aria-labelledby="hero-title">
       <div className="w-full h-screen absolute top-0 left-1/2 -translate-x-1/2 -z-20">
@@ -46,9 +45,15 @@ export const HeroSection = ({ className }: HeroSectionProps) => {
           your blog with a powerful, intuitive admin panel designed to
           streamline your content management process.
         </p>
-        <Button size="lg" variant="secondary">
-          Get start
-        </Button>
+        {!session ? (
+          <ButtonLink href="/auth" size="lg">
+            Get Started
+          </ButtonLink>
+        ) : (
+          <ButtonLink href="/dashboard" size="lg">
+            Dashboard
+          </ButtonLink>
+        )}
         <Image
           src="/images/Main.png"
           width={1191}
