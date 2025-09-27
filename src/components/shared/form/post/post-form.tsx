@@ -7,13 +7,14 @@ import toast from "react-hot-toast";
 
 import { FormTextarea, FormInput } from "@/components/shared/form";
 import { Button } from "@/components/ui";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { createPost } from "@/services/api";
 
 import { formPostSchema, FormPostValue } from "./schemas";
 
 interface PostFormProps {
-  sessionUserId: string;
+  sessionUserId: number;
   className?: string;
 }
 
@@ -24,7 +25,7 @@ export const PostForm = ({ sessionUserId, className }: PostFormProps) => {
       createPost(data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["user-posts", sessionUserId],
+        queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
       });
       toast.success("The post was created successfully");
     },
@@ -45,7 +46,7 @@ export const PostForm = ({ sessionUserId, className }: PostFormProps) => {
     mutate({
       title: data.title,
       content: data.content,
-      userId: Number(sessionUserId),
+      userId: sessionUserId,
     });
     form.reset();
   };

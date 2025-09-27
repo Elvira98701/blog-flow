@@ -4,7 +4,7 @@ export const fetchPostsByUserId = async ({
   userId,
   pageParam = null,
 }: {
-  userId: string;
+  userId: number;
   pageParam?: string | null;
 }): Promise<FeedPostResponse> => {
   const url = new URL(`/api/users/${userId}/posts`, window.location.origin);

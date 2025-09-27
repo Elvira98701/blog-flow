@@ -19,12 +19,14 @@ export default async function Post({
 
   if (!post) return notFound();
 
+  const sessionUserId = Number(session.id);
+
   return (
     <div>
       <BigPostCard
         post={post}
-        isOwner={Number(session.id) === post.userId}
-        sessionUserId={session.id}
+        isOwner={sessionUserId === post.userId}
+        sessionUserId={sessionUserId}
       />
     </div>
   );

@@ -14,7 +14,7 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
 
   return (
     <section
-      className={cn("py-10 md:py-20 lg:py-32", className)}
+      className={cn("py-10 md:py-20", className)}
       aria-labelledby="join-title"
     >
       <Container className="flex justify-center items-center">

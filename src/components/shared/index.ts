@@ -8,7 +8,7 @@ export { ErrorText } from "./error-text";
 export { Marquee } from "./marquee";
 export { PostCard } from "./post-card";
 export { ProfileButton } from "./profile-button";
-export { Providers } from "./providers";
+export { SpotlightCard } from "./spotlight-card";
 export { UserCard } from "./user-card";
 export { UserRow } from "./user-row";
 export { UserHead } from "./user-head";

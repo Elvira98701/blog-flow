@@ -15,7 +15,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
 
   return (
     <section
-      className={cn("py-10 md:py-20 lg:py-32 relative", className)}
+      className={cn("py-10 md:py-20 relative", className)}
       aria-labelledby="about-title"
     >
       <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
@@ -70,9 +70,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
             creating.
           </p>
 
-          <div>
-            <AboutAccordion />
-          </div>
+          <AboutAccordion />
         </div>
       </Container>
       <Gradient className="absolute left-0 top-0 -z-10" />

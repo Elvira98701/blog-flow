@@ -1,23 +1,18 @@
-import { ErrorText, Container } from "@/components/shared";
+import { Container, SpotlightCard } from "@/components/shared";
 import { cn } from "@/lib/utils";
-import { fetchSliderPosts } from "@/services/api";
-
-import { FeaturedCarousel } from "./featured-carousel";
 
 interface FeaturedSectionProps {
   className?: string;
 }
 
-export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
-  const posts = await fetchSliderPosts();
-
+export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
   return (
     <section
-      className={cn("py-10 md:py-20 lg:py-32 relative", className)}
+      className={cn("py-10 md:py-20 relative", className)}
       aria-labelledby="featured-title"
     >
       <Container>
-        <div className="w-1/3">
+        <div className="w-1/3 text-center mx-auto">
           <h2 id="featured-title">
             Featured{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
@@ -30,12 +25,41 @@ export const FeaturedSection = async ({ className }: FeaturedSectionProps) => {
             this space keeps your content in motion.
           </p>
         </div>
-        <div className="absolute left-1/2 top-1/2 -translate-y-1/2 flex gap-5 w-1/2">
-          {!posts || posts.length === 0 ? (
-            <ErrorText text="There are no posts" />
-          ) : (
-            <FeaturedCarousel posts={posts} />
-          )}
+        <div className="">
+          <div className="flex gap-8 mb-8">
+            <SpotlightCard
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="flex-1 min-h-[600px]"
+            >
+              text1
+            </SpotlightCard>
+            <SpotlightCard
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="flex-1"
+            >
+              text1
+            </SpotlightCard>
+          </div>
+          <div className="flex gap-8">
+            <SpotlightCard
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="flex-1"
+            >
+              text1
+            </SpotlightCard>
+            <SpotlightCard
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="flex-1"
+            >
+              text1
+            </SpotlightCard>
+            <SpotlightCard
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="flex-1"
+            >
+              text1
+            </SpotlightCard>
+          </div>
         </div>
       </Container>
     </section>

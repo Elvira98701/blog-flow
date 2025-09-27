@@ -34,14 +34,16 @@ export default async function User({
 
   if (!user) return notFound();
 
+  const sessionUserId = Number(session.id);
+
   return (
     <section className="flex gap-5 items-start min-h-screen">
       <Suspense fallback={<Loader />}>
-        <UserWidget user={user} sessionUserId={Number(session.id)} />
+        <UserWidget user={user} sessionUserId={sessionUserId} />
       </Suspense>
       <UserPosts
-        userId={String(user.id)}
-        session={session}
+        userId={user.id}
+        sessionUserId={sessionUserId}
         className="flex-1"
       />
       <Suspense fallback={<Loader />}>

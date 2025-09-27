@@ -10,7 +10,7 @@ interface FaqSectionProps {
 export const FaqSection = ({ className }: FaqSectionProps) => {
   return (
     <section
-      className={cn("py-10 md:py-20 lg:py-32 relative", className)}
+      className={cn("py-10 md:py-20 relative", className)}
       aria-labelledby="faq-title"
     >
       <Container>
@@ -24,9 +24,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
           Got questions? We’ve got answers. Here are some of the most common
           things people ask about using BlogFlow.
         </p>
-        <div>
-          <FaqAccordion />
-        </div>
+        <FaqAccordion />
       </Container>
       <Gradient className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full" />
     </section>

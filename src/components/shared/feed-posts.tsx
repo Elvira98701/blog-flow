@@ -11,6 +11,7 @@ import {
   PostsSearchInput,
 } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { fetchFeedPosts } from "@/services/api/post";
 
@@ -29,7 +30,7 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    queryKey: ["feed-posts"],
+    queryKey: [QUERY_KEYS.FEED_POSTS],
     queryFn: fetchFeedPosts,
     initialPageParam: null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,

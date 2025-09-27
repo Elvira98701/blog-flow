@@ -3,7 +3,7 @@ import { CommentsWithUser } from "@/types";
 export const fetchComments = async ({
   postId,
 }: {
-  postId: string;
+  postId: number;
 }): Promise<CommentsWithUser[]> => {
   const response = await fetch(`/api/posts/${postId}/comments`);
 

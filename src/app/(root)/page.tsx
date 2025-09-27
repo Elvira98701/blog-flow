@@ -11,7 +11,7 @@ import {
 export default function Home() {
   return (
     <>
-      <main className="relative">
+      <main>
         <HeroSection />
         <StatsSection />
         <AboutSection />

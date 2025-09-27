@@ -27,7 +27,7 @@ export const CommentForm = ({ postId, className }: CommentFormProps) => {
       createComment(postId, data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.COMMENTS, String(postId)],
+        queryKey: [QUERY_KEYS.COMMENTS, postId],
       });
       toast.success("The comment was created successfully");
     },

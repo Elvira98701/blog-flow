@@ -8,7 +8,7 @@ import { fetchComments } from "@/services/api";
 import { Comments } from "./comments";
 
 interface CommentsWrapperProps {
-  postId: string;
+  postId: number;
   className?: string;
 }
 
@@ -28,7 +28,7 @@ export const CommentsWrapper = ({
       ) : isError ? (
         <ErrorText text={error.message} size="lg" className="mt-10" />
       ) : (
-        data && <Comments comments={data} postId={Number(postId)} />
+        data && <Comments comments={data} postId={postId} />
       )}
     </div>
   );

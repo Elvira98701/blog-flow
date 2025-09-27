@@ -6,20 +6,21 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { BigPostCard, ErrorText, Loader, PostForm } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { fetchPostsByUserId } from "@/services/api";
 
 interface UserPostsProps {
-  userId: string;
-  session: {
-    id: string;
-    name: string;
-    image: string;
-  };
+  userId: number;
+  sessionUserId: number;
   className?: string;
 }
 
-export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
+export const UserPosts = ({
+  userId,
+  sessionUserId,
+  className,
+}: UserPostsProps) => {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const {
     data,
@@ -30,7 +31,7 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    queryKey: ["user-posts", userId],
+    queryKey: [QUERY_KEYS.USER_POSTS, userId],
     queryFn: ({ pageParam }: { pageParam: string | null }) =>
       fetchPostsByUserId({ userId, pageParam }),
     initialPageParam: null,
@@ -58,8 +59,8 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
 
   return (
     <div className={cn("flex flex-col gap-5 items-center", className)}>
-      {userId === session.id && (
-        <PostForm sessionUserId={session.id} className="w-full" />
+      {userId === sessionUserId && (
+        <PostForm sessionUserId={sessionUserId} className="w-full" />
       )}
       {isLoading ? (
         Array.from({ length: 10 }, (_, i) => (
@@ -78,8 +79,8 @@ export const UserPosts = ({ userId, session, className }: UserPostsProps) => {
               <div key={post.id} ref={ref} className="w-full">
                 <BigPostCard
                   post={post}
-                  isOwner={Number(session.id) === post.userId}
-                  sessionUserId={session.id}
+                  isOwner={sessionUserId === post.userId}
+                  sessionUserId={sessionUserId}
                 />
               </div>
             );

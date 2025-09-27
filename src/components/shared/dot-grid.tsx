@@ -1,22 +1,14 @@
 "use client";
 
-import React, { useRef, useEffect, useCallback, useMemo } from "react";
+import React, { useRef, useEffect, useCallback, useMemo, memo } from "react";
 
 import { gsap } from "gsap";
 import { InertiaPlugin } from "gsap/InertiaPlugin";
 
-gsap.registerPlugin(InertiaPlugin);
+import { hexToRgb } from "@/lib/hex-to-rgb";
+import { throttle } from "@/lib/throttle";
 
-const throttle = (func: (...args: any[]) => void, limit: number) => {
-  let lastCall = 0;
-  return function (this: any, ...args: any[]) {
-    const now = performance.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      func.apply(this, args);
-    }
-  };
-};
+gsap.registerPlugin(InertiaPlugin);
 
 interface Dot {
   cx: number;
@@ -42,17 +34,7 @@ export interface DotGridProps {
   style?: React.CSSProperties;
 }
 
-function hexToRgb(hex: string) {
-  const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
-  if (!m) return { r: 0, g: 0, b: 0 };
-  return {
-    r: parseInt(m[1], 16),
-    g: parseInt(m[2], 16),
-    b: parseInt(m[3], 16),
-  };
-}
-
-export const DotGrid: React.FC<DotGridProps> = ({
+export const DotGrid: React.FC<DotGridProps> = memo(function DotGrid({
   dotSize = 16,
   gap = 32,
   baseColor = "#5227FF",
@@ -66,7 +48,7 @@ export const DotGrid: React.FC<DotGridProps> = ({
   returnDuration = 1.5,
   className = "",
   style,
-}) => {
+}) {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const dotsRef = useRef<Dot[]>([]);
@@ -303,4 +285,4 @@ export const DotGrid: React.FC<DotGridProps> = ({
       </div>
     </section>
   );
-};
+});

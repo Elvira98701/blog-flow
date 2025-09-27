@@ -12,6 +12,7 @@ import {
   UsersSearchInput,
 } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { fetchFeedUsers } from "@/services/api";
 
@@ -31,7 +32,7 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    queryKey: ["feed-users"],
+    queryKey: [QUERY_KEYS.FEED_USERS],
     queryFn: fetchFeedUsers,
     initialPageParam: null,
     getNextPageParam: (lastPage) => lastPage.nextCursor,

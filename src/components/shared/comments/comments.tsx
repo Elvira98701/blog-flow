@@ -24,7 +24,7 @@ export const Comments = ({ postId, comments, className }: CommentsProps) => {
     mutationFn: (commentId: number) => deleteCommentById(postId, commentId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.COMMENTS, String(postId)],
+        queryKey: [QUERY_KEYS.COMMENTS, postId],
       });
       toast.success("The post was successfully deleted");
     },

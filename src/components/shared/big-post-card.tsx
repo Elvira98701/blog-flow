@@ -10,12 +10,13 @@ import toast from "react-hot-toast";
 
 import { ClearButton, CommentsWrapper } from "@/components/shared";
 import { Button } from "@/components/ui";
+import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { deletePostById, toggleLike } from "@/services/api";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface BigPostCardProps {
-  sessionUserId: string;
+  sessionUserId: number;
   post: PostWithLikesAndAuthor;
   isOwner: boolean;
   className?: string;
@@ -29,14 +30,14 @@ export const BigPostCard = ({
 }: BigPostCardProps) => {
   const [isOpenComments, setIsOpenComments] = useState(false);
   const [isLiked, setIsLiked] = useState(() =>
-    post.likes.some((like) => like.userId === Number(sessionUserId))
+    post.likes.some((like) => like.userId === sessionUserId)
   );
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: (postId: number) => deletePostById(postId),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["user-posts", sessionUserId],
+        queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
       });
       toast.success("The post was successfully deleted");
     },
@@ -44,8 +45,6 @@ export const BigPostCard = ({
       toast.error("Error when deleting a post");
     },
   });
-
-  console.log(sessionUserId);
 
   const toggleLikeMutation = useMutation({
     mutationFn: (postId: number) => toggleLike(postId),
@@ -137,7 +136,7 @@ export const BigPostCard = ({
           <MessageCircle />
         </Button>
       </div>
-      {isOpenComments && <CommentsWrapper postId={String(post.id)} />}
+      {isOpenComments && <CommentsWrapper postId={post.id} />}
       {isOwner && (
         <div className="absolute top-4 right-4">
           <ClearButton
