@@ -60,7 +60,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
             width={50}
             height={50}
             alt={post.user.name}
-            className="rounded-full absolute -top-[40px] left-0"
+            className="rounded-full absolute -top-[40px] left-0 w-[50px] h-[50px] object-cover"
           />
         </div>
       </div>

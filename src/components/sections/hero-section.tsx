@@ -59,7 +59,7 @@ export const HeroSection = async ({ className }: HeroSectionProps) => {
           width={1191}
           height={693}
           alt=""
-          className="mt-10"
+          className="mt-10 w-full"
         />
       </Container>
       <Gradient className="absolute bottom-0 left-0 -z-10" />

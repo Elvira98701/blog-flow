@@ -98,23 +98,23 @@ export const users = [
 
 export const posts = [
   {
-    title: "Why is Go so weird",
+    title: "Finally Tried VR. Here's What Changed My Mind.",
     content:
-      "Growth does not begin with a grade, but with an internal demand for development, new areas of responsibility and systematic thinking. There is no single recipe for an ideal architecture — the readability and liveliness of the project are important. Soft skills are no less important than hard skills, especially in distributed teams. You can switch to Go from any language — there is no big difference. But the transition itself will require not only experience, but also flexibility of thinking. Product thinking strengthens the developer and helps them speak the same language as the business. The oddities of Go are the compromises behind which conscious design stands. LLM is a useful tool that is useful to integrate into the workflow with due care. Composition in Go is not a limitation, but an opportunity to design easier. Reliability is achieved not only by the code, but also by the culture in the team.",
+      "I used to think VR was just an expensive toy for geeks. 'You put on a headset, look around at a cartoon world... so what?' I thought. Eventually, I decided to try it myself. It completely changed my perspective. The biggest surprise? It's about 'presence,' not just graphics.When you stand on the edge of a virtual skyscraper, your brain genuinely struggles to believe it's not real. Your knees feel weak. That feeling of actually being there is the magic of VR. You're not watching a screen—you're inside it.",
     image: "/images/posts/1.jpg",
     userId: 1,
   },
   {
-    title: "Who is a Data Analyst and how do I become one?",
+    title: "A cat is not a pet. It's a state of mind.",
     content:
-      "A data analyst analyzes data and helps businesses make informed decisions based on the data. In this review, we'll look at exactly what he does, what specializations are available, and what skills are needed for the job. Let's talk about career growth and look at the training roadmap.",
+      "A cat is a fluffy paradox on four paws. He can be gentle and independent, graceful and ridiculous, a dormouse and a night hunter. One thing is for sure: it's never boring with him. What's the paradox of your cat?",
     image: "/images/posts/2.jpg",
     userId: 1,
   },
   {
-    title: "How to Learn JavaScript",
+    title: "The best trip is when you're not alone.",
     content:
-      "JavaScript is the most popular language among developers in 2022, according to a GitHub study, and it has a very large knowledge base. It is important not to get lost in it. Let's figure out how to start learning JavaScript from scratch and not get confused by the abundance of information.",
+      "Discovering the world with someone who loves you more than anything in the world is a real happiness. New smells, long walks and lots of impressions for both of you! Where do you dream of going with your pet?",
     image: "/images/posts/3.jpg",
     userId: 2,
   },

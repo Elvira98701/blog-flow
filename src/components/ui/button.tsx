@@ -60,7 +60,7 @@ function Button({
     >
       {children}
       {loading && (
-        <span className="absolute top-0 left-0 size-full inline-flex justify-center items-center bg-accent rounded-full">
+        <span className="absolute top-0 left-0 size-full inline-flex justify-center items-center bg-accent rounded-sm">
           <Loader className="w-5 h-5 animate-spin" />
         </span>
       )}

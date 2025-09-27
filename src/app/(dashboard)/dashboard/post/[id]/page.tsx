@@ -22,8 +22,9 @@ export default async function Post({
   const sessionUserId = Number(session.id);
 
   return (
-    <div>
+    <div className="flex justify-center">
       <BigPostCard
+        className="max-w-6xl"
         post={post}
         isOwner={sessionUserId === post.userId}
         sessionUserId={sessionUserId}

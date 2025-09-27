@@ -8,11 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { ClearButton, CommentsWrapper } from "@/components/shared";
+import { CommentsWrapper, DeletePostButton } from "@/components/shared";
 import { Button } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { deletePostById, toggleLike } from "@/services/api";
+import { toggleLike } from "@/services/api";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface BigPostCardProps {
@@ -33,18 +32,6 @@ export const BigPostCard = ({
     post.likes.some((like) => like.userId === sessionUserId)
   );
   const queryClient = useQueryClient();
-  const { mutate } = useMutation({
-    mutationFn: (postId: number) => deletePostById(postId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
-      });
-      toast.success("The post was successfully deleted");
-    },
-    onError: () => {
-      toast.error("Error when deleting a post");
-    },
-  });
 
   const toggleLikeMutation = useMutation({
     mutationFn: (postId: number) => toggleLike(postId),
@@ -82,7 +69,7 @@ export const BigPostCard = ({
             width={50}
             height={50}
             alt={post.user.name}
-            className="rounded-full"
+            className="rounded-full w-[50px] h-[50px] object-cover"
           />
           <span className="font-bold">{post.user.name}</span>
         </div>
@@ -107,10 +94,10 @@ export const BigPostCard = ({
 
       <Image
         src={post.image || ""}
-        width={600}
-        height={600}
+        width={1200}
+        height={800}
         alt={post.title}
-        className="w-full h-96 object-cover rounded-md"
+        className="w-full h-[500px] object-cover rounded-md"
       />
       <div className="flex items-center gap-2 pt-4">
         {isOwner && (
@@ -138,13 +125,11 @@ export const BigPostCard = ({
       </div>
       {isOpenComments && <CommentsWrapper postId={post.id} />}
       {isOwner && (
-        <div className="absolute top-4 right-4">
-          <ClearButton
-            onClick={() => {
-              mutate(post.id);
-            }}
-          />
-        </div>
+        <DeletePostButton
+          className="absolute top-4 right-4"
+          sessionUserId={sessionUserId}
+          postId={post.id}
+        />
       )}
     </article>
   );

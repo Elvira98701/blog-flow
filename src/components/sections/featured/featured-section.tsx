@@ -29,13 +29,13 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
           <div className="flex gap-8 mb-8">
             <SpotlightCard
               spotlightColor="rgba(75, 59, 228, 0.5)"
-              className="flex-1 min-h-[600px]"
+              className="flex-1 min-h-[450px]"
             >
               text1
             </SpotlightCard>
             <SpotlightCard
               spotlightColor="rgba(75, 59, 228, 0.5)"
-              className="flex-1"
+              className="flex-1 min-h-[450px]"
             >
               text1
             </SpotlightCard>
@@ -43,7 +43,7 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
           <div className="flex gap-8">
             <SpotlightCard
               spotlightColor="rgba(75, 59, 228, 0.5)"
-              className="flex-1"
+              className="flex-1 min-h-64"
             >
               text1
             </SpotlightCard>

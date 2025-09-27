@@ -24,7 +24,7 @@ export const UserHead = ({
         width={500}
         height={500}
         alt={user.name}
-        className="rounded-md w-[350px] h-auto object-cover"
+        className="rounded-md w-[350px] h-[350px] object-cover border"
       />
       <h1 className="small-title">{user.name}</h1>
       <p>{user.slogan}</p>

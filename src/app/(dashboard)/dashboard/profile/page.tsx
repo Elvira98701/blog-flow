@@ -16,16 +16,19 @@ export default async function Profile() {
   const user = await fetchUserById(Number(session?.id));
 
   return (
-    <div className="flex gap-5 items-start min-h-screen relative">
-      <Suspense fallback={<Loader />}>
-        <UserWidget
-          user={user}
-          sessionUserId={Number(session.id)}
-          isProfilePage={true}
-        />
-      </Suspense>
-      <div className="flex-1">
-        <ProfileForm className="max-w-2xl w-full" />
+    <div className="min-h-screen relative">
+      <h1 className="font-bold mb-4">Profile</h1>
+      <div className="flex gap-5 items-start">
+        <Suspense fallback={<Loader />}>
+          <UserWidget
+            user={user}
+            sessionUserId={Number(session.id)}
+            isProfilePage={true}
+          />
+        </Suspense>
+        <div className="max-w-2xl flex-1">
+          <ProfileForm className="w-full" />
+        </div>
       </div>
       <Gradient className="absolute right-0 -z-10" />
     </div>
