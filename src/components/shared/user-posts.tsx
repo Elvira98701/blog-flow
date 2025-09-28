@@ -1,12 +1,11 @@
 "use client";
 
-import { useCallback, useRef } from "react";
-
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { BigPostCard, ErrorText, Loader, PostForm } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
+import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
 import { fetchPostsByUserId } from "@/services/api";
 
@@ -21,7 +20,6 @@ export const UserPosts = ({
   sessionUserId,
   className,
 }: UserPostsProps) => {
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const {
     data,
     fetchNextPage,
@@ -38,24 +36,11 @@ export const UserPosts = ({
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
-  const lastRowRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (isFetchingNextPage) return;
-
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-
-      observerRef.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage();
-        }
-      });
-
-      if (node) observerRef.current.observe(node);
-    },
-    [isFetchingNextPage, fetchNextPage, hasNextPage]
-  );
+  const lastRowRef = useInfiniteScroll(() => {
+    if (!isFetchingNextPage && hasNextPage) {
+      fetchNextPage();
+    }
+  }, hasNextPage);
 
   return (
     <div className={cn("flex flex-col gap-5 items-center", className)}>
@@ -63,7 +48,7 @@ export const UserPosts = ({
         <PostForm sessionUserId={sessionUserId} className="w-full" />
       )}
       {isLoading ? (
-        Array.from({ length: 10 }, (_, i) => (
+        Array.from({ length: 3 }, (_, i) => (
           <Skeleton key={i} className="w-full rounded-md h-[446px] border" />
         ))
       ) : isError ? (

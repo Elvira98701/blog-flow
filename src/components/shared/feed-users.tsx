@@ -1,7 +1,5 @@
 "use client";
 
-import { useCallback, useRef } from "react";
-
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
@@ -13,6 +11,7 @@ import {
 } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
+import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
 import { fetchFeedUsers } from "@/services/api";
 
@@ -22,7 +21,7 @@ interface FeedUsersProps {
 
 export const FeedUsers = ({ className }: FeedUsersProps) => {
   const { data: session } = useSession();
-  const observerRef = useRef<IntersectionObserver | null>(null);
+
   const {
     data,
     fetchNextPage,
@@ -38,24 +37,11 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
     getNextPageParam: (lastPage) => lastPage.nextCursor,
   });
 
-  const lastRowRef = useCallback(
-    (node: HTMLDivElement | null) => {
-      if (isFetchingNextPage) return;
-
-      if (observerRef.current) {
-        observerRef.current.disconnect();
-      }
-
-      observerRef.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage();
-        }
-      });
-
-      if (node) observerRef.current.observe(node);
-    },
-    [isFetchingNextPage, fetchNextPage, hasNextPage]
-  );
+  const lastRowRef = useInfiniteScroll(() => {
+    if (!isFetchingNextPage && hasNextPage) {
+      fetchNextPage();
+    }
+  }, hasNextPage);
 
   return (
     <section className={cn("w-full", className)}>
