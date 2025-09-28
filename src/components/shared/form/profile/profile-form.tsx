@@ -84,24 +84,33 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           className
         )}
       >
-        <FormInput name="name" label="Name" placeholder="Ivan" type="text" />
+        <FormInput
+          name="name"
+          label="Name"
+          placeholder="Ivan"
+          type="text"
+          autoComplete="off"
+        />
         <FormInput
           name="slogan"
           label="Slogan"
           placeholder="I am a designer"
           type="text"
+          autoComplete="off"
         />
         <FormInput
           name="password"
           label="Password"
           type="password"
           placeholder="password123"
+          autoComplete="off"
         />
         <FormInput
           name="confirmPassword"
           label="Confirm password"
           type="password"
           placeholder="password123"
+          autoComplete="off"
         />
         <FormInput
           name="image"

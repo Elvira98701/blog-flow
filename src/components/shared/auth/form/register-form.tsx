@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -11,6 +12,7 @@ import { Button } from "@/components/ui";
 import { formRegisterSchema, FormRegisterValues } from "./schemas";
 
 export const RegisterForm = () => {
+  const router = useRouter();
   const form = useForm<FormRegisterValues>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
@@ -29,9 +31,11 @@ export const RegisterForm = () => {
         password: data.password,
       });
 
-      toast.error("Registration is successful. Confirm your email", {
+      toast.success("Registration is successful. Confirm your email", {
         icon: "✅",
       });
+
+      router.push("/verify-email");
     } catch (error) {
       console.log(error);
       return toast.error("Incorrect E-Mail or password", {
