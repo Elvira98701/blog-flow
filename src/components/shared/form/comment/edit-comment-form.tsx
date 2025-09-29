@@ -2,7 +2,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
@@ -10,45 +9,53 @@ import { FormTextarea } from "@/components/shared/form";
 import { Button } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { createComment } from "@/services/api";
+import { editCommentById } from "@/services/api";
 
 import { formCommentSchema, FormCommentValue } from "./schemas";
 
-interface CommentFormProps {
+interface EditCommentFormProps {
+  content: string;
+  commentId: number;
   postId: number;
+  onFinishEdit?: () => void;
   className?: string;
 }
 
-export const CommentForm = ({ postId, className }: CommentFormProps) => {
-  const { data: session } = useSession();
+export const EditCommentForm = ({
+  content,
+  commentId,
+  postId,
+  onFinishEdit,
+  className,
+}: EditCommentFormProps) => {
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
-    mutationFn: (data: { content: string; userId: number }) =>
-      createComment(postId, data),
+    mutationFn: (data: { content: string; commentId: number }) =>
+      editCommentById({ postId, ...data }),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMENTS, postId],
       });
-      toast.success("The comment was created successfully");
+      toast.success("The comment was edited successfully");
+      onFinishEdit?.();
     },
     onError: () => {
-      toast.error("Error when creating a comment");
+      toast.error("Error when editing a comment");
     },
   });
 
   const form = useForm<FormCommentValue>({
     resolver: zodResolver(formCommentSchema),
     defaultValues: {
-      content: "",
+      content,
     },
   });
 
   const onSubmit = async (data: FormCommentValue) => {
     mutate({
       content: data.content,
-      userId: Number(session?.user.id),
+      commentId,
     });
-    form.reset();
   };
 
   return (
@@ -58,14 +65,22 @@ export const CommentForm = ({ postId, className }: CommentFormProps) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex flex-col gap-4"
         >
-          <FormTextarea name="content" label="Content" rows={5} required />
+          <FormTextarea
+            name="content"
+            label="Content"
+            rows={5}
+            required
+            className={cn({
+              "opacity-40": isPending,
+            })}
+          />
           <Button
             loading={isPending}
             disabled={isPending}
             size="lg"
             type="submit"
           >
-            Create Comment
+            Edit Comment
           </Button>
         </form>
       </FormProvider>

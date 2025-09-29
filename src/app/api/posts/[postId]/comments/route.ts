@@ -56,6 +56,48 @@ export async function POST(
   }
 }
 
+export async function PATCH(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const { commentId, content } = await req.json();
+
+    if (!commentId) {
+      return new NextResponse("Comment ID is required", { status: 400 });
+    }
+
+    if (!content || typeof content !== "string") {
+      return new NextResponse("Content is required", { status: 400 });
+    }
+
+    const comment = await prisma.comment.findUnique({
+      where: { id: commentId },
+    });
+
+    if (!comment) {
+      return new NextResponse("Comment not found", { status: 404 });
+    }
+
+    if (comment.userId !== Number(session.user.id)) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    const updatedComment = await prisma.comment.update({
+      where: { id: commentId },
+      data: { content },
+    });
+
+    return NextResponse.json(updatedComment, { status: 200 });
+  } catch (error) {
+    console.error("Server error:", error);
+    return new NextResponse("[COMMENT_PATCH] Server error", { status: 500 });
+  }
+}
+
 export async function DELETE(req: NextRequest) {
   try {
     const session = await getServerSession(authOptions);

@@ -1,1 +1,2 @@
-export { CommentForm } from "./comment-form";
+export { CreateCommentForm } from "./create-comment-form";
+export { EditCommentForm } from "./edit-comment-form";
