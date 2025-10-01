@@ -7,7 +7,7 @@ interface ActionsButtonsProps {
 
 export const ActionsButtons = ({ className }: ActionsButtonsProps) => {
   return (
-    <div className={cn("flex gap-2 items-center", className)}>
+    <div className={cn("hidden md:flex gap-2 items-center", className)}>
       <ThemeToggle />
       <ProfileButton />
     </div>

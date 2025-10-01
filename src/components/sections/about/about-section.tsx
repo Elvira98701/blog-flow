@@ -18,8 +18,8 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
       className={cn("py-10 md:py-20 relative", className)}
       aria-labelledby="about-title"
     >
-      <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
-        <div className="flex gap-4 flex-1 w-full">
+      <Container className="flex flex-col md:flex-row items-center gap-4 lg:gap-6 xl:gap-16">
+        <div className="flex gap-2 lg:gap-4 flex-1 w-full">
           {!users || users.length === 0 ? (
             <ErrorText text="There are no users" />
           ) : (
@@ -28,7 +28,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(0, 2).map((user) => (
                   <UserCard
                     key={user.id}
-                    className="mb-1 lg:mb-4 max-w-[339px]"
+                    className="mb-2 lg:mb-4"
                     user={user}
                     session={session}
                   />
@@ -38,8 +38,8 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
                 {users?.slice(2).map((user, index) => (
                   <UserCard
                     key={user.id}
-                    className={cn("mb-1 lg:mb-4 max-w-[339px]", {
-                      "scale-120 z-10": index === 0,
+                    className={cn("mb-1 lg:mb-4", {
+                      "xl:scale-120 z-10": index === 0,
                     })}
                     user={user}
                     session={session}
@@ -57,7 +57,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
               BlogFlow
             </span>
           </h2>
-          <p className="py-4 sm:py-6">
+          <p className="py-4 lg:py-6">
             Tired of juggling drafts, posts, and subscriber lists in different
             places? BlogFlow brings it all together in one clean, powerful
             dashboard. Whether you&apos;re writing your next big post, managing
@@ -65,7 +65,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
             makes it easy, fast, and even a little fun.
           </p>
 
-          <p className="pb-6">
+          <p className="pb-4 lg:pb-6">
             Take the stress out of blogging and focus on what you love most:
             creating.
           </p>

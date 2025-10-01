@@ -21,14 +21,14 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
             Features
           </span>
         </h2>
-        <p className="py-6 max-w-2xl text-center mx-auto">
+        <p className="py-4 lg:py-6 max-w-2xl text-center mx-auto">
           Stay inspired with the latest and most popular posts. Whether
           you&apos;re revisiting your own highlights or exploring new ideas,
           this space keeps your content in motion.
         </p>
 
         <div className="">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-2 lg:gap-4 mb-2 lg:mb-4">
             {featuredList.slice(0, 2).map((item) => (
               <SpotlightCard
                 key={item.id}
@@ -47,7 +47,7 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
               </SpotlightCard>
             ))}
           </div>
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-2 lg:gap-4">
             {featuredList.slice(2).map((item) => (
               <SpotlightCard
                 key={item.id}

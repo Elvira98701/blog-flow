@@ -10,7 +10,7 @@ export const Header = ({ className }: HeaderProps) => {
   return (
     <header
       className={cn(
-        "absolute w-screen top-0 left-0 z-30 flex justify-center pt-4",
+        "absolute w-screen top-0 left-0 z-30 flex justify-center pt-4 px-2",
         className
       )}
     >

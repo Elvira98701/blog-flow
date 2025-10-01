@@ -6,7 +6,6 @@ export { Container } from "./container";
 export { DeletePostButton } from "./delete-post-button";
 export { DotGrid } from "./dot-grid";
 export { ErrorText } from "./error-text";
-export { FeedPosts } from "./feed-posts";
 export { FeedUsers } from "./feed-users";
 export { Gradient } from "./gradient";
 export { Loader } from "./loader";

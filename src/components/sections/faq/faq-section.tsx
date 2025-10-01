@@ -20,13 +20,13 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
           </span>
           Asked Questions
         </h2>
-        <p className="text-center py-6 max-w-2xl mx-auto">
+        <p className="text-center py-4 lg:py-6 max-w-2xl mx-auto">
           Got questions? We’ve got answers. Here are some of the most common
           things people ask about using BlogFlow.
         </p>
         <FaqAccordion />
       </Container>
-      <Gradient className="absolute top-0 left-1/2 -translate-x-1/2 -z-10 w-full" />
+      <Gradient className="absolute top-0 left-1/2 -translate-x-1/2 -z-30 w-full" />
     </section>
   );
 };

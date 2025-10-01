@@ -66,7 +66,7 @@ export const Comments = ({ postId, comments, className }: CommentsProps) => {
             />
             <div>
               <span className="font-bold">{comment.user.name}</span>
-              <p className="pt-1 max-w-[92%]">{comment.content}</p>
+              <p className="pt-1">{comment.content}</p>
               <span className="text-xs font-mono text-foreground/50">
                 {new Date(comment.createdAt).toDateString()}
               </span>

@@ -1,7 +1,5 @@
 "use client";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
-
 import {
   ErrorText,
   Loader,
@@ -9,36 +7,17 @@ import {
   PostsSearchInput,
 } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
-import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { fetchFeedPosts } from "@/services/api/post";
+
+import { useInfinitePosts } from "../hooks/use-infinite-posts";
 
 interface FeedPostsProps {
   className?: string;
 }
 
 export const FeedPosts = ({ className }: FeedPostsProps) => {
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    error,
-    isLoading,
-    isError,
-  } = useInfiniteQuery({
-    queryKey: [QUERY_KEYS.FEED_POSTS],
-    queryFn: fetchFeedPosts,
-    initialPageParam: null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
-
-  const lastRowRef = useInfiniteScroll(() => {
-    if (!isFetchingNextPage && hasNextPage) {
-      fetchNextPage();
-    }
-  }, hasNextPage);
+  const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
+    useInfinitePosts();
 
   return (
     <section className={cn("w-full", className)}>
@@ -54,7 +33,7 @@ export const FeedPosts = ({ className }: FeedPostsProps) => {
           ))}
         </div>
       ) : isError ? (
-        <ErrorText text={error.message} size="lg" className="mt-10" />
+        <ErrorText text={error?.message ?? ""} size="lg" className="mt-10" />
       ) : (
         <>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 mt-5">

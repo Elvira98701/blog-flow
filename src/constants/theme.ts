@@ -13,11 +13,11 @@ export interface ITheme {
 export const themeData: ITheme[] = [
   {
     id: 1,
-    title: "Light",
+    title: "Violet",
     value: "light",
     colors: {
-      primary: "#00a8aa",
-      accent: "#4c1a57",
+      primary: "#7d09ff",
+      accent: "#45c4f9",
     },
   },
   {
@@ -25,8 +25,8 @@ export const themeData: ITheme[] = [
     title: "Blue",
     value: "theme-blue",
     colors: {
-      primary: "#bbf451",
-      accent: "#8ec5ff",
+      primary: "#aee640",
+      accent: "#6ca2de",
     },
   },
   {
@@ -34,8 +34,8 @@ export const themeData: ITheme[] = [
     title: "Peach",
     value: "theme-peach",
     colors: {
-      primary: "#fcbb4d",
-      accent: "#5d498c",
+      primary: "#f30a22",
+      accent: "#9e91e7",
     },
   },
   {
@@ -44,7 +44,7 @@ export const themeData: ITheme[] = [
     value: "dark",
     colors: {
       primary: "#00d5be",
-      accent: "#1e2939",
+      accent: "#212764",
     },
   },
   {
@@ -61,8 +61,8 @@ export const themeData: ITheme[] = [
     title: "Midnigth",
     value: "theme-midnight",
     colors: {
-      primary: "#fda5d5",
-      accent: "#241e64",
+      primary: "#9d0c66",
+      accent: "#4200cb",
     },
   },
 ];

@@ -14,7 +14,7 @@ export const StatsSection = ({ className }: StatsSectionProps) => {
         <div className="rotate-3 origin-center absolute top-1/2 -translate-y-1/2 w-full">
           <Marquee
             pauseOnHover
-            className="[--duration:20s] font-bold text-5xl bg-accent text-white"
+            className="[--duration:20s] font-bold text-3xl md:text-5xl bg-accent text-white"
           >
             {firstRow.map((review) => (
               <div key={review} className="">
@@ -27,7 +27,7 @@ export const StatsSection = ({ className }: StatsSectionProps) => {
           <Marquee
             reverse
             pauseOnHover
-            className="[--duration:20s] font-bold text-5xl bg-gradient-to-r from-primary to-accent text-white"
+            className="[--duration:20s] font-bold text-3xl md:text-5xl bg-gradient-to-r from-primary to-accent text-white"
           >
             {firstRow.map((review) => (
               <div key={review} className="">
