@@ -8,8 +8,9 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { CommentsWrapper, DeletePostButton } from "@/components/shared";
+import { CommentsWrapper } from "@/components/shared";
 import { Button } from "@/components/ui";
+import { DeletePostButton } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { toggleLike } from "@/services/api";
 import { PostWithLikesAndAuthor } from "@/types";

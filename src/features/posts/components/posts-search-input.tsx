@@ -1,16 +1,14 @@
 "use client";
 
-import { useRef, useState } from "react";
-
-import { Post } from "@prisma/client";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useClickAway, useDebounce } from "react-use";
 
 import { Input } from "@/components/ui";
+import { useSearchFocus } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { searchPosts } from "@/services/api";
+
+import { usePostsSearch } from "../hooks/use-posts-search";
 
 interface PostsSearchInputProps {
   className?: string;
@@ -20,32 +18,12 @@ export const PostsSearchInput = ({
   className,
   ...props
 }: PostsSearchInputProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [focused, setFocused] = useState(false);
-  const [posts, setPosts] = useState<Post[]>([]);
-  const ref = useRef(null);
-
-  useClickAway(ref, () => {
-    setFocused(false);
-  });
-
-  useDebounce(
-    async () => {
-      try {
-        const response = await searchPosts(searchQuery);
-        setPosts(response);
-      } catch (error) {
-        console.warn(error);
-      }
-    },
-    250,
-    [searchQuery]
-  );
+  const { focused, setFocused, ref } = useSearchFocus();
+  const { searchQuery, setSearchQuery, posts, reset } = usePostsSearch();
 
   const handleClickItem = () => {
+    reset();
     setFocused(false);
-    setSearchQuery("");
-    setPosts([]);
   };
 
   return (

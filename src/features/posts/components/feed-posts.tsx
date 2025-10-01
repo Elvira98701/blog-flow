@@ -1,15 +1,12 @@
 "use client";
 
-import {
-  ErrorText,
-  Loader,
-  PostCard,
-  PostsSearchInput,
-} from "@/components/shared";
+import { ErrorText, Loader, PostCard } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { useInfinitePosts } from "../hooks/use-infinite-posts";
+
+import { PostsSearchInput } from "./posts-search-input";
 
 interface FeedPostsProps {
   className?: string;

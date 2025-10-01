@@ -3,7 +3,6 @@ export { BackButton } from "./back-button";
 export { BigPostCard } from "./big-post-card";
 export { ClearButton } from "./clear-button";
 export { Container } from "./container";
-export { DeletePostButton } from "./delete-post-button";
 export { DotGrid } from "./dot-grid";
 export { ErrorText } from "./error-text";
 export { FeedUsers } from "./feed-users";
@@ -21,7 +20,6 @@ export { UserSubscribersList } from "./user-subscribers-list";
 export { UserPosts } from "./user-posts";
 export { TopUsersWidget } from "./top-users-widget";
 export { UserWidget } from "./user-widget";
-export { PostsSearchInput } from "./posts-search-input";
 export { CommentsWrapper } from "./comments";
 
 export * from "./theme";
