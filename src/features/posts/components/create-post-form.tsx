@@ -1,38 +1,25 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
 import { FormTextarea, FormInput } from "@/components/shared/form";
 import { Button } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { createPost } from "@/services/api";
 
-import { formPostSchema, FormPostValue } from "./schemas";
+import { useCreatePost } from "../hooks/use-create-post";
+import { formPostSchema, FormPostValue } from "../model/schemas";
 
-interface PostFormProps {
+interface CreatePostFormProps {
   sessionUserId: number;
   className?: string;
 }
 
-export const PostForm = ({ sessionUserId, className }: PostFormProps) => {
-  const queryClient = useQueryClient();
-  const { isPending, mutate } = useMutation({
-    mutationFn: (data: { title: string; content: string; userId: number }) =>
-      createPost(data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
-      });
-      toast.success("The post was created successfully");
-    },
-    onError: () => {
-      toast.error("Error when creating a post");
-    },
-  });
+export const CreatePostForm = ({
+  sessionUserId,
+  className,
+}: CreatePostFormProps) => {
+  const { mutate, isPending } = useCreatePost(sessionUserId);
 
   const form = useForm<FormPostValue>({
     resolver: zodResolver(formPostSchema),

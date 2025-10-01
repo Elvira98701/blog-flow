@@ -2,9 +2,10 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { BigPostCard, ErrorText, Loader, PostForm } from "@/components/shared";
+import { BigPostCard, ErrorText, Loader } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
+import { CreatePostForm } from "@/features/posts";
 import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
 import { fetchPostsByUserId } from "@/services/api";
@@ -45,7 +46,7 @@ export const UserPosts = ({
   return (
     <div className={cn("flex flex-col gap-4 items-center", className)}>
       {userId === sessionUserId && (
-        <PostForm sessionUserId={sessionUserId} className="w-full" />
+        <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
       )}
       {isLoading ? (
         Array.from({ length: 3 }, (_, i) => (
