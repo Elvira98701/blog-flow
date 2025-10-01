@@ -18,7 +18,7 @@ export default async function Profile() {
   return (
     <div className="min-h-screen relative">
       <h1 className="font-bold mb-4">Profile</h1>
-      <div className="flex gap-5 items-start">
+      <div className="flex gap-4 items-start">
         <Suspense fallback={<Loader />}>
           <UserWidget
             user={user}

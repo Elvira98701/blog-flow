@@ -19,7 +19,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
       aria-labelledby="about-title"
     >
       <Container className="flex flex-col md:flex-row items-center gap-6 lg:gap-16">
-        <div className="flex gap-1 flex-1 w-full">
+        <div className="flex gap-4 flex-1 w-full">
           {!users || users.length === 0 ? (
             <ErrorText text="There are no users" />
           ) : (
@@ -57,7 +57,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
               BlogFlow
             </span>
           </h2>
-          <p className="py-4 sm:py-8">
+          <p className="py-4 sm:py-6">
             Tired of juggling drafts, posts, and subscriber lists in different
             places? BlogFlow brings it all together in one clean, powerful
             dashboard. Whether you&apos;re writing your next big post, managing
@@ -65,7 +65,7 @@ export const AboutSection = async ({ className }: AboutSectionProps) => {
             makes it easy, fast, and even a little fun.
           </p>
 
-          <p className="pb-8">
+          <p className="pb-6">
             Take the stress out of blogging and focus on what you love most:
             creating.
           </p>

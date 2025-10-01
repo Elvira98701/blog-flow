@@ -57,10 +57,7 @@ export const BigPostCard = ({
 
   return (
     <article
-      className={cn(
-        "relative rounded-md bg-card/40 border p-4 w-full",
-        className
-      )}
+      className={cn("relative rounded-md bg-card border p-4 w-full", className)}
     >
       <header>
         <div className="flex gap-2 items-center mb-2">
@@ -97,7 +94,7 @@ export const BigPostCard = ({
         width={1200}
         height={800}
         alt={post.title}
-        className="w-full h-[500px] object-cover rounded-md"
+        className="w-full h-[480px] object-cover rounded-md"
       />
       <div className="flex items-center gap-2 pt-4">
         {isOwner && (

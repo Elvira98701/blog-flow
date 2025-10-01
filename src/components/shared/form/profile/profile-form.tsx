@@ -80,7 +80,7 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn(
-          "bg-card/40 p-4 rounded-lg border flex flex-col gap-5",
+          "bg-card p-4 rounded-lg border flex flex-col gap-5",
           className
         )}
       >

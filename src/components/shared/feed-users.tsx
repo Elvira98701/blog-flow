@@ -51,7 +51,7 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
       </div>
 
       {isLoading ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
           {Array.from({ length: 8 }, (_, i) => (
             <Skeleton key={i} className="w-full rounded-lg h-80 border" />
           ))}

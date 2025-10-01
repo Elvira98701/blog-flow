@@ -19,15 +19,15 @@ export const ThemeToggle = () => {
 
   return (
     <Dialog>
-      <DialogTrigger className="border bg-card rounded-sm h-10 px-6 cursor-pointer">
+      <DialogTrigger className="border bg-background rounded-sm h-10 px-6 cursor-pointer">
         Theme
       </DialogTrigger>
-      <DialogContent className="w-full max-w-screen-xl">
+      <DialogContent className="w-full max-w-screen-xl p-4">
         <DialogHeader>
           <DialogTitle className="font-bold">Themes</DialogTitle>
           <DialogDescription>Choose a theme</DialogDescription>
         </DialogHeader>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-3 gap-4">
           {themeData.map((theme) => (
             <ThemeButton
               key={theme.id}

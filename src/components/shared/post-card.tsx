@@ -22,7 +22,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
     >
       <div
         className={cn(
-          "bg-card/70 h-full rounded-md p-2 border transition-colors",
+          "bg-card h-full rounded-md p-2 border transition-colors",
           {
             "bg-card": active,
           }

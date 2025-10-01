@@ -24,7 +24,7 @@ export const AuthWrapper = ({ className }: AuthWrapperProps) => {
   return (
     <div
       className={cn(
-        "flex flex-col gap-4 border bg-background/10 rounded-md backdrop-blur-xs ring-3 ring-border/30 p-5",
+        "flex flex-col gap-4 border bg-background/10 rounded-md backdrop-blur-xs ring-3 ring-border/30 p-4",
         className
       )}
     >

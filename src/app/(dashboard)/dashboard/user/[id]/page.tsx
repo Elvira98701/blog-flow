@@ -37,7 +37,7 @@ export default async function User({
   const sessionUserId = Number(session.id);
 
   return (
-    <section className="flex gap-5 items-start min-h-screen">
+    <section className="flex gap-4 items-start min-h-screen">
       <Suspense fallback={<Loader />}>
         <UserWidget user={user} sessionUserId={sessionUserId} />
       </Suspense>

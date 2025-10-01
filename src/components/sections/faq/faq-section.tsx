@@ -20,7 +20,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
           </span>
           Asked Questions
         </h2>
-        <p className="text-center py-8 max-w-2xl mx-auto">
+        <p className="text-center py-6 max-w-2xl mx-auto">
           Got questions? We’ve got answers. Here are some of the most common
           things people ask about using BlogFlow.
         </p>

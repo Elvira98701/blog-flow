@@ -43,7 +43,7 @@ export const UserPosts = ({
   }, hasNextPage);
 
   return (
-    <div className={cn("flex flex-col gap-5 items-center", className)}>
+    <div className={cn("flex flex-col gap-4 items-center", className)}>
       {userId === sessionUserId && (
         <PostForm sessionUserId={sessionUserId} className="w-full" />
       )}

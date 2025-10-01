@@ -35,9 +35,9 @@ export const UserCard = ({
       <Link
         href={!session ? "/auth" : `/dashboard/user/${user.id}`}
         className={cn(
-          "bg-card/50 h-full rounded-md p-2 border block transition-colors duration-300 hover:bg-background relative",
+          "bg-card h-full rounded-md p-2 border block transition-colors duration-300 hover:bg-background relative",
           {
-            "bg-card": active,
+            "bg-background": active,
           }
         )}
       >

@@ -19,7 +19,7 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
     >
       <Container className="flex justify-center items-center">
         <div className="bg-linear-to-b from-accent via-background to-primary w-[702px] h-[702px] rounded-full flex justify-center items-center">
-          <div className="bg-background w-[700px] h-[700px] rounded-full flex justify-center items-center flex-col gap-4">
+          <div className="bg-background w-[700px] h-[700px] rounded-full flex justify-center items-center flex-col gap-6">
             <h2 className="big-title text-center" id="join-title">
               Join the{" "}
               <Image

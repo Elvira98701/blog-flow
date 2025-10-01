@@ -28,7 +28,7 @@ export const HeroSection = async ({ className }: HeroSectionProps) => {
           returnDuration={1.5}
         />
       </div>
-      <Container className="min-h-full flex flex-col justify-center items-center gap-4 pt-[20vh]">
+      <Container className="min-h-full flex flex-col justify-center items-center gap-6 pt-[20vh]">
         <p className="border px-4 py-1 rounded-full text-sm bg-background flex gap-2 items-center">
           Discover the all-new ClickUp 3.0 <ArrowRight size={12} />
         </p>
