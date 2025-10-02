@@ -1,7 +1,7 @@
 "use client";
 
-import { BigPostCard, ErrorText, Loader } from "@/components/shared";
-import { Skeleton } from "@/components/ui";
+import { BigPostCard, ErrorText } from "@/components/shared";
+import { Loader, Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { useInfinitePostsByUser } from "./use-infinite-posts-by-user";

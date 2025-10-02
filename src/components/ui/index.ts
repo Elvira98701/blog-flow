@@ -3,6 +3,7 @@ export { Button } from "./button";
 export { Logo } from "./logo";
 export { Input } from "./input";
 export { Label } from "./label";
+export { Loader } from "./loader";
 export { Skeleton } from "./skeleton";
 export { Textarea } from "./textarea";
 export * from "./accordion";

@@ -3,13 +3,8 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
-import {
-  ErrorText,
-  Loader,
-  UserCard,
-  UsersSearchInput,
-} from "@/components/shared";
-import { Skeleton } from "@/components/ui";
+import { ErrorText, UserCard, UsersSearchInput } from "@/components/shared";
+import { Loader, Skeleton } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";

@@ -7,7 +7,6 @@ export { DotGrid } from "./dot-grid";
 export { ErrorText } from "./error-text";
 export { FeedUsers } from "./feed-users";
 export { Gradient } from "./gradient";
-export { Loader } from "./loader";
 export { Marquee } from "./marquee";
 export { PostCard } from "./post-card";
 export { UsersSearchInput } from "./users-search-input";

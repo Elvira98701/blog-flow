@@ -2,7 +2,8 @@ import { Suspense } from "react";
 
 import { redirect } from "next/navigation";
 
-import { Gradient, Loader, ProfileForm, UserWidget } from "@/components/shared";
+import { Gradient, ProfileForm, UserWidget } from "@/components/shared";
+import { Loader } from "@/components/ui";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/api";
 

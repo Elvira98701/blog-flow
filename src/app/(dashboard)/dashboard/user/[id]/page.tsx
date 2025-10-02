@@ -2,7 +2,8 @@ import { Suspense } from "react";
 
 import { notFound, redirect } from "next/navigation";
 
-import { Loader, TopUsersWidget, UserWidget } from "@/components/shared";
+import { TopUsersWidget, UserWidget } from "@/components/shared";
+import { Loader } from "@/components/ui";
 import { CreatePostForm, PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchHeroUsers, fetchUserById } from "@/services/api";

@@ -7,9 +7,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
-import { Button, ButtonLink } from "@/components/ui";
-
-import { Loader } from "./loader";
+import { Button, ButtonLink, Loader } from "@/components/ui";
 
 export const ProfileButton = () => {
   const { data: session, status } = useSession();
