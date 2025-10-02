@@ -8,7 +8,7 @@ import { Input } from "@/components/ui";
 import { useSearchFocus } from "@/hooks";
 import { cn } from "@/lib/utils";
 
-import { usePostsSearch } from "../hooks/use-posts-search";
+import { usePostsSearch } from "./use-posts-search";
 
 interface PostsSearchInputProps {
   className?: string;

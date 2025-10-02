@@ -4,9 +4,9 @@ import { ErrorText, Loader, PostCard } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-import { useInfinitePosts } from "../hooks/use-infinite-posts";
+import { PostsSearchInput } from "../posts-search-input";
 
-import { PostsSearchInput } from "./posts-search-input";
+import { useInfinitePosts } from "./use-infinite-posts";
 
 interface FeedPostsProps {
   className?: string;

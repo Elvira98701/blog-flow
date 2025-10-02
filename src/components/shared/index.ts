@@ -17,7 +17,6 @@ export { UserCard } from "./user-card";
 export { UserRow } from "./user-row";
 export { UserHead } from "./user-head";
 export { UserSubscribersList } from "./user-subscribers-list";
-export { UserPosts } from "./user-posts";
 export { TopUsersWidget } from "./top-users-widget";
 export { UserWidget } from "./user-widget";
 export { CommentsWrapper } from "./comments";

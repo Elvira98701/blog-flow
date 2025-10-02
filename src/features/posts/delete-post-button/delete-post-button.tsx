@@ -3,7 +3,7 @@
 import { ClearButton } from "@/components/shared";
 import { cn } from "@/lib/utils";
 
-import { useDeletePost } from "../hooks/use-delete-post";
+import { useDeletePost } from "./use-delete-post";
 
 interface DeletePostButtonProps {
   sessionUserId: number;

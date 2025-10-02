@@ -1,3 +1,4 @@
-export { CreatePostForm } from "./components/create-post-form";
-export { DeletePostButton } from "./components/delete-post-button";
-export { FeedPosts } from "./components/feed-posts";
+export { CreatePostForm } from "./create-post-form";
+export { DeletePostButton } from "./delete-post-button";
+export { FeedPosts } from "./feed-posts";
+export { PostsByUser } from "./posts-by-user";

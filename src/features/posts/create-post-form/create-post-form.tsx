@@ -7,8 +7,9 @@ import { FormTextarea, FormInput } from "@/components/shared/form";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-import { useCreatePost } from "../hooks/use-create-post";
-import { formPostSchema, FormPostValue } from "../model/schemas";
+import { formPostSchema, FormPostValue } from "../schemas";
+
+import { useCreatePost } from "./use-create-post";
 
 interface CreatePostFormProps {
   sessionUserId: number;

@@ -1,59 +1,33 @@
 "use client";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
-
 import { BigPostCard, ErrorText, Loader } from "@/components/shared";
 import { Skeleton } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
-import { CreatePostForm } from "@/features/posts";
-import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { fetchPostsByUserId } from "@/services/api";
 
-interface UserPostsProps {
+import { useInfinitePostsByUser } from "./use-infinite-posts-by-user";
+
+interface PostsByUserProps {
   userId: number;
   sessionUserId: number;
   className?: string;
 }
 
-export const UserPosts = ({
+export const PostsByUser = ({
   userId,
   sessionUserId,
   className,
-}: UserPostsProps) => {
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    error,
-    isLoading,
-    isError,
-  } = useInfiniteQuery({
-    queryKey: [QUERY_KEYS.USER_POSTS, userId],
-    queryFn: ({ pageParam }: { pageParam: string | null }) =>
-      fetchPostsByUserId({ userId, pageParam }),
-    initialPageParam: null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
-
-  const lastRowRef = useInfiniteScroll(() => {
-    if (!isFetchingNextPage && hasNextPage) {
-      fetchNextPage();
-    }
-  }, hasNextPage);
+}: PostsByUserProps) => {
+  const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
+    useInfinitePostsByUser(userId);
 
   return (
     <div className={cn("flex flex-col gap-4 items-center", className)}>
-      {userId === sessionUserId && (
-        <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
-      )}
       {isLoading ? (
         Array.from({ length: 3 }, (_, i) => (
           <Skeleton key={i} className="w-full rounded-md h-[446px] border" />
         ))
       ) : isError ? (
-        <ErrorText text={error.message} size="lg" className="mt-10" />
+        <ErrorText text={error?.message ?? ""} size="lg" className="mt-10" />
       ) : (
         data?.pages.map((page, pageIndex) => {
           return page.posts.map((post, postIndex) => {
