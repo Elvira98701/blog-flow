@@ -2,9 +2,11 @@
 
 import { useSession } from "next-auth/react";
 
-import { UserCard, UsersSearchInput } from "@/components/shared";
+import { UserCard } from "@/components/shared";
 import { Loader, Skeleton, ErrorText } from "@/components/ui";
 import { cn } from "@/lib/utils";
+
+import { UsersSearchInput } from "../users-search-input";
 
 import { useInfiniteUsers } from "./use-infinite-users";
 

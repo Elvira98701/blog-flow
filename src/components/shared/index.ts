@@ -6,7 +6,6 @@ export { DotGrid } from "./dot-grid";
 export { Gradient } from "./gradient";
 export { Marquee } from "./marquee";
 export { PostCard } from "./post-card";
-export { UsersSearchInput } from "./users-search-input";
 export { ProfileButton } from "./profile-button";
 export { SpotlightCard } from "./spotlight-card";
 export { UserCard } from "./user-card";

@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
-
-import { User } from "@prisma/client";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useDebounce } from "react-use";
 
 import { Input } from "@/components/ui";
 import { useSearchFocus } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { searchUsers } from "@/services/api";
+
+import { useUsersSearch } from "./use-users-search";
 
 interface UsersSearchInputProps {
   className?: string;
@@ -22,27 +19,10 @@ export const UsersSearchInput = ({
   ...props
 }: UsersSearchInputProps) => {
   const { focused, setFocused, ref } = useSearchFocus();
-
-  const [searchQuery, setSearchQuery] = useState("");
-  const [users, setUsers] = useState<User[]>([]);
-
-  useDebounce(
-    async () => {
-      try {
-        const response = await searchUsers(searchQuery);
-        setUsers(response);
-      } catch (error) {
-        console.warn(error);
-      }
-    },
-    250,
-    [searchQuery]
-  );
+  const { searchQuery, setSearchQuery, users, reset } = useUsersSearch();
 
   const handleClickItem = () => {
-    setSearchQuery("");
-    setUsers([]);
-
+    reset();
     setFocused(false);
   };
 
