@@ -1,7 +1,7 @@
 "use client";
 
-import { ErrorText, PostCard } from "@/components/shared";
-import { Loader, Skeleton } from "@/components/ui";
+import { PostCard } from "@/components/shared";
+import { Loader, Skeleton, ErrorText } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { PostsSearchInput } from "../posts-search-input";

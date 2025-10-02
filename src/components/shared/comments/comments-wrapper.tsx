@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { ErrorText } from "@/components/shared";
-import { Loader } from "@/components/ui";
+import { ErrorText, Loader } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { fetchComments } from "@/services/api";
