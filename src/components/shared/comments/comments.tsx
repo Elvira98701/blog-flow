@@ -8,12 +8,8 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
-import {
-  ClearButton,
-  CreateCommentForm,
-  EditCommentForm,
-} from "@/components/shared";
-import { Button } from "@/components/ui";
+import { CreateCommentForm, EditCommentForm } from "@/components/shared";
+import { Button, ClearButton } from "@/components/ui";
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
 import { deleteCommentById } from "@/services/api";

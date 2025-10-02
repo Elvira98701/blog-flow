@@ -1,6 +1,6 @@
 "use client";
 
-import { ClearButton } from "@/components/shared";
+import { ClearButton } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { useDeletePost } from "./use-delete-post";

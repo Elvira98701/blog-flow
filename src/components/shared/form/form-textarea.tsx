@@ -4,8 +4,8 @@ import type { FC, TextareaHTMLAttributes } from "react";
 
 import { useFormContext } from "react-hook-form";
 
-import { ClearButton, ErrorText } from "@/components/shared";
-import { Label, Textarea } from "@/components/ui";
+import { ErrorText } from "@/components/shared";
+import { ClearButton, Label, Textarea } from "@/components/ui";
 
 interface Props extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
