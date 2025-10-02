@@ -1,4 +1,5 @@
-import { FeedUsers, Gradient } from "@/components/shared";
+import { Gradient } from "@/components/shared";
+import { FeedUsers } from "@/features/users";
 
 export default function Users() {
   return (

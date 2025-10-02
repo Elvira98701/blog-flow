@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
         title,
         content,
         userId,
-        image: `/images/posts/${getRandomNumber(1, 28)}.jpg`,
+        image: `/images/posts/${getRandomNumber(1, 22)}.jpg`,
       },
     });
 

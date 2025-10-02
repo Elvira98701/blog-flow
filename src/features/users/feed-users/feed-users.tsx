@@ -1,14 +1,12 @@
 "use client";
 
-import { useInfiniteQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
 import { ErrorText, UserCard, UsersSearchInput } from "@/components/shared";
 import { Loader, Skeleton } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
-import { useInfiniteScroll } from "@/hooks";
 import { cn } from "@/lib/utils";
-import { fetchFeedUsers } from "@/services/api";
+
+import { useInfiniteUsers } from "./use-infinite-users";
 
 interface FeedUsersProps {
   className?: string;
@@ -16,27 +14,8 @@ interface FeedUsersProps {
 
 export const FeedUsers = ({ className }: FeedUsersProps) => {
   const { data: session } = useSession();
-
-  const {
-    data,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-    error,
-    isLoading,
-    isError,
-  } = useInfiniteQuery({
-    queryKey: [QUERY_KEYS.FEED_USERS],
-    queryFn: fetchFeedUsers,
-    initialPageParam: null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
-  });
-
-  const lastRowRef = useInfiniteScroll(() => {
-    if (!isFetchingNextPage && hasNextPage) {
-      fetchNextPage();
-    }
-  }, hasNextPage);
+  const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
+    useInfiniteUsers();
 
   return (
     <section className={cn("w-full", className)}>
@@ -52,7 +31,7 @@ export const FeedUsers = ({ className }: FeedUsersProps) => {
           ))}
         </div>
       ) : isError ? (
-        <ErrorText text={error.message} size="lg" className="mt-10" />
+        <ErrorText text={error?.message ?? ""} size="lg" className="mt-10" />
       ) : (
         <>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
