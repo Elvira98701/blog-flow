@@ -22,7 +22,7 @@ export const formUpdateSchema = z
       .optional()
       .refine(
         (fileList) => {
-          if (!fileList || fileList.length === 0) return true; // not required
+          if (!fileList || fileList.length === 0) return true;
           const file = fileList[0];
           return (
             file.size <= MAX_FILE_SIZE && ACCEPTED_TYPES.includes(file.type)

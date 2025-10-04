@@ -5,18 +5,17 @@ import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import { updateUserInfo, uploadUserImage } from "@/app/actions";
+import { FormInput } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-import { FormInput } from "../form-input";
+import { formUpdateSchema, FormUpdateValues } from "../schemas";
 
-import { formUpdateSchema, FormUpdateValues } from "./schemas";
-
-interface ProfileFormProps {
+interface UpdateProfileFormProps {
   className?: string;
 }
 
-export const ProfileForm = ({ className }: ProfileFormProps) => {
+export const UpdateProfileForm = ({ className }: UpdateProfileFormProps) => {
   const form = useForm<FormUpdateValues>({
     resolver: zodResolver(formUpdateSchema),
     defaultValues: {

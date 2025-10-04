@@ -2,8 +2,9 @@ import { Suspense } from "react";
 
 import { redirect } from "next/navigation";
 
-import { Gradient, ProfileForm, UserWidget } from "@/components/shared";
+import { Gradient, UserWidget } from "@/components/shared";
 import { Loader } from "@/components/ui";
+import { UpdateProfileForm } from "@/features/profile";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/api";
 
@@ -28,7 +29,7 @@ export default async function Profile() {
           />
         </Suspense>
         <div className="max-w-2xl flex-1">
-          <ProfileForm className="w-full" />
+          <UpdateProfileForm className="w-full" />
         </div>
       </div>
       <Gradient className="absolute right-0 -z-10" />
