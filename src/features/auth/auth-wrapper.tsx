@@ -7,8 +7,7 @@ import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
-import { LoginForm } from "./form/login-form";
-import { RegisterForm } from "./form/register-form";
+import { LoginForm, RegisterForm } from "./form";
 
 interface AuthWrapperProps {
   className?: string;

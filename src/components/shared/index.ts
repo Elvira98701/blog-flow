@@ -18,4 +18,3 @@ export { CommentsWrapper } from "./comments";
 
 export * from "./theme";
 export * from "./form";
-export * from "./auth";
