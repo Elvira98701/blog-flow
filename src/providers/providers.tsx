@@ -3,6 +3,7 @@
 import { ReactNode } from "react";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { SessionProvider } from "next-auth/react";
 import NextTopLoader from "nextjs-toploader";
 import { Toaster } from "react-hot-toast";
@@ -36,6 +37,8 @@ export const Providers = ({ children }: ProvidersProps) => {
           >
             {children}
           </ThemeProvider>
+
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </SessionProvider>
       <NextTopLoader color="#8468ea" height={4} />
