@@ -16,5 +16,4 @@ export { TopUsersWidget } from "./top-users-widget";
 export { UserWidget } from "./user-widget";
 export { CommentsWrapper } from "./comments";
 
-export * from "./theme";
 export * from "./form";
