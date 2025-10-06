@@ -117,11 +117,7 @@ export const UpdateProfileForm = ({ className }: UpdateProfileFormProps) => {
           type="file"
           accept="image/jpeg, image/png, image/webp"
         />
-        <Button
-          loading={form.formState.isSubmitting}
-          className="h-12 text-base"
-          type="submit"
-        >
+        <Button loading={form.formState.isSubmitting} type="submit" size="lg">
           Update Account
         </Button>
       </form>

@@ -1,22 +1,17 @@
 import Image from "next/image";
 
-import { Button, ButtonLink } from "@/components/ui";
+import { Button } from "@/components/ui";
+import { ProfileModal } from "@/features/profile";
 import { cn } from "@/lib/utils";
 import { UserWithSubscribers } from "@/types";
 
 interface UserHeadProps {
   user: UserWithSubscribers;
   sessionUserId: number;
-  isProfilePage?: boolean;
   className?: string;
 }
 
-export const UserHead = ({
-  user,
-  sessionUserId,
-  isProfilePage = false,
-  className,
-}: UserHeadProps) => {
+export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
   return (
     <div className={cn("flex flex-col gap-2 items-center", className)}>
       <Image
@@ -28,16 +23,7 @@ export const UserHead = ({
       />
       <h1 className="small-title">{user.name}</h1>
       <p>{user.slogan}</p>
-      {sessionUserId === user.id && !isProfilePage && (
-        <ButtonLink
-          href="/dashboard/profile"
-          size="lg"
-          className="w-full"
-          variant="default"
-        >
-          Edit profile
-        </ButtonLink>
-      )}
+      {sessionUserId === user.id && <ProfileModal />}
       {sessionUserId !== user.id && (
         <Button
           size="lg"
