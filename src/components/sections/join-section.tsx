@@ -17,7 +17,7 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
       className={cn("py-10 md:py-20 relative", className)}
       aria-labelledby="join-title"
     >
-      <Container className="flex justify-center items-center flex-col gap-4 lg:gap-6 relative z-10 min-h-[500px] md:min-h-[800px]">
+      <Container className="flex justify-center items-center flex-col gap-4 lg:gap-6 relative z-10 min-h-[300px] md:min-h-[800px]">
         <h2 className="big-title text-center max-w-[700px]" id="join-title">
           Join the{" "}
           <Image
@@ -47,8 +47,8 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
         )}
       </Container>
 
-      <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-linear-to-b from-accent via-background to-primary w-[702px] h-[702px] rounded-full flex justify-center items-center -z-10">
-        <div className="bg-background w-[700px] h-[700px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-linear-to-b from-accent via-background to-primary w-[302px] h-[302px] md:w-[702px] md:h-[702px] rounded-full flex justify-center items-center -z-10">
+        <div className="bg-background w-[300px] h-[300px] md:w-[700px] md:h-[700px] rounded-full" />
       </div>
     </section>
   );

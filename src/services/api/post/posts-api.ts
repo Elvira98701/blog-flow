@@ -49,7 +49,7 @@ export const postsApi = {
         jsonApiWithParams<FeedPostResponse>(
           `/api/users/${userId}/posts`,
           {
-            limit: 2,
+            limit: 3,
             cursor: pageParam,
           },
           signal

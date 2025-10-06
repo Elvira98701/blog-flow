@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { Container, SpotlightCard } from "@/components/shared";
 import { featuredList } from "@/constants/featured-list";
 import { cn } from "@/lib/utils";
@@ -27,45 +25,24 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
           this space keeps your content in motion.
         </p>
 
-        <div className="">
-          <div className="flex gap-2 lg:gap-4 mb-2 lg:mb-4">
-            {featuredList.slice(0, 2).map((item) => (
-              <SpotlightCard
-                key={item.id}
-                spotlightColor="rgba(75, 59, 228, 0.5)"
-                className="flex-1 min-h-[400px]"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 lg:gap-4">
+          {featuredList.map((item, index) => (
+            <SpotlightCard
+              key={item.id}
+              spotlightColor="rgba(75, 59, 228, 0.5)"
+              className="group flex-1 min-h-[250px] flex flex-col gap-2 justify-center"
+            >
+              {item.icon}
+              <h3 className="text-2xl font-bold capitalize">{item.title}</h3>
+              <p>{item.description}</p>
+              <span
+                className="absolute top-4 right-4 w-10 h-10 rounded-full flex justify-center items-center border text-border font-medium
+                   transition-colors duration-500 group-hover:bg-accent group-hover:border-accent/60 group-hover:text-white"
               >
-                <h3 className="text-2xl font-bold capitalize">{item.title}</h3>
-                <p className="pt-2 pb-6">{item.description}</p>
-                <Image
-                  className="w-full h-64 object-cover rounded-md border"
-                  src={item.image}
-                  width={500}
-                  height={300}
-                  alt=""
-                />
-              </SpotlightCard>
-            ))}
-          </div>
-          <div className="flex flex-col md:flex-row gap-2 lg:gap-4">
-            {featuredList.slice(2).map((item) => (
-              <SpotlightCard
-                key={item.id}
-                spotlightColor="rgba(75, 59, 228, 0.5)"
-                className="flex-1 min-h-[250px]"
-              >
-                <h3 className="text-2xl font-bold capitalize">{item.title}</h3>
-                <p className="pt-2 pb-6">{item.description}</p>
-                <Image
-                  className="rounded-md border h-52 w-[80%] object-cover"
-                  src={item.image}
-                  width={500}
-                  height={300}
-                  alt=""
-                />
-              </SpotlightCard>
-            ))}
-          </div>
+                {index + 1}
+              </span>
+            </SpotlightCard>
+          ))}
         </div>
       </Container>
     </section>

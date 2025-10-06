@@ -26,7 +26,7 @@ export const FaqSection = ({ className }: FaqSectionProps) => {
         </p>
         <FaqAccordion />
       </Container>
-      <Gradient className="absolute top-0 left-1/2 -translate-x-1/2 -z-30 w-full" />
+      <Gradient className="absolute top-0 left-1/2 -translate-y-1/2 -z-10" />
     </section>
   );
 };

@@ -11,7 +11,7 @@ interface FooterProps {
 export const Footer = ({ className }: FooterProps) => {
   return (
     <footer className={cn("pb-10 px-2", className)}>
-      <Container className="min-h-32 p-4 flex flex-col justify-between border rounded-md bg-card ring-3 ring-border/30">
+      <Container className="min-h-32 p-4 flex flex-col justify-between border rounded-md bg-background ring-3 ring-border/30">
         <Logo />
         <div className="flex justify-between">
           <small className="text-foreground/60">

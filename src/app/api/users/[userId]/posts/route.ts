@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     const { userId } = await params;
-    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "2");
+    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "3");
     const cursor = parseInt(req.nextUrl.searchParams.get("cursor") || "0");
 
     const posts = await prisma.post.findMany({
