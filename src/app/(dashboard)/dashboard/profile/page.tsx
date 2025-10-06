@@ -6,7 +6,7 @@ import { Gradient, UserWidget } from "@/components/shared";
 import { Loader } from "@/components/ui";
 import { UpdateProfileForm } from "@/features/profile";
 import { getUserSession } from "@/lib/get-user-session";
-import { fetchUserById } from "@/services/api";
+import { fetchUserById } from "@/services/db/user";
 
 export default async function Profile() {
   const session = await getUserSession();

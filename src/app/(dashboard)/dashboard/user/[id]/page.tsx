@@ -6,7 +6,7 @@ import { TopUsersWidget, UserWidget } from "@/components/shared";
 import { Loader } from "@/components/ui";
 import { CreatePostForm, PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
-import { fetchHeroUsers, fetchUserById } from "@/services/api";
+import { fetchHeroUsers, fetchUserById } from "@/services/db/user";
 
 export default async function User({
   params,

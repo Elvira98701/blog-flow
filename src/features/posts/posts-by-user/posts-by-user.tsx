@@ -20,6 +20,8 @@ export const PostsByUser = ({
   const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
     useInfinitePostsByUser(userId);
 
+  console.log(data);
+
   return (
     <div className={cn("flex flex-col gap-4 items-center", className)}>
       {isLoading ? (

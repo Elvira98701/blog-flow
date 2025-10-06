@@ -2,7 +2,7 @@ import { UserCard, Container, Gradient } from "@/components/shared";
 import { ErrorText } from "@/components/ui";
 import { getUserSession } from "@/lib/get-user-session";
 import { cn } from "@/lib/utils";
-import { fetchHeroUsers } from "@/services/api";
+import { fetchHeroUsers } from "@/services/db/user";
 
 import { AboutAccordion } from "./about-accordion";
 

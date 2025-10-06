@@ -1,8 +1,7 @@
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { useInfiniteScroll } from "@/hooks";
-import { fetchFeedPosts } from "@/services/api";
+import { postsApi } from "@/services/api/post";
 
 export const useInfinitePosts = () => {
   const {
@@ -14,10 +13,7 @@ export const useInfinitePosts = () => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    queryKey: [QUERY_KEYS.FEED_POSTS],
-    queryFn: fetchFeedPosts,
-    initialPageParam: null,
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    ...postsApi.getPostsInfinityQueryOptions(),
   });
 
   const lastRowRef = useInfiniteScroll(() => {

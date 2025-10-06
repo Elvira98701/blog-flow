@@ -3,27 +3,67 @@ import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
-import { deletePostById } from "@/services/api";
+import { postsApi } from "@/services/api";
+import { InfiniteData } from "@/services/api/post/posts-api";
+import { FeedPostResponse } from "@/types";
 
 export const useDeletePost = (sessionUserId: number, postId: number) => {
   const queryClient = useQueryClient();
   const pathname = usePathname();
   const router = useRouter();
 
+  const queryKey =
+    postsApi.getPostsByUserInfinityQueryOptions(sessionUserId).queryKey;
+
   const mutation = useMutation({
-    mutationFn: () => deletePostById(postId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    mutationFn: () => postsApi.deletePost(postId),
+
+    onMutate: async () => {
+      await queryClient.cancelQueries({
         queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
       });
+
+      const prevPosts = queryClient.getQueryData<
+        InfiniteData<FeedPostResponse>
+      >([queryKey]);
+
+      queryClient.setQueryData<InfiniteData<FeedPostResponse>>(
+        [queryKey],
+        (old) => {
+          if (!old) return old;
+
+          return {
+            ...old,
+            pages: old.pages.map((page) => ({
+              ...page,
+              posts: page.posts.filter((p) => p.id !== postId),
+            })),
+          };
+        }
+      );
+
+      return { prevPosts };
+    },
+
+    onError: (_, __, onMutateResult, context) => {
+      if (context) {
+        queryClient.setQueryData([queryKey], context.prevPosts);
+      }
+      toast.error("Error when deleting a post");
+    },
+
+    onSuccess: () => {
       toast.success("The post was successfully deleted");
 
       if (pathname === `/dashboard/post/${postId}`) {
         router.push("/dashboard");
       }
     },
-    onError: () => {
-      toast.error("Error when deleting a post");
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.USER_POSTS, sessionUserId],
+      });
     },
   });
 

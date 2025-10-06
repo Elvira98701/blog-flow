@@ -2,7 +2,7 @@ import { notFound, redirect } from "next/navigation";
 
 import { BigPostCard } from "@/components/shared";
 import { getUserSession } from "@/lib/get-user-session";
-import { fetchPostById } from "@/services/api";
+import { fetchPostById } from "@/services/db/post";
 
 export default async function Post({
   params,
