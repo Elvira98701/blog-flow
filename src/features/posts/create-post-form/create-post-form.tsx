@@ -47,7 +47,14 @@ export const CreatePostForm = ({
           className="flex flex-col gap-4"
         >
           <FormInput name="title" label="Title" required />
-          <FormTextarea name="content" label="Content" rows={5} required />
+
+          <FormTextarea
+            className="flex-1/4"
+            name="content"
+            label="Content"
+            rows={5}
+            required
+          />
           <Button
             loading={isPending}
             disabled={isPending}

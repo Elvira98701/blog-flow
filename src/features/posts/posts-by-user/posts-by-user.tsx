@@ -49,7 +49,7 @@ export const PostsByUser = ({
       )}
       {isFetchingNextPage && <Loader />}
       {data?.pages[0].posts.length === 0 && (
-        <div className="flex items-center min-h-[80vh]">
+        <div className="flex items-center justify-center min-h-[50vh] border w-full bg-card rounded-md ">
           <p>The user doesn&apos;t have any posts yet</p>
         </div>
       )}
