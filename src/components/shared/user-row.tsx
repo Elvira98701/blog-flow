@@ -16,7 +16,7 @@ export const UserRow = ({ id, avatar, name, className }: UserRowProps) => {
     <Link
       href={`/dashboard/user/${id}`}
       className={cn(
-        "group bg-background/80 border flex items-center justify-between rounded-full p-1 pr-6 duration-300 transition-colors hover:border-primary",
+        "group bg-background/80 border flex items-center justify-between rounded-full p-1 pr-6 duration-300 transition-transform hover:scale-95",
         className
       )}
     >

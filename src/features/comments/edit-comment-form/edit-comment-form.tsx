@@ -1,17 +1,15 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { FormProvider, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
 import { FormTextarea } from "@/components/shared/form";
 import { Button } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { editCommentById } from "@/services/api";
 
 import { formCommentSchema, FormCommentValue } from "../schemas";
+
+import { useEditComment } from "./use-edit-comment";
 
 interface EditCommentFormProps {
   content: string;
@@ -28,21 +26,7 @@ export const EditCommentForm = ({
   onFinishEdit,
   className,
 }: EditCommentFormProps) => {
-  const queryClient = useQueryClient();
-  const { isPending, mutate } = useMutation({
-    mutationFn: (data: { content: string; commentId: number }) =>
-      editCommentById({ postId, ...data }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.COMMENTS, postId],
-      });
-      toast.success("The comment was edited successfully");
-      onFinishEdit?.();
-    },
-    onError: () => {
-      toast.error("Error when editing a comment");
-    },
-  });
+  const { isPending, mutate } = useEditComment(postId, onFinishEdit);
 
   const form = useForm<FormCommentValue>({
     resolver: zodResolver(formCommentSchema),

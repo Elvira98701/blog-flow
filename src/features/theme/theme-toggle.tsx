@@ -19,7 +19,7 @@ export const ThemeToggle = () => {
 
   return (
     <Dialog>
-      <DialogTrigger className="border bg-background rounded-sm h-10 px-6 cursor-pointer">
+      <DialogTrigger className="border bg-background rounded-sm h-10 px-6 cursor-pointer transition-transform hover:scale-95">
         Theme
       </DialogTrigger>
       <DialogContent className="w-full max-w-screen-xl p-4">

@@ -59,7 +59,7 @@ export const PostsSearchInput = ({
             {posts.map((post) => (
               <Link
                 key={post.id}
-                className="flex items-center gap-3 rounded-full w-full p-1 hover:bg-accent/90 hover:text-white transition-all"
+                className="flex items-center gap-3 rounded-full w-full p-1 hover:bg-foreground hover:text-background transition-all"
                 href={`/dashboard/post/${post.id}`}
                 onClick={handleClickItem}
               >

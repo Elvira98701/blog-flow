@@ -103,6 +103,15 @@ export const BigPostCard = ({
             <Pencil />
           </Button>
         )}
+
+        <Button
+          size="lg"
+          variant="outline"
+          onClick={() => setIsOpenComments(!isOpenComments)}
+          title="open comments"
+        >
+          <MessageCircle />
+        </Button>
         <Button
           size="lg"
           variant="outline"
@@ -111,14 +120,6 @@ export const BigPostCard = ({
         >
           <Heart className={cn(isLiked ? "text-red-500 fill-red-500" : "")} />
           {post.likes.length}
-        </Button>
-        <Button
-          size="lg"
-          variant="outline"
-          onClick={() => setIsOpenComments(!isOpenComments)}
-          title="open comments"
-        >
-          <MessageCircle />
         </Button>
       </div>
       {isOpenComments && <FeedComments postId={post.id} />}

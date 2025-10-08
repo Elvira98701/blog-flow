@@ -1,18 +1,16 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 
 import { FormTextarea } from "@/components/shared/form";
 import { Button } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { createComment } from "@/services/api";
 
 import { formCommentSchema, FormCommentValue } from "../schemas";
+
+import { useCreateComment } from "./use-create-comment";
 
 interface CreateCommentFormProps {
   postId: number;
@@ -24,20 +22,7 @@ export const CreateCommentForm = ({
   className,
 }: CreateCommentFormProps) => {
   const { data: session } = useSession();
-  const queryClient = useQueryClient();
-  const { isPending, mutate } = useMutation({
-    mutationFn: (data: { content: string; userId: number }) =>
-      createComment(postId, data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.COMMENTS, postId],
-      });
-      toast.success("The comment was created successfully");
-    },
-    onError: () => {
-      toast.error("Error when creating a comment");
-    },
-  });
+  const { isPending, mutate } = useCreateComment(postId);
 
   const form = useForm<FormCommentValue>({
     resolver: zodResolver(formCommentSchema),
