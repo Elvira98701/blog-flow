@@ -8,8 +8,8 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-import { CommentsWrapper } from "@/components/shared";
 import { Button } from "@/components/ui";
+import { FeedComments } from "@/features/comments";
 import { DeletePostButton } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { toggleLike } from "@/services/api";
@@ -121,7 +121,7 @@ export const BigPostCard = ({
           <MessageCircle />
         </Button>
       </div>
-      {isOpenComments && <CommentsWrapper postId={post.id} />}
+      {isOpenComments && <FeedComments postId={post.id} />}
       {isOwner && (
         <DeletePostButton
           className="absolute top-4 right-4"
