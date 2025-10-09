@@ -21,7 +21,7 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
         alt={user.name}
         className="rounded-md w-[350px] h-[350px] object-cover border"
       />
-      <h1 className="small-title">{user.name}</h1>
+      <h2 className="small-title">{user.name}</h2>
       <p>{user.slogan}</p>
       {sessionUserId === user.id && <ProfileModal />}
       {sessionUserId !== user.id && (

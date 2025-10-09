@@ -2,15 +2,10 @@ import { Post } from "@prisma/client";
 import { infiniteQueryOptions } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
-import { FeedPostResponse } from "@/types";
+import { FeedPostResponse, InfiniteData } from "@/types";
 
 import { jsonApiInstance } from "../api-instance";
 import { jsonApiWithParams } from "../api-with-params";
-
-export type InfiniteData<T> = {
-  pages: T[];
-  pageParams: (null | number)[];
-};
 
 export const postsApi = {
   getPostsInfinityQueryOptions: () => {

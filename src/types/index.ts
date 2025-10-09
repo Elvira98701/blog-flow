@@ -43,3 +43,8 @@ export type CommentsWithUser = Comment & {
     avatar: string | null;
   };
 };
+
+export type InfiniteData<T> = {
+  pages: T[];
+  pageParams: (null | number)[];
+};

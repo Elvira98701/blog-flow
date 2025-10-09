@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { ProfileButton } from "@/components/shared";
 import { ThemeToggle } from "@/features/theme";
 import { cn } from "@/lib/utils";
@@ -10,7 +12,9 @@ export const ActionsButtons = ({ className }: ActionsButtonsProps) => {
   return (
     <div className={cn("hidden md:flex gap-2 items-center", className)}>
       <ThemeToggle />
-      <ProfileButton />
+      <Suspense>
+        <ProfileButton />
+      </Suspense>
     </div>
   );
 };

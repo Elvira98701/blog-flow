@@ -4,8 +4,7 @@ import toast from "react-hot-toast";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { postsApi } from "@/services/api";
-import { InfiniteData } from "@/services/api/post/posts-api";
-import { FeedPostResponse } from "@/types";
+import { FeedPostResponse, InfiniteData } from "@/types";
 
 export const useDeletePost = (sessionUserId: number, postId: number) => {
   const queryClient = useQueryClient();
@@ -47,7 +46,7 @@ export const useDeletePost = (sessionUserId: number, postId: number) => {
 
     onError: (_, __, onMutateResult, context) => {
       if (context) {
-        queryClient.setQueryData([queryKey], context.prevPosts);
+        queryClient.setQueryData([queryKey], onMutateResult?.prevPosts);
       }
       toast.error("Error when deleting a post");
     },

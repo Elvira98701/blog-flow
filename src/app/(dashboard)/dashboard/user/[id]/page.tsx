@@ -41,13 +41,17 @@ export default async function User({
 
       <div className="flex flex-col gap-4 items-center flex-1">
         {user.id === sessionUserId && (
-          <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
+          <Suspense fallback={<Loader />}>
+            <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
+          </Suspense>
         )}
-        <PostsByUser
-          userId={user.id}
-          sessionUserId={sessionUserId}
-          className="w-full"
-        />
+        <Suspense fallback={<Loader />}>
+          <PostsByUser
+            userId={user.id}
+            sessionUserId={sessionUserId}
+            className="w-full"
+          />
+        </Suspense>
       </div>
       <Suspense fallback={<Loader />}>
         {users && <TopUsersWidget users={users} className="mb-5" />}

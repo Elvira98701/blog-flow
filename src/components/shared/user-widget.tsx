@@ -5,6 +5,7 @@ import { UserSubscribersList } from "./user-subscribers-list";
 
 // исправить типы
 interface UserWidgetProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user: any;
   sessionUserId: number;
   className?: string;

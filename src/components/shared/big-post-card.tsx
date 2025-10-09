@@ -1,18 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { memo, useState } from "react";
 
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart, MessageCircle, Pencil } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui";
 import { FeedComments } from "@/features/comments";
 import { DeletePostButton } from "@/features/posts";
 import { cn } from "@/lib/utils";
-import { toggleLike } from "@/services/api";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface BigPostCardProps {
@@ -22,39 +19,39 @@ interface BigPostCardProps {
   className?: string;
 }
 
-export const BigPostCard = ({
+export const BigPostCard = memo(function BigPostCard({
   sessionUserId,
   post,
   isOwner,
   className,
-}: BigPostCardProps) => {
+}: BigPostCardProps) {
   const [isOpenComments, setIsOpenComments] = useState(false);
-  const [isLiked, setIsLiked] = useState(() =>
-    post.likes.some((like) => like.userId === sessionUserId)
-  );
-  const queryClient = useQueryClient();
+  // const [isLiked, setIsLiked] = useState(() =>
+  //   post.likes.some((like) => like.userId === sessionUserId)
+  // );
+  // const queryClient = useQueryClient();
 
-  const toggleLikeMutation = useMutation({
-    mutationFn: (postId: number) => toggleLike(postId),
-    onSuccess: ({ liked, likesCount }) => {
-      // queryClient.setQueryData<PostWithLikesAndAuthor[]>(
-      //   ["user-posts", userId],
-      //   (oldData) => {
-      //     if (!oldData) return oldData;
-      //     return oldData.map((p) =>
-      //       p.id === post.id ? { ...p, likes: Array(likesCount).fill(null) } : p
-      //     );
-      //   }
-      // );
-      setIsLiked(liked);
-      toast.success("Like");
-    },
-    onError: () => {
-      toast.error("Error when toggling like");
-    },
-  });
+  // const toggleLikeMutation = useMutation({
+  //   mutationFn: (postId: number) => toggleLike(postId),
+  //   onSuccess: ({ liked, likesCount }) => {
+  //     queryClient.setQueryData<PostWithLikesAndAuthor[]>(
+  //       ["user-posts", userId],
+  //       (oldData) => {
+  //         if (!oldData) return oldData;
+  //         return oldData.map((p) =>
+  //           p.id === post.id ? { ...p, likes: Array(likesCount).fill(null) } : p
+  //         );
+  //       }
+  //     );
+  //     setIsLiked(liked);
+  //     toast.success("Like");
+  //   },
+  //   onError: () => {
+  //     toast.error("Error when toggling like");
+  //   },
+  // });
 
-  console.log(isLiked);
+  console.log("render BigPostCard", post.id);
 
   return (
     <article
@@ -116,9 +113,9 @@ export const BigPostCard = ({
           size="lg"
           variant="outline"
           disabled={isOwner}
-          onClick={() => toggleLikeMutation.mutate(post.id)}
+          // onClick={() => toggleLikeMutation.mutate(post.id)}
         >
-          <Heart className={cn(isLiked ? "text-red-500 fill-red-500" : "")} />
+          <Heart />
           {post.likes.length}
         </Button>
       </div>
@@ -132,4 +129,4 @@ export const BigPostCard = ({
       )}
     </article>
   );
-};
+});

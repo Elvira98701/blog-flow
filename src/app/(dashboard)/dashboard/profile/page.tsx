@@ -21,19 +21,24 @@ export default async function Profile() {
 
   return (
     <div className="min-h-screen relative">
-      {/* <h1 className="font-bold mb-4">Profile</h1> */}
+      <h1 className="font-bold mb-4">Profile</h1>
       <div className="flex gap-4 items-start">
         <Suspense fallback={<Loader />}>
           <UserWidget user={user} sessionUserId={Number(session.id)} />
         </Suspense>
 
         <div className="flex flex-col gap-4 items-center flex-1">
-          <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
-          <PostsByUser
-            userId={sessionUserId}
-            sessionUserId={sessionUserId}
-            className="w-full"
-          />
+          <Suspense fallback={<Loader />}>
+            <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
+          </Suspense>
+
+          <Suspense fallback={<Loader />}>
+            <PostsByUser
+              userId={sessionUserId}
+              sessionUserId={sessionUserId}
+              className="w-full"
+            />
+          </Suspense>
         </div>
       </div>
       <Gradient className="absolute right-0 -z-10" />

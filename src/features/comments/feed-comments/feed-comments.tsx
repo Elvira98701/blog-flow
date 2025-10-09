@@ -38,6 +38,8 @@ export const FeedComments = ({ postId, className }: FeedCommentsProps) => {
     return <ErrorText text={error.message} size="lg" className="py-4" />;
   }
 
+  console.log("render FeedComments", postId);
+
   return (
     <div className={cn("pt-4", className)}>
       {data && data.length > 0 ? (
