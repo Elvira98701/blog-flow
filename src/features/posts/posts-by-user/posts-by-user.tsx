@@ -37,13 +37,12 @@ export const PostsByUser = ({
       ) : (
         posts.map((post) => {
           return (
-            <div key={post.id} className="w-full">
-              <BigPostCard
-                post={post}
-                isOwner={sessionUserId === post.userId}
-                sessionUserId={sessionUserId}
-              />
-            </div>
+            <BigPostCard
+              key={post.id}
+              post={post}
+              isOwner={sessionUserId === post.userId}
+              sessionUserId={sessionUserId}
+            />
           );
         })
       )}
