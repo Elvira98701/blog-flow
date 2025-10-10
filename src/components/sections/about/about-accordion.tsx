@@ -15,7 +15,7 @@ export const AboutAccordion = () => {
           value={`item-${item.id}`}
           className="rounded-md bg-background/40 border-b-0 px-4 shadow-none border"
         >
-          <AccordionTrigger className="font-bold text-lg lg:text-2xl hover:cursor-pointer">
+          <AccordionTrigger className="font-bold text-lg lg:text-xl hover:cursor-pointer">
             {item.title}
           </AccordionTrigger>
           <AccordionContent>{item.description}</AccordionContent>

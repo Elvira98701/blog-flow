@@ -30,10 +30,10 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
             <SpotlightCard
               key={item.id}
               spotlightColor="rgba(75, 59, 228, 0.6)"
-              className="group flex-1 min-h-[250px] flex flex-col gap-2 justify-center transition-transform hover:scale-95"
+              className="group flex-1 min-h-[250px] flex flex-col gap-3 justify-center transition-transform hover:scale-95"
             >
               {item.icon}
-              <h3 className="text-2xl font-bold capitalize">{item.title}</h3>
+              <h3 className="text-xl font-bold capitalize">{item.title}</h3>
               <p>{item.description}</p>
               <span
                 className="absolute top-4 right-4 w-10 h-10 rounded-full flex justify-center items-center border 

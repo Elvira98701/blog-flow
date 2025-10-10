@@ -70,7 +70,7 @@ export const BigPostCard = memo(function BigPostCard({
           href={`/dashboard/post/${post.id}`}
           className="transition-colors hover:text-primary"
         >
-          <h3 className="text-3xl font-bold">{post.title}</h3>
+          <h3 className="text-2xl font-bold">{post.title}</h3>
         </Link>
         <div className="flex gap-4 mt-1 text-xs font-mono text-foreground/50">
           <span>

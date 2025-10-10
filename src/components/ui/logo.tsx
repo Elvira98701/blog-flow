@@ -8,7 +8,7 @@ interface LogoProps {
 
 export const Logo = ({ className }: LogoProps) => {
   return (
-    <Link href="/" className={cn("font-bold", className)}>
+    <Link href="/" className={cn("font-bold font-sans-2 text-sm", className)}>
       <span className="text-primary">Blog</span>Flow
     </Link>
   );

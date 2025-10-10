@@ -42,7 +42,7 @@ export const PostCard = ({ post, active, className }: PostCardProps) => {
             href={`/dashboard/post/${post.id}`}
             className="transition-colors hover:text-primary"
           >
-            <h3 className="text-xl text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
+            <h3 className="text-lg text-center font-semibold overflow-hidden text-ellipsis whitespace-nowrap">
               {post.title}
             </h3>
             <h4 className="font-medium text-center text-xs text-foreground/50">

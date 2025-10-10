@@ -54,7 +54,7 @@ export default async function User({
         </Suspense>
       </div>
       <Suspense fallback={<Loader />}>
-        {users && <TopUsersWidget users={users} className="mb-5" />}
+        {users && <TopUsersWidget users={users} />}
       </Suspense>
     </section>
   );

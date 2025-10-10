@@ -16,7 +16,7 @@ export const SidebarNav = ({ className }: SidebarNavProps) => {
   return (
     <ul
       className={cn(
-        "flex flex-col gap-2 font-semibold text-lg text-white",
+        "flex flex-col gap-2 font-semibold font-sans-2 text-lg text-white",
         className
       )}
     >
