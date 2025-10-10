@@ -1,5 +1,7 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { BigPostCard } from "@/components/shared";
 import { Loader, Skeleton, ErrorText } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -20,7 +22,9 @@ export const PostsByUser = ({
   const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
     useInfinitePostsByUser(userId);
 
-  console.log("render PostsByUser");
+  const posts = useMemo(() => {
+    return data?.pages.flatMap((page) => page.posts) ?? [];
+  }, [data?.pages]);
 
   return (
     <div className={cn("flex flex-col gap-4 items-center", className)}>
@@ -31,25 +35,20 @@ export const PostsByUser = ({
       ) : isError ? (
         <ErrorText text={error?.message ?? ""} size="lg" className="mt-10" />
       ) : (
-        data?.pages.map((page, pageIndex) => {
-          return page.posts.map((post, postIndex) => {
-            const isLastPage = pageIndex === data.pages.length - 1;
-            const isLastPost = postIndex === page.posts.length - 1;
-            const ref = isLastPage && isLastPost ? lastRowRef : null;
-
-            return (
-              <div key={post.id} ref={ref} className="w-full">
-                <BigPostCard
-                  post={post}
-                  isOwner={sessionUserId === post.userId}
-                  sessionUserId={sessionUserId}
-                />
-              </div>
-            );
-          });
+        posts.map((post) => {
+          return (
+            <div key={post.id} className="w-full">
+              <BigPostCard
+                post={post}
+                isOwner={sessionUserId === post.userId}
+                sessionUserId={sessionUserId}
+              />
+            </div>
+          );
         })
       )}
-      {isFetchingNextPage && <Loader />}
+      <div ref={lastRowRef}>{isFetchingNextPage && <Loader />}</div>
+
       {data?.pages[0].posts.length === 0 && (
         <div className="flex items-center justify-center min-h-[50vh] border w-full bg-card rounded-md ">
           <p>The user doesn&apos;t have any posts yet</p>
