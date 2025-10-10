@@ -9,7 +9,7 @@ import { useInfiniteUsers } from "./use-infinite-users";
 
 export const FeedUsers = () => {
   const { data: session } = useSession();
-  const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
+  const { users, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
     useInfiniteUsers();
 
   if (isLoading) {
@@ -31,22 +31,15 @@ export const FeedUsers = () => {
   return (
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
-        {data?.pages.map((page, pageIndex) => {
-          return page.users.map((user, userIndex) => {
-            const isLastPage = pageIndex === data.pages.length - 1;
-            const isLastPost = userIndex === page.users.length - 1;
-            const ref = isLastPage && isLastPost ? lastRowRef : null;
-
-            return (
-              <div key={user.id} ref={ref}>
-                <UserCard user={user} session={session} />
-              </div>
-            );
-          });
+        {users.map((user) => {
+          return <UserCard key={user.id} user={user} session={session} />;
         })}
       </div>
-      {isFetchingNextPage && <Loader className="py-4" />}
-      {data?.pages[0].users.length === 0 && (
+      <div ref={lastRowRef}>
+        {isFetchingNextPage && <Loader className="py-4" />}
+      </div>
+
+      {users.length === 0 && (
         <div className="flex items-center min-h-[80vh]">
           <p>There are no users yet</p>
         </div>

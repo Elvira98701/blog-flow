@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import { useInfiniteScroll } from "@/hooks";
@@ -22,5 +24,9 @@ export const useInfinitePostsByUser = (userId: number) => {
     }
   }, hasNextPage);
 
-  return { data, error, isLoading, isError, lastRowRef, isFetchingNextPage };
+  const posts = useMemo(() => {
+    return data?.pages.flatMap((page) => page.posts) ?? [];
+  }, [data?.pages]);
+
+  return { posts, error, isLoading, isError, lastRowRef, isFetchingNextPage };
 };
