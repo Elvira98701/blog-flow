@@ -1,7 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
-
 import { BigPostCard } from "@/components/shared";
 import { Loader, Skeleton, ErrorText } from "@/components/ui";
 import { cn } from "@/lib/utils";
@@ -19,12 +17,8 @@ export const PostsByUser = ({
   sessionUserId,
   className,
 }: PostsByUserProps) => {
-  const { data, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
+  const { posts, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
     useInfinitePostsByUser(userId);
-
-  const posts = useMemo(() => {
-    return data?.pages.flatMap((page) => page.posts) ?? [];
-  }, [data?.pages]);
 
   return (
     <div className={cn("flex flex-col gap-4 items-center", className)}>
@@ -48,7 +42,7 @@ export const PostsByUser = ({
       )}
       <div ref={lastRowRef}>{isFetchingNextPage && <Loader />}</div>
 
-      {data?.pages[0].posts.length === 0 && (
+      {posts.length === 0 && (
         <div className="flex items-center justify-center min-h-[50vh] border w-full bg-card rounded-md ">
           <p>The user doesn&apos;t have any posts yet</p>
         </div>
