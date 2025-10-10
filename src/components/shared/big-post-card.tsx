@@ -51,8 +51,6 @@ export const BigPostCard = memo(function BigPostCard({
   //   },
   // });
 
-  console.log("render BigPostCard", post.id);
-
   return (
     <article
       className={cn("relative rounded-md bg-card border p-4 w-full", className)}

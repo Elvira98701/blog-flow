@@ -25,7 +25,6 @@ export const UserCard = ({
   active = false,
   className,
 }: UserCardProps) => {
-  console.count("render UserCard");
   return (
     <article
       className={cn(
