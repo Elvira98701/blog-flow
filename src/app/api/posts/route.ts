@@ -102,3 +102,49 @@ export async function DELETE(req: NextRequest) {
     return new NextResponse("[DATA_DELETE] Server error", { status: 500 });
   }
 }
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    const { postId, title, content } = await req.json();
+
+    if (!postId) {
+      return new NextResponse("Post ID is required", { status: 400 });
+    }
+
+    if (!title || typeof title !== "string") {
+      return new NextResponse("Title is required", { status: 400 });
+    }
+
+    if (!content || typeof content !== "string") {
+      return new NextResponse("Content is required", { status: 400 });
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+    });
+
+    if (!post) {
+      return new NextResponse("Post not found", { status: 404 });
+    }
+
+    if (post.userId !== Number(session.user.id)) {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
+
+    const updatedPost = await prisma.post.update({
+      where: { id: postId },
+      data: { title, content },
+    });
+
+    return NextResponse.json(updatedPost, { status: 200 });
+  } catch (error) {
+    console.error("Server error:", error);
+    return new NextResponse("[DATA_PATCH] Server error", { status: 500 });
+  }
+}

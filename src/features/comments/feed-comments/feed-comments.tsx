@@ -1,17 +1,15 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
-import { ErrorText, Loader } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
+import { Button, ErrorText, Loader } from "@/components/ui";
 import { cn } from "@/lib/utils";
-import { fetchComments } from "@/services/api";
 
 import { Comment } from "../comment";
 import { CreateCommentForm } from "../create-comment-form";
 import { EditCommentForm } from "../edit-comment-form";
 
+import { useInfiniteComments } from "./use-infinite-comments";
 import { useToggleEditComment } from "./use-toggle-edit-comment";
 
 interface FeedCommentsProps {
@@ -20,10 +18,16 @@ interface FeedCommentsProps {
 }
 
 export const FeedComments = ({ postId, className }: FeedCommentsProps) => {
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: [QUERY_KEYS.COMMENTS, postId],
-    queryFn: () => fetchComments({ postId }),
-  });
+  const {
+    comments,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    error,
+    isFetching,
+    isLoading,
+    isError,
+  } = useInfiniteComments(postId);
 
   const { editedComment, handleEditComment, handleFinishEditComment } =
     useToggleEditComment();
@@ -35,15 +39,13 @@ export const FeedComments = ({ postId, className }: FeedCommentsProps) => {
   }
 
   if (isError) {
-    return <ErrorText text={error.message} size="lg" className="py-4" />;
+    return <ErrorText text={error?.message ?? ""} size="lg" className="py-4" />;
   }
-
-  console.log("render FeedComments", postId);
 
   return (
     <div className={cn("pt-4", className)}>
-      {data && data.length > 0 ? (
-        data.map((comment) => (
+      {comments.length > 0 ? (
+        comments.map((comment) => (
           <Comment
             key={comment.id}
             comment={comment}
@@ -56,6 +58,17 @@ export const FeedComments = ({ postId, className }: FeedCommentsProps) => {
         ))
       ) : (
         <p className="pb-4">No comments</p>
+      )}
+      {hasNextPage && (
+        <div className="py-2 flex justify-center items-center">
+          <Button
+            onClick={() => fetchNextPage()}
+            disabled={!hasNextPage || isFetching}
+            loading={isFetchingNextPage}
+          >
+            Load More
+          </Button>
+        </div>
       )}
       {editedComment.commentId ? (
         <EditCommentForm

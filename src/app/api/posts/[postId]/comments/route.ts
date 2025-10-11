@@ -5,22 +5,35 @@ import { authOptions } from "@/constants/auth-options";
 import { prisma } from "@/prisma/prisma-client";
 
 export async function GET(
-  request: Request,
+  req: NextRequest,
   { params }: { params: Promise<{ postId: string }> }
 ) {
   try {
     const { postId } = await params;
+    const limit = parseInt(req.nextUrl.searchParams.get("limit") || "10");
+    const cursor = parseInt(req.nextUrl.searchParams.get("cursor") || "0");
 
     const comments = await prisma.comment.findMany({
       where: {
         postId: parseInt(postId),
       },
+      take: limit + 1,
+      ...(cursor && {
+        cursor: { id: cursor },
+        skip: 1,
+      }),
       include: {
         user: { select: { name: true, avatar: true } },
       },
     });
 
-    return NextResponse.json(comments);
+    const hasNextPage = comments.length > limit;
+    const items = hasNextPage ? comments.slice(0, -1) : comments;
+
+    return NextResponse.json({
+      comments: items,
+      nextCursor: hasNextPage ? items[items.length - 1].id : null,
+    });
   } catch (error) {
     console.error("Server error:", error);
     return new NextResponse("[COMMENTS_GET] Server error", { status: 500 });

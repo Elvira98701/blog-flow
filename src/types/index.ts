@@ -48,3 +48,8 @@ export type InfiniteData<T> = {
   pages: T[];
   pageParams: (null | number)[];
 };
+
+export type FeedCommentsResponse = {
+  comments: CommentsWithUser[];
+  nextCursor: number | null;
+};

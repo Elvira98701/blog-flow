@@ -2,13 +2,13 @@
 
 import { memo, useState } from "react";
 
-import { Heart, MessageCircle, Pencil } from "lucide-react";
+import { Heart, MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui";
 import { FeedComments } from "@/features/comments";
-import { DeletePostButton } from "@/features/posts";
+import { DeletePostButton, EditPostModal } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
@@ -94,9 +94,12 @@ export const BigPostCard = memo(function BigPostCard({
       />
       <div className="flex items-center gap-2 pt-4">
         {isOwner && (
-          <Button size="lg" variant="outline">
-            <Pencil />
-          </Button>
+          <EditPostModal
+            postId={post.id}
+            title={post.title}
+            content={post.content}
+            userId={post.userId}
+          />
         )}
 
         <Button
@@ -110,7 +113,6 @@ export const BigPostCard = memo(function BigPostCard({
         <Button
           size="lg"
           variant="outline"
-          disabled={isOwner}
           // onClick={() => toggleLikeMutation.mutate(post.id)}
         >
           <Heart />

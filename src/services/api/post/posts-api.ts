@@ -67,4 +67,11 @@ export const postsApi = {
       json: { postId },
     });
   },
+
+  editPost: (data: { postId: number; title: string; content: string }) => {
+    return jsonApiInstance("/api/posts", {
+      method: "PATCH",
+      json: data,
+    });
+  },
 };

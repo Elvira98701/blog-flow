@@ -1,15 +1,13 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Pencil, PencilOff } from "lucide-react";
 import Image from "next/image";
-import toast from "react-hot-toast";
 
 import { Button, ClearButton } from "@/components/ui";
-import { QUERY_KEYS } from "@/constants/query-keys";
 import { cn } from "@/lib/utils";
-import { deleteCommentById } from "@/services/api";
 import { CommentsWithUser } from "@/types";
 
 import { EditedComment } from "../feed-comments/use-toggle-edit-comment";
+
+import { useDeleteComment } from "./use-delete-comment";
 
 interface CommentProps {
   comment: CommentsWithUser;
@@ -30,19 +28,7 @@ export const Comment = ({
   postId,
   className,
 }: CommentProps) => {
-  const queryClient = useQueryClient();
-  const { mutate } = useMutation({
-    mutationFn: (commentId: number) => deleteCommentById(postId, commentId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.COMMENTS, postId],
-      });
-      toast.success("The post was successfully deleted");
-    },
-    onError: () => {
-      toast.error("Error when deleting a post");
-    },
-  });
+  const { mutate } = useDeleteComment(postId);
 
   return (
     <div
