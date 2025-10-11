@@ -28,14 +28,14 @@ export const UserCard = ({
   return (
     <article
       className={cn(
-        "w-full rounded-md h-80 relative transition-transform duration-300",
+        "group w-full rounded-md h-80 relative transition-transform duration-300",
         className
       )}
     >
       <Link
         href={!session ? "/auth" : `/dashboard/user/${user.id}`}
         className={cn(
-          "bg-card h-full rounded-md p-2 border block transition-colors duration-300 hover:bg-background relative",
+          "bg-card h-full rounded-md p-2 border block transition-colors duration-300 hover:bg-foreground relative",
           {
             "bg-background": active,
           }
@@ -48,6 +48,7 @@ export const UserCard = ({
           alt={user.name}
           className="rounded-md h-full w-full object-cover object-center"
         />
+
         <div className="absolute top-6 left-6">
           <h3 className="text-2xl font-semibold">{user.name}</h3>
           {user.slogan && <p className="text-xs md:text-sm">{user.slogan}</p>}

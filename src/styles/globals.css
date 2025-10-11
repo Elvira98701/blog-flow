@@ -49,6 +49,9 @@
 
   --animate-marquee: marquee var(--duration) infinite linear;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  --animate-spin-2: spin-2 3s linear infinite;
+
 }
 
 :root {
@@ -282,3 +285,21 @@ h3 {
     transform: translateY(calc(-100% - var(--gap)));
   }
 }
+
+ @-webkit-keyframes spin-2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-2 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
