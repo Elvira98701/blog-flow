@@ -1,5 +1,7 @@
 "use client";
 
+import { useSession } from "next-auth/react";
+
 import { PostCard } from "@/components/shared";
 import { Loader, Skeleton, ErrorText } from "@/components/ui";
 
@@ -8,6 +10,7 @@ import { useInfinitePosts } from "./use-infinite-posts";
 export const FeedPosts = () => {
   const { posts, error, isLoading, isError, lastRowRef, isFetchingNextPage } =
     useInfinitePosts();
+  const { data: session } = useSession();
 
   if (isLoading) {
     return (
@@ -29,7 +32,13 @@ export const FeedPosts = () => {
     <>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2 mt-5">
         {posts.map((post) => {
-          return <PostCard key={post.id} post={post} />;
+          return (
+            <PostCard
+              key={post.id}
+              post={post}
+              sessionUserId={Number(session?.user.id)}
+            />
+          );
         })}
       </div>
       <div ref={lastRowRef}>

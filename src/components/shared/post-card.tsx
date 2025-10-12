@@ -1,17 +1,17 @@
-import { Heart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui";
+import { LikeButton } from "@/features/likes";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
 interface PostCardProps {
   post: PostWithLikesAndAuthor;
+  sessionUserId: number;
   className?: string;
 }
 
-export const PostCard = ({ post, className }: PostCardProps) => {
+export const PostCard = ({ post, sessionUserId, className }: PostCardProps) => {
   return (
     <article
       className={cn(
@@ -41,10 +41,13 @@ export const PostCard = ({ post, className }: PostCardProps) => {
           </h4>
         </Link>
 
-        <Button size="lg">
-          <Heart />
-          {post.likes.length}
-        </Button>
+        <LikeButton
+          likes={post.likes}
+          sessionUserId={sessionUserId}
+          postId={post.id}
+          userId={post.userId}
+          size="lg"
+        />
 
         <Image
           src={post.user.avatar || ""}

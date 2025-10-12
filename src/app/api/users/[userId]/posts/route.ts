@@ -18,11 +18,6 @@ export async function GET(
         cursor: { id: cursor },
         skip: 1,
       }),
-      orderBy: {
-        likes: {
-          _count: "desc",
-        },
-      },
       include: {
         user: { select: { name: true, avatar: true } },
         likes: true,
