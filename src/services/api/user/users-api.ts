@@ -1,8 +1,10 @@
+import { User } from "@prisma/client";
 import { infiniteQueryOptions } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
 import { FeedUserResponse, InfiniteData } from "@/types";
 
+import { jsonApiInstance } from "../api-instance";
 import { jsonApiWithParams } from "../api-with-params";
 
 export const usersApi = {
@@ -27,5 +29,11 @@ export const usersApi = {
       initialPageParam: null,
       getNextPageParam: (lastPage) => lastPage.nextCursor,
     });
+  },
+
+  searchUsers: (query: string) => {
+    return jsonApiInstance<User[]>(
+      `/api/users/search?query=${encodeURIComponent(query)}`
+    );
   },
 };

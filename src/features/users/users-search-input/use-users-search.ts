@@ -3,7 +3,7 @@ import { useState } from "react";
 import { User } from "@prisma/client";
 import { useDebounce } from "react-use";
 
-import { searchUsers } from "@/services/api";
+import { usersApi } from "@/services/api";
 
 export const useUsersSearch = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -12,7 +12,7 @@ export const useUsersSearch = () => {
   useDebounce(
     async () => {
       try {
-        const response = await searchUsers(searchQuery);
+        const response = await usersApi.searchUsers(searchQuery);
         setUsers(response);
       } catch (error) {
         console.warn(error);
