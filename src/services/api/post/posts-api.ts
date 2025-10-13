@@ -74,4 +74,10 @@ export const postsApi = {
       json: data,
     });
   },
+
+  searchPosts: (query: string) => {
+    return jsonApiInstance<Post[]>(
+      `/api/posts/search?query=${encodeURIComponent(query)}`
+    );
+  },
 };

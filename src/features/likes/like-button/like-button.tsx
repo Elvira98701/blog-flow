@@ -1,6 +1,9 @@
+"use client";
+
 import { Like } from "@prisma/client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Heart } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 import { Button } from "@/components/ui";
@@ -27,6 +30,8 @@ export const LikeButton = ({
   size = "default",
   className,
 }: LikeButtonProps) => {
+  const router = useRouter();
+  const pathname = usePathname();
   const queryClient = useQueryClient();
 
   const toggleLikeMutation = useMutation({
@@ -39,6 +44,10 @@ export const LikeButton = ({
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.FEED_POSTS],
       });
+
+      if (pathname === `/dashboard/post/${postId}`) {
+        router.refresh();
+      }
     },
     onError: () => {
       toast.error("Error when toggling like");
