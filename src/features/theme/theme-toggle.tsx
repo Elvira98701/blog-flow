@@ -14,7 +14,7 @@ import { themeData } from "@/constants/theme";
 
 import { ThemeButton } from "./theme-button";
 
-export const ThemeToggle = () => {
+const ThemeToggle = () => {
   const { setTheme } = useTheme();
 
   return (
@@ -40,3 +40,5 @@ export const ThemeToggle = () => {
     </Dialog>
   );
 };
+
+export default ThemeToggle;

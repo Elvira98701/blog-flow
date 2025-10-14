@@ -1,15 +1,15 @@
 "use client";
 
-import { memo, useState } from "react";
+import { lazy, memo, Suspense, useState } from "react";
 
 import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui";
+import { Button, Loader } from "@/components/ui";
 import { FeedComments } from "@/features/comments";
 import { LikeButton } from "@/features/likes";
-import { DeletePostButton, EditPostModal } from "@/features/posts";
+import { DeletePostButton } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
@@ -19,6 +19,8 @@ interface BigPostCardProps {
   isOwner: boolean;
   className?: string;
 }
+
+const EditPostModal = lazy(() => import("@/features/posts"));
 
 export const BigPostCard = memo(function BigPostCard({
   sessionUserId,
@@ -71,12 +73,14 @@ export const BigPostCard = memo(function BigPostCard({
       />
       <div className="flex items-center gap-2 pt-4">
         {isOwner && (
-          <EditPostModal
-            postId={post.id}
-            title={post.title}
-            content={post.content}
-            userId={post.userId}
-          />
+          <Suspense fallback={<Loader />}>
+            <EditPostModal
+              postId={post.id}
+              title={post.title}
+              content={post.content}
+              userId={post.userId}
+            />
+          </Suspense>
         )}
 
         <Button

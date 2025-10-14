@@ -9,7 +9,7 @@ import {
 
 import { UpdateProfileForm } from "../update-profile-form";
 
-export const ProfileModal = () => {
+const ProfileModal = () => {
   return (
     <Dialog>
       <DialogTrigger
@@ -28,3 +28,5 @@ export const ProfileModal = () => {
     </Dialog>
   );
 };
+
+export default ProfileModal;

@@ -1,7 +1,8 @@
+import { lazy, Suspense } from "react";
+
 import Image from "next/image";
 
-import { Button } from "@/components/ui";
-import { ProfileModal } from "@/features/profile";
+import { Button, Loader } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { UserWithSubscribers } from "@/types";
 
@@ -10,6 +11,8 @@ interface UserHeadProps {
   sessionUserId: number;
   className?: string;
 }
+
+const ProfileModal = lazy(() => import("@/features/profile"));
 
 export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
   return (
@@ -23,7 +26,11 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
       />
       <h2 className="small-title">{user.name}</h2>
       <p>{user.slogan}</p>
-      {sessionUserId === user.id && <ProfileModal />}
+      {sessionUserId === user.id && (
+        <Suspense fallback={<Loader />}>
+          <ProfileModal />
+        </Suspense>
+      )}
       {sessionUserId !== user.id && (
         <Button
           size="lg"

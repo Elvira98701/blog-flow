@@ -18,7 +18,7 @@ interface EditPostModalProps {
   userId: number;
 }
 
-export const EditPostModal = ({
+const EditPostModal = ({
   postId,
   title,
   content,
@@ -44,3 +44,5 @@ export const EditPostModal = ({
     </Dialog>
   );
 };
+
+export default EditPostModal;

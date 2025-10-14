@@ -6,6 +6,7 @@ import { commentsApi } from "@/services/api";
 
 export const useDeleteComment = (postId: number) => {
   const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: (commentId: number) =>
       commentsApi.deleteComment(postId, commentId),
@@ -13,10 +14,10 @@ export const useDeleteComment = (postId: number) => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMENTS, postId],
       });
-      toast.success("The post was successfully deleted");
+      toast.success("The comment was successfully deleted");
     },
     onError: () => {
-      toast.error("Error when deleting a post");
+      toast.error("Error when deleting a comment");
     },
   });
 

@@ -1,1 +1,1 @@
-export { toggleLike } from "./toggle-like";
+export { likesApi } from "./likes-api";
