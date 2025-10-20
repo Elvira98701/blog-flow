@@ -28,7 +28,7 @@ export const Comment = ({
   postId,
   className,
 }: CommentProps) => {
-  const { mutate } = useDeleteComment(postId);
+  const { mutate } = useDeleteComment(postId, comment.id);
 
   return (
     <div
@@ -70,7 +70,7 @@ export const Comment = ({
               >
                 <Pencil />
               </Button>
-              <ClearButton onClick={() => mutate(comment.id)} />
+              <ClearButton onClick={() => mutate()} />
             </>
           )}
         </div>
