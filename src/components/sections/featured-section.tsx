@@ -41,6 +41,8 @@ export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
               >
                 {index + 1}
               </span>
+
+              <div className="absolute top-1/2 left-1/2 -translate-1/2 w-40 h-40 border border-border/40 rounded-full" />
             </SpotlightCard>
           ))}
         </div>

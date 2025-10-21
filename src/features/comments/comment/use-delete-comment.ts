@@ -31,7 +31,7 @@ export const useDeleteComment = (postId: number, commentId: number) => {
             ...old,
             pages: old.pages.map((page) => ({
               ...page,
-              posts: page.comments.filter((c) => c.id !== commentId),
+              comments: page.comments.filter((c) => c.id !== commentId),
             })),
           };
         }

@@ -6,9 +6,11 @@ import { commentsApi } from "@/services/api";
 
 export const useEditComment = (postId: number, onFinishEdit?: () => void) => {
   const queryClient = useQueryClient();
+
   const { isPending, mutate } = useMutation({
     mutationFn: (data: { content: string; commentId: number }) =>
       commentsApi.editComment(postId, data),
+
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMENTS, postId],
@@ -16,6 +18,7 @@ export const useEditComment = (postId: number, onFinishEdit?: () => void) => {
       toast.success("The comment was edited successfully");
       onFinishEdit?.();
     },
+
     onError: () => {
       toast.error("Error when editing a comment");
     },

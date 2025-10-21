@@ -47,6 +47,7 @@ export const PostCard = ({ post, sessionUserId, className }: PostCardProps) => {
           postId={post.id}
           userId={post.userId}
           size="lg"
+          variant="secondary"
         />
 
         <Image

@@ -9,12 +9,14 @@ export const useCreateComment = (postId: number) => {
   const { isPending, mutate } = useMutation({
     mutationFn: (data: { content: string; userId: number }) =>
       commentsApi.createComment(postId, data),
+
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMENTS, postId],
       });
       toast.success("The comment was created successfully");
     },
+
     onError: () => {
       toast.error("Error when creating a comment");
     },

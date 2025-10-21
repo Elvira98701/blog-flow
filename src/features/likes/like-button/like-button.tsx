@@ -15,7 +15,7 @@ interface LikeButtonProps {
   sessionUserId: number;
   postId: number;
   userId: number;
-  variant?: "default" | "outline";
+  variant?: "default" | "outline" | "secondary";
   size?: "default" | "lg";
   className?: string;
 }
