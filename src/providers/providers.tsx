@@ -27,12 +27,12 @@ export const Providers = ({ children }: ProvidersProps) => {
             enableSystem
             disableTransitionOnChange
             value={{
-              "theme-green": "theme-green",
-              "theme-midnight": "theme-midnight",
-              "theme-blue": "theme-blue",
-              "theme-peach": "theme-peach",
-              dark: "dark",
               light: "light",
+              "light-2": "light-2",
+              "light-3": "light-3",
+              dark: "dark",
+              "dark-2": "dark-2",
+              "dark-3": "dark-3",
             }}
           >
             {children}

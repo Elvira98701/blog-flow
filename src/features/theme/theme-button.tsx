@@ -16,15 +16,27 @@ export const ThemeButton = ({
   return (
     <button
       className={cn(
-        "h-32 rounded-md font-bold text-black cursor-pointer",
+        "h-32 rounded-md font-bold cursor-pointer border flex flex-col justify-center items-center gap-1 p-4",
         className
       )}
       style={{
-        backgroundImage: `linear-gradient(to top, ${theme.colors.primary}, ${theme.colors.accent})`,
+        backgroundColor: theme.colors.background,
       }}
       {...props}
     >
-      {theme.title}
+      <span
+        style={{
+          color: theme.colors.foreground,
+        }}
+      >
+        {theme.title}
+      </span>
+      <span
+        className="h-14 w-full rounded-full"
+        style={{
+          backgroundImage: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.accent})`,
+        }}
+      ></span>
     </button>
   );
 };

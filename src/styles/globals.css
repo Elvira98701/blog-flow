@@ -123,7 +123,7 @@
   --sidebar-ring: oklch(0.637 0.237 25.331);
 }
 
-.theme-green {
+.dark-2 {
   --background: oklch(0.141 0.005 285.823);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.1543 0 0 / 40%);
@@ -157,7 +157,7 @@
   --sidebar-ring: oklch(0.646 0.222 41.116);
 }
 
-.theme-midnight {
+.dark-3 {
   --background: oklch(5.94% 0.027 328.36);
   --foreground: oklch(0.985 0 0);
   --card: oklch(10.63% 0.017 259.54 / 40%);
@@ -191,12 +191,12 @@
   --sidebar-ring: oklch(0.646 0.222 41.116);
 }
 
-.theme-blue {
+.light-2 {
   --primary: oklch(85.7% 0.196 126.665);
   --accent: oklch(69.9% 0.105 251.813);
 }
 
-.theme-peach {
+.light-3 {
   --primary: oklch(0.5961 0.136 259.28);
   --accent: oklch(0.2785 0.1259 264.76);
 }

@@ -34,7 +34,7 @@ const ThemeToggle = () => {
           <DialogTitle className="font-bold">Themes</DialogTitle>
           <DialogDescription>Choose a theme</DialogDescription>
         </DialogHeader>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {themeData.map((theme) => (
             <ThemeButton
               key={theme.id}
