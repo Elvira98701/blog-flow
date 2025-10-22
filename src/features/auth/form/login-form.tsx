@@ -55,7 +55,7 @@ export const LoginForm = () => {
       >
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            <h3 className="font-bold text-2xl">Log in</h3>
+            <h3 className="font-bold text-xl sm:text-2xl">Log in</h3>
           </div>
         </div>
 
@@ -74,11 +74,7 @@ export const LoginForm = () => {
           required
         />
 
-        <Button
-          loading={form.formState.isSubmitting}
-          className="h-12 text-base"
-          type="submit"
-        >
+        <Button loading={form.formState.isSubmitting} type="submit">
           Enter
         </Button>
       </form>

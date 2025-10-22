@@ -22,7 +22,7 @@ export default async function Profile() {
   return (
     <div className="min-h-screen relative">
       <h1 className="font-bold mb-4">Profile</h1>
-      <div className="flex gap-4 items-start">
+      <div className="flex gap-4 items-start flex-col xl:flex-row">
         <Suspense fallback={<Loader />}>
           <UserWidget user={user} sessionUserId={Number(session.id)} />
         </Suspense>

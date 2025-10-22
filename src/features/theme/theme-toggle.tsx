@@ -1,5 +1,6 @@
 "use client";
 
+import { Palette } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import {
@@ -19,8 +20,14 @@ const ThemeToggle = () => {
 
   return (
     <Dialog>
-      <DialogTrigger className="border bg-background text-sm font-medium rounded-sm h-10 px-6 cursor-pointer transition-transform hover:scale-95">
-        Theme
+      <DialogTrigger
+        className="border bg-background text-sm font-medium rounded-full sm:rounded-sm w-10 h-10 sm:w-auto sm:px-6 
+      cursor-pointer transition-transform hover:scale-95 flex justify-center items-center"
+      >
+        <span className="hidden sm:inline">Theme</span>
+        <span className="sm:hidden">
+          <Palette size={16} />
+        </span>
       </DialogTrigger>
       <DialogContent className="w-full max-w-screen-xl p-4">
         <DialogHeader>

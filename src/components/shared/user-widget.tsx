@@ -17,7 +17,7 @@ export const UserWidget = ({
   className,
 }: UserWidgetProps) => {
   return (
-    <div className={cn("max-w-96 bg-card p-4 rounded-md border", className)}>
+    <div className={cn("bg-card p-4 rounded-md border", className)}>
       <UserHead user={user} sessionUserId={sessionUserId} className="mb-10" />
       {user.subscribedTo.length > 0 && (
         <UserSubscribersList

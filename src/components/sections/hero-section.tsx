@@ -34,7 +34,7 @@ export const HeroSection = async ({ className }: HeroSectionProps) => {
         </p>
         <h1 className="font-bold text-center max-w-5xl" id="hero-title">
           Welcome to{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary underline decoration-accent/70 decoration-5 underline-offset-6">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
             BlogFlow
           </span>{" "}
           your Content Management tool{" "}

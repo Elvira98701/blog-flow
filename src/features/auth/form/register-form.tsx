@@ -52,7 +52,9 @@ export const RegisterForm = () => {
       >
         <div className="flex justify-between items-center">
           <div className="mr-2">
-            <h3 className="font-bold text-2xl">Register with your e-mail</h3>
+            <h3 className="font-bold text-xl sm:text-2xl">
+              Register with your e-mail
+            </h3>
           </div>
         </div>
         <FormInput
@@ -84,11 +86,7 @@ export const RegisterForm = () => {
           placeholder="password123"
         />
 
-        <Button
-          loading={form.formState.isSubmitting}
-          className="h-12 text-base"
-          type="submit"
-        >
+        <Button loading={form.formState.isSubmitting} type="submit">
           Create Account
         </Button>
       </form>
