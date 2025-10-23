@@ -22,7 +22,7 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
         width={500}
         height={500}
         alt={user.name}
-        className="rounded-md w-[350px] h-[350px] object-cover border"
+        className="rounded-md w-full h-[350px] object-cover border"
       />
       <h2 className="small-title">{user.name}</h2>
       <p>{user.slogan}</p>

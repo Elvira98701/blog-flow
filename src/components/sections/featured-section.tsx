@@ -9,7 +9,7 @@ interface FeaturedSectionProps {
 export const FeaturedSection = ({ className }: FeaturedSectionProps) => {
   return (
     <section
-      className={cn("py-10 md:py-20 relative", className)}
+      className={cn("py-10 2xl:py-20 relative", className)}
       aria-labelledby="featured-title"
     >
       <Container>

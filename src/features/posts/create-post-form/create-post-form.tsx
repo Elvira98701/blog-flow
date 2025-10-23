@@ -40,7 +40,12 @@ export const CreatePostForm = ({
   };
 
   return (
-    <div className={cn("border p-4 rounded-lg bg-card", className)}>
+    <div
+      className={cn(
+        "border p-4 rounded-lg bg-linear-to-b from-popover to-card",
+        className
+      )}
+    >
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

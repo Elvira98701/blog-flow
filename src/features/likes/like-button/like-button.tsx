@@ -15,8 +15,8 @@ interface LikeButtonProps {
   sessionUserId: number;
   postId: number;
   userId: number;
-  variant?: "default" | "outline" | "secondary";
-  size?: "default" | "lg";
+  variant?: "default" | "outline" | "secondary" | "ghost";
+  size?: "default" | "lg" | "icon";
   className?: string;
 }
 
@@ -46,7 +46,7 @@ export const LikeButton = memo(function LikeButton({
       onClick={() => mutate()}
     >
       <Heart className={cn(isLiked && "fill-red-600")} />
-      {likes.length}
+      {likes.length} Like
     </Button>
   );
 });

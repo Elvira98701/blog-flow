@@ -10,7 +10,7 @@ interface FaqSectionProps {
 export const FaqSection = ({ className }: FaqSectionProps) => {
   return (
     <section
-      className={cn("py-10 md:py-20 relative", className)}
+      className={cn("py-10 2xl:py-20 relative", className)}
       aria-labelledby="faq-title"
     >
       <Container>

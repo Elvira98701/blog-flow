@@ -24,10 +24,14 @@ export default async function Profile() {
       <h1 className="font-bold mb-4">Profile</h1>
       <div className="flex gap-4 items-start flex-col xl:flex-row">
         <Suspense fallback={<Loader />}>
-          <UserWidget user={user} sessionUserId={Number(session.id)} />
+          <UserWidget
+            user={user}
+            sessionUserId={Number(session.id)}
+            className="flex-1/3"
+          />
         </Suspense>
 
-        <div className="flex flex-col gap-4 items-center flex-1">
+        <div className="flex flex-col gap-4 items-center flex-2/3">
           <Suspense fallback={<Loader />}>
             <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
           </Suspense>

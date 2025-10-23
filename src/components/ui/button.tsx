@@ -18,8 +18,7 @@ const buttonVariants = cva(
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
         secondary: "bg-secondary text-secondary-foreground shadow-xs border",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        ghost: "hover:text-primary",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
@@ -63,12 +62,14 @@ function Button({
           <Loader className="w-5 h-5 animate-spin" />
         </span>
       )}
-      <span
-        className={cn(
-          "absolute top-0 left-0 bottom-0 right-0 bg-linear-to-tr from-accent to-primary transition-all duration-300 -z-10 group-hover:blur-sm",
-          size === "icon" ? "rounded-full" : "rounded-sm"
-        )}
-      />
+      {variant !== "ghost" && (
+        <span
+          className={cn(
+            "absolute top-0 left-0 bottom-0 right-0 bg-linear-to-tr from-accent to-primary transition-all duration-300 -z-10 group-hover:blur-sm",
+            size === "icon" ? "rounded-full" : "rounded-sm"
+          )}
+        />
+      )}
     </Comp>
   );
 }

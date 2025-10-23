@@ -9,7 +9,12 @@ interface TopUsersWidgetProps {
 
 export const TopUsersWidget = ({ users, className }: TopUsersWidgetProps) => {
   return (
-    <div className={cn("min-w-96 bg-card p-4 rounded-md border", className)}>
+    <div
+      className={cn(
+        "min-w-96 bg-linear-to-b from-popover to-card p-4 rounded-md border",
+        className
+      )}
+    >
       <h3 className="text-3xl font-bold mb-5">Top users</h3>
       {users?.map((user) => (
         <UserRow

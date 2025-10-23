@@ -32,7 +32,10 @@ export const BigPostCard = memo(function BigPostCard({
 
   return (
     <article
-      className={cn("relative rounded-md bg-card border p-4 w-full", className)}
+      className={cn(
+        "relative rounded-md bg-linear-to-b from-popover to-card border p-4 w-full",
+        className
+      )}
     >
       <header>
         <div className="flex gap-2 items-center mb-2">
@@ -71,7 +74,7 @@ export const BigPostCard = memo(function BigPostCard({
         alt={post.title}
         className="w-full h-[480px] object-cover rounded-md"
       />
-      <div className="flex items-center gap-2 pt-4">
+      <div className="flex items-center pt-4">
         {isOwner && (
           <Suspense fallback={<Loader />}>
             <EditPostModal
@@ -85,19 +88,18 @@ export const BigPostCard = memo(function BigPostCard({
 
         <Button
           size="lg"
-          variant="outline"
+          variant="ghost"
           onClick={() => setIsOpenComments(!isOpenComments)}
           title="open comments"
         >
-          <MessageCircle />
+          <MessageCircle size={16} /> Comment
         </Button>
         <LikeButton
           likes={post.likes}
           sessionUserId={sessionUserId}
           postId={post.id}
           userId={post.userId}
-          variant="outline"
-          size="lg"
+          variant="ghost"
         />
       </div>
       {isOpenComments && <FeedComments postId={post.id} />}
