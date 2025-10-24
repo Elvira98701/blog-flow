@@ -1,6 +1,8 @@
 "use client";
 
-import { ClearButton } from "@/components/ui";
+import { Trash } from "lucide-react";
+
+import { Button } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
 import { useDeletePost } from "./use-delete-post";
@@ -19,8 +21,12 @@ export const DeletePostButton = ({
   const { mutate } = useDeletePost(sessionUserId, postId);
 
   return (
-    <div className={cn("", className)}>
-      <ClearButton onClick={() => mutate()} />
-    </div>
+    <Button
+      onClick={() => mutate()}
+      className={cn("bg-border/30", className)}
+      variant="ghost"
+    >
+      <Trash /> Delete post
+    </Button>
   );
 };

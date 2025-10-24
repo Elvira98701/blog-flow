@@ -3,6 +3,7 @@ export { BackButton } from "./back-button";
 export { BigPostCard } from "./big-post-card";
 export { Container } from "./container";
 export { DotGrid } from "./dot-grid";
+export { DropdownActions } from "./dropdown-actions";
 export { Gradient } from "./gradient";
 export { Marquee } from "./marquee";
 export { PostCard } from "./post-card";

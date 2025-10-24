@@ -2,10 +2,10 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *)); 
-@custom-variant theme-green (&:is(.theme-green *));
-@custom-variant theme-midnight (&:is(.theme-midnight *));
-@custom-variant theme-blue (&:is(.theme-blue *));
-@custom-variant theme-peach (&:is(.theme-peach *));
+@custom-variant dark-2 (&:is(.dark-2 *));
+@custom-variant dark-3 (&:is(.dark-3 *));
+@custom-variant light-2 (&:is(.light-2 *));
+@custom-variant light-3 (&:is(.light-3 *));
 
 @theme inline {
   --color-background: var(--background);

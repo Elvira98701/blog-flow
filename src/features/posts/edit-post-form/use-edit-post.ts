@@ -10,7 +10,7 @@ export const useEditPost = (userId: number, postId: number) => {
   const pathname = usePathname();
 
   const queryClient = useQueryClient();
-  const { isPending, mutate } = useMutation({
+  const { isPending, isSuccess, mutate } = useMutation({
     mutationFn: postsApi.editPost,
     onSuccess: () => {
       queryClient.invalidateQueries({
@@ -27,5 +27,5 @@ export const useEditPost = (userId: number, postId: number) => {
     },
   });
 
-  return { isPending, mutate };
+  return { isPending, isSuccess, mutate };
 };

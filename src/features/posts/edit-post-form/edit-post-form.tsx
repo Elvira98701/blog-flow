@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
 
@@ -17,6 +19,7 @@ interface EditPostFormProps {
   content: string;
   userId: number;
   className?: string;
+  onCloseDropdown?: VoidFunction;
 }
 
 export const EditPostForm = ({
@@ -25,8 +28,15 @@ export const EditPostForm = ({
   title,
   content,
   className,
+  onCloseDropdown,
 }: EditPostFormProps) => {
-  const { isPending, mutate } = useEditPost(userId, postId);
+  const { isPending, isSuccess, mutate } = useEditPost(userId, postId);
+
+  useEffect(() => {
+    if (!isPending && isSuccess) {
+      onCloseDropdown?.();
+    }
+  }, [isPending, isSuccess, onCloseDropdown]);
 
   const form = useForm<FormPostValue>({
     resolver: zodResolver(formPostSchema),

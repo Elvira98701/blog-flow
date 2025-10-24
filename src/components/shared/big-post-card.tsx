@@ -1,17 +1,18 @@
 "use client";
 
-import { lazy, memo, Suspense, useState } from "react";
+import { memo, useState } from "react";
 
 import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Button, Loader } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { FeedComments } from "@/features/comments";
 import { LikeButton } from "@/features/likes";
-import { DeletePostButton } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
+
+import { DropdownActions } from "./dropdown-actions";
 
 interface BigPostCardProps {
   sessionUserId: number;
@@ -19,8 +20,6 @@ interface BigPostCardProps {
   isOwner: boolean;
   className?: string;
 }
-
-const EditPostModal = lazy(() => import("@/features/posts"));
 
 export const BigPostCard = memo(function BigPostCard({
   sessionUserId,
@@ -75,17 +74,6 @@ export const BigPostCard = memo(function BigPostCard({
         className="w-full h-[480px] object-cover rounded-md"
       />
       <div className="flex items-center pt-4">
-        {isOwner && (
-          <Suspense fallback={<Loader />}>
-            <EditPostModal
-              postId={post.id}
-              title={post.title}
-              content={post.content}
-              userId={post.userId}
-            />
-          </Suspense>
-        )}
-
         <Button
           size="lg"
           variant="ghost"
@@ -102,12 +90,14 @@ export const BigPostCard = memo(function BigPostCard({
           variant="ghost"
         />
       </div>
+
       {isOpenComments && <FeedComments postId={post.id} />}
+
       {isOwner && (
-        <DeletePostButton
+        <DropdownActions
           className="absolute top-4 right-4"
           sessionUserId={sessionUserId}
-          postId={post.id}
+          post={post}
         />
       )}
     </article>
