@@ -2,6 +2,7 @@ export { ActionsButtons } from "./actions-buttons";
 export { BackButton } from "./back-button";
 export { BigPostCard } from "./big-post-card";
 export { Container } from "./container";
+export { DashboardUserWidget } from "./dashboard-user-widget";
 export { DotGrid } from "./dot-grid";
 export { DropdownActions } from "./dropdown-actions";
 export { Gradient } from "./gradient";

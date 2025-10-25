@@ -47,7 +47,7 @@ export const JoinSection = async ({ className }: JoinSectionProps) => {
         )}
       </Container>
 
-      <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-linear-to-b from-accent via-background to-primary w-[302px] h-[302px] md:w-[602px] md:h-[602px] lg:w-[702px] lg:h-[702px] rounded-full flex justify-center items-center -z-10 animate-spin-2">
+      <div className="absolute top-1/2 left-1/2 -translate-1/2 bg-linear-to-b from-accent via-background to-primary w-[302px] h-[302px] md:w-[602px] md:h-[602px] lg:w-[704px] lg:h-[704px] rounded-full flex justify-center items-center -z-10 animate-spin-2">
         <div className="bg-background w-[300px] h-[300px] md:w-[600px] md:h-[600px] lg:w-[700px] lg:h-[700px] rounded-full" />
       </div>
     </section>

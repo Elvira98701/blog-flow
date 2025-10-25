@@ -16,7 +16,7 @@ export const ThemeButton = ({
   return (
     <button
       className={cn(
-        "h-32 rounded-md font-bold cursor-pointer border flex flex-col justify-center items-center gap-1 p-4",
+        "group h-32 rounded-md font-bold cursor-pointer border flex flex-col justify-center items-center gap-1 p-4",
         className
       )}
       style={{
@@ -32,7 +32,7 @@ export const ThemeButton = ({
         {theme.title}
       </span>
       <span
-        className="h-14 w-full rounded-full"
+        className="h-14 w-full rounded-full transition-transform group-hover:translate-1"
         style={{
           backgroundImage: `linear-gradient(to right, ${theme.colors.primary}, ${theme.colors.accent})`,
         }}
