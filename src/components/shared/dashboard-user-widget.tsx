@@ -10,7 +10,7 @@ export const DashboardUserWidget = ({
   return (
     <div
       className={cn(
-        "bg-gradient-to-br from-primary/70 to-accent/80 min-h-80 rounded-md p-4",
+        "bg-gradient-to-br from-primary/80 to-accent/70 min-h-80 rounded-md p-4",
         className
       )}
     >
