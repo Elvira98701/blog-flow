@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Session } from "next-auth";
 
 import { cn } from "@/lib/utils";
-import { UserWithPosts } from "@/types";
+import { UserWithRelationsCount } from "@/types";
 
 interface UserCardProps {
-  user: UserWithPosts;
+  user: UserWithRelationsCount;
   session:
     | {
         id: string;
@@ -56,13 +56,13 @@ export const UserCard = ({
         <div className="flex absolute bottom-5 left-5 right-5 text-foreground rounded-full py-2 bg-background/70 backdrop-blur-xs">
           <div className="flex-1 flex flex-col justify-center items-center">
             <span className="text-xl font-semibold leading-none">
-              {user.posts.length}
+              {user._count.posts}
             </span>
             <span className="text-foreground/50 text-xs">posts</span>
           </div>
           <div className="flex-1 flex flex-col justify-center items-center">
             <span className="text-xl font-semibold leading-none">
-              {user.subscribedTo.length}
+              {user._count.subscribedTo}
             </span>
             <span className="text-foreground/50 text-xs">followers</span>
           </div>

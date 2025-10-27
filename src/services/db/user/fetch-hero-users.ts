@@ -1,15 +1,19 @@
 import { prisma } from "@/prisma/prisma-client";
-import { UserWithPosts } from "@/types";
+import { UserWithRelationsCount } from "@/types";
 
 export const fetchHeroUsers = async (
   length: number
-): Promise<UserWithPosts[] | null> => {
+): Promise<UserWithRelationsCount[] | null> => {
   try {
     const users = await prisma.user.findMany({
       take: length,
       include: {
-        posts: true,
-        subscribedTo: true,
+        _count: {
+          select: {
+            posts: true,
+            subscribedTo: true,
+          },
+        },
       },
     });
 

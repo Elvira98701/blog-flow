@@ -1,9 +1,9 @@
 import { UserRow } from "@/components/shared";
 import { cn } from "@/lib/utils";
-import { UserWithPosts } from "@/types";
+import { UserWithRelationsCount } from "@/types";
 
 interface TopUsersWidgetProps {
-  users: UserWithPosts[];
+  users: UserWithRelationsCount[];
   className?: string;
 }
 

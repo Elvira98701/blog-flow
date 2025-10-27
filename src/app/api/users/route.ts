@@ -14,8 +14,12 @@ export async function GET(req: NextRequest) {
         skip: 1,
       }),
       include: {
-        posts: true,
-        subscribedTo: true,
+        _count: {
+          select: {
+            posts: true,
+            subscribedTo: true,
+          },
+        },
       },
     });
 

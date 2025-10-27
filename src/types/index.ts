@@ -13,6 +13,13 @@ export type PostWithLikesAndAuthor = Post & {
   }[];
 };
 
+export type UserWithRelationsCount = User & {
+  _count: {
+    posts: number;
+    subscribedTo: number;
+  };
+};
+
 export type UserWithPosts = User & {
   posts: Post[];
   subscribedTo: Subscriber[];
@@ -33,7 +40,7 @@ export type FeedPostResponse = {
 };
 
 export type FeedUserResponse = {
-  users: UserWithPosts[];
+  users: UserWithRelationsCount[];
   nextCursor: number | null;
 };
 
