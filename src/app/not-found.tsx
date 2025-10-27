@@ -7,9 +7,7 @@ export default function NotFound() {
       <div className="text-[110px] md:text-[150px] lg:text-[200px] leading-none font-sans-2 font-extrabold text-center bg-clip-text text-transparent bg-gradient-to-r from-accent to-primary">
         404
       </div>
-      <h1 className="small-title max-w-5xl">
-        This page doesn’t exist — but your creativity does.
-      </h1>
+      <h1 className="small-title max-w-5xl">Oops! Page not Found</h1>
       <p>
         Don’t panic. Just head back to the dashboard and double-check your
         routes.
@@ -17,7 +15,7 @@ export default function NotFound() {
       <div className="flex gap-4">
         <BackButton>Go Back</BackButton>
         <ButtonLink href="/" size="lg">
-          Go Home
+          Go To Home Page
         </ButtonLink>
       </div>
     </main>

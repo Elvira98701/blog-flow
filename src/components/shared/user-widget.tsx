@@ -23,10 +23,10 @@ export const UserWidget = ({
         className
       )}
     >
-      <UserHead user={user} sessionUserId={sessionUserId} className="mb-10" />
+      <UserHead user={user} sessionUserId={sessionUserId} />
       {user.subscribedTo.length > 0 && (
         <UserSubscribersList
-          className="w-full mb-10"
+          className="w-full my-10"
           subscribers={user.subscribedTo}
           title="Followers:"
         />

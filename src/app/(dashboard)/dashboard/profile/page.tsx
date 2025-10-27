@@ -2,7 +2,8 @@ import { Suspense } from "react";
 
 import { redirect } from "next/navigation";
 
-import { Gradient, UserWidget } from "@/components/shared";
+import { Gradient } from "@/components/shared";
+import { ProfileUserWidget } from "@/components/shared/profile-user-widget";
 import { Loader } from "@/components/ui";
 import { CreatePostForm, PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
@@ -21,20 +22,15 @@ export default async function Profile() {
 
   return (
     <div className="min-h-screen relative">
-      <h1 className="font-bold mb-4">Profile</h1>
-      <div className="flex gap-4 items-start flex-col xl:flex-row">
+      <div className="flex gap-4 flex-col max-w-6xl mx-auto">
         <Suspense fallback={<Loader />}>
-          <UserWidget
-            user={user}
-            sessionUserId={Number(session.id)}
-            className="flex-1/3"
-          />
+          <ProfileUserWidget user={user} sessionUserId={sessionUserId} />
         </Suspense>
 
-        <div className="flex flex-col gap-4 items-center flex-2/3">
-          <Suspense fallback={<Loader />}>
+        <div className="flex gap-4 flex-col">
+          {/* <Suspense fallback={<Loader />}>
             <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
-          </Suspense>
+          </Suspense> */}
 
           <Suspense fallback={<Loader />}>
             <PostsByUser

@@ -10,10 +10,11 @@ import {
 } from "react";
 
 import gsap from "gsap";
-import { EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, Pencil } from "lucide-react";
 
 import { Button, Loader } from "@/components/ui";
 import { DeletePostButton } from "@/features/posts";
+import { EditPostForm } from "@/features/posts/edit-post-form";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
@@ -23,7 +24,7 @@ interface DropdownActionsProps {
   className?: string;
 }
 
-const EditPostModal = lazy(() => import("@/features/posts"));
+const Modal = lazy(() => import("@/components/shared"));
 
 export const DropdownActions = ({
   sessionUserId,
@@ -57,7 +58,7 @@ export const DropdownActions = ({
         onClick={() => setIsOpenDropdown(!isOpenDropdown)}
         variant="ghost"
         size="icon"
-        className="hover:bg-border bg-border/30"
+        className="hover:bg-border bg-border/40"
       >
         <EllipsisVertical />
       </Button>
@@ -69,13 +70,24 @@ export const DropdownActions = ({
             ref={dropdownRef}
           >
             <Suspense fallback={<Loader />}>
-              <EditPostModal
-                postId={post.id}
-                title={post.title}
-                content={post.content}
-                userId={post.userId}
-                onCloseDropdown={handleCloseDropdown}
-              />
+              <Modal
+                triggerNode={
+                  <>
+                    <Pencil size={14} /> Edit post
+                  </>
+                }
+                titleText="Edit post"
+                descriptionText="Update your post to keep it fresh and relevant."
+                triggerClassName="bg-border/30 hover:text-primary gap-2"
+              >
+                <EditPostForm
+                  postId={post.id}
+                  title={post.title}
+                  content={post.content}
+                  userId={post.userId}
+                  onCloseDropdown={handleCloseDropdown}
+                />
+              </Modal>
             </Suspense>
 
             <DeletePostButton sessionUserId={sessionUserId} postId={post.id} />

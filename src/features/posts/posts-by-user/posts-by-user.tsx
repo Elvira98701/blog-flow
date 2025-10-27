@@ -42,7 +42,7 @@ export const PostsByUser = ({
       )}
 
       {posts.length === 0 && (
-        <div className="flex items-center justify-center min-h-[50vh] border w-full bg-linear-to-b from-background to-card rounded-md">
+        <div className="flex items-center justify-center min-h-[50vh]">
           <p>The user doesn&apos;t have any posts yet</p>
         </div>
       )}
