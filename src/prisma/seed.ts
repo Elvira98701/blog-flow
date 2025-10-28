@@ -1,4 +1,4 @@
-import { comments, likes, posts, subscribers, users } from "./constants";
+import { comments, likes, posts, follows, users } from "./constants";
 import { prisma } from "./prisma-client";
 
 async function up() {
@@ -18,8 +18,8 @@ async function up() {
     data: likes,
   });
 
-  await prisma.subscriber.createMany({
-    data: subscribers,
+  await prisma.follow.createMany({
+    data: follows,
   });
 }
 
@@ -28,7 +28,7 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Post" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Like" RESTART IDENTITY CASCADE`;
-  await prisma.$executeRaw`TRUNCATE TABLE "Subscriber" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Follow" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

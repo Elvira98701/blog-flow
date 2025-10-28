@@ -62,7 +62,7 @@ export const UserCard = ({
           </div>
           <div className="flex-1 flex flex-col justify-center items-center">
             <span className="text-xl font-semibold leading-none">
-              {user._count.subscribedTo}
+              {user._count.followers}
             </span>
             <span className="text-foreground/50 text-xs">followers</span>
           </div>

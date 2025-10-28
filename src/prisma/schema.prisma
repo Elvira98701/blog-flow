@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-    id           Int          @id @default(autoincrement())
-    email        String       @unique
-    name         String
-    password     String
-    avatar       String?
-    slogan       String?
-    posts        Post[]
-    comments     Comment[]
-    likes        Like[]
-    subscribers  Subscriber[] @relation("UserSubscribers")
-    subscribedTo Subscriber[] @relation("UserSubscriptions")
+    id       Int       @id @default(autoincrement())
+    email    String    @unique
+    name     String
+    password String
+    avatar   String?
+    slogan   String?
+    posts    Post[]
+    comments Comment[]
+    likes    Like[]
+
+    followers Follow[] @relation("UserFollowing")
+    following Follow[] @relation("UserFollowers")
 
     verificationCode VerificationCode?
     verified         DateTime?
@@ -43,14 +44,14 @@ model VerificationCode {
 }
 
 model Post {
-    id        Int       @id @default(autoincrement())
-    title     String
-    content   String
-    image     String?
-    userId    Int
-    user      User      @relation(fields: [userId], references: [id])
-    comments  Comment[]
-    likes     Like[]
+    id       Int       @id @default(autoincrement())
+    title    String
+    content  String
+    image    String?
+    userId   Int
+    user     User      @relation(fields: [userId], references: [id])
+    comments Comment[]
+    likes    Like[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -80,15 +81,16 @@ model Like {
     @@unique([postId, userId])
 }
 
-model Subscriber {
-    id             Int  @id @default(autoincrement())
-    subscriberId   Int
-    subscribedToId Int
-    subscriber     User @relation("UserSubscribers", fields: [subscriberId], references: [id])
-    subscribedTo   User @relation("UserSubscriptions", fields: [subscribedToId], references: [id])
+model Follow {
+    id          Int @id @default(autoincrement())
+    followerId  Int
+    followingId Int
+
+    follower  User @relation("UserFollowers", fields: [followerId], references: [id])
+    following User @relation("UserFollowing", fields: [followingId], references: [id])
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
-    @@unique([subscriberId, subscribedToId])
+    @@unique([followerId, followingId])
 }

@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import { User } from "@prisma/client";
 import Image from "next/image";
 
 import Modal from "@/components/shared";
@@ -9,7 +10,7 @@ import { UpdateProfileForm } from "@/features/profile";
 import { cn } from "@/lib/utils";
 
 interface ProfileUserWidgetProps {
-  user: any;
+  user: User;
   sessionUserId: number;
   className?: string;
 }

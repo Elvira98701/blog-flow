@@ -17,6 +17,5 @@ export { UserRow } from "./user-row";
 export { UserHead } from "./user-head";
 export { UserSubscribersList } from "./user-subscribers-list";
 export { TopUsersWidget } from "./top-users-widget";
-export { UserWidget } from "./user-widget";
 
 export * from "./form";

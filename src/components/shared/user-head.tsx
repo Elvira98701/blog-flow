@@ -1,13 +1,12 @@
+import { User } from "@prisma/client";
 import Image from "next/image";
 
 import Modal from "@/components/shared";
-import { Button } from "@/components/ui";
 import { UpdateProfileForm } from "@/features/profile";
 import { cn } from "@/lib/utils";
-import { UserWithSubscribers } from "@/types";
 
 interface UserHeadProps {
-  user: UserWithSubscribers;
+  user: User;
   sessionUserId: number;
   className?: string;
 }
@@ -34,25 +33,6 @@ export const UserHead = ({ user, sessionUserId, className }: UserHeadProps) => {
         >
           <UpdateProfileForm />
         </Modal>
-      )}
-      {sessionUserId !== user.id && (
-        <Button
-          size="lg"
-          className="w-full"
-          variant={
-            user.subscribers.find(
-              (subscriber) => subscriber.id === sessionUserId
-            )
-              ? "destructive"
-              : "default"
-          }
-        >
-          {user.subscribers.find(
-            (subscriber) => subscriber.id === sessionUserId
-          )
-            ? "Unsubscribe"
-            : "Subscribe"}
-        </Button>
       )}
     </div>
   );

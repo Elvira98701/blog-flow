@@ -1,4 +1,4 @@
-import { Comment, Post, Subscriber, User } from "@prisma/client";
+import { Comment, Post, User } from "@prisma/client";
 
 export type PostWithLikesAndAuthor = Post & {
   user: {
@@ -16,32 +16,8 @@ export type PostWithLikesAndAuthor = Post & {
 export type UserWithRelationsCount = User & {
   _count: {
     posts: number;
-    subscribedTo: number;
+    followers: number;
   };
-};
-
-export type UserWithPosts = User & {
-  posts: Post[];
-  subscribedTo: Subscriber[];
-};
-
-export type UserWithPostsAndSubscribers = UserWithPosts & {
-  subscribers: Subscriber[];
-};
-
-export type UserWithSubscribers = User & {
-  subscribedTo: Subscriber[];
-  subscribers: Subscriber[];
-};
-
-export type FeedPostResponse = {
-  posts: PostWithLikesAndAuthor[];
-  nextCursor: number | null;
-};
-
-export type FeedUserResponse = {
-  users: UserWithRelationsCount[];
-  nextCursor: number | null;
 };
 
 export type CommentsWithUser = Comment & {
@@ -54,6 +30,16 @@ export type CommentsWithUser = Comment & {
 export type InfiniteData<T> = {
   pages: T[];
   pageParams: (null | number)[];
+};
+
+export type FeedPostResponse = {
+  posts: PostWithLikesAndAuthor[];
+  nextCursor: number | null;
+};
+
+export type FeedUserResponse = {
+  users: UserWithRelationsCount[];
+  nextCursor: number | null;
 };
 
 export type FeedCommentsResponse = {

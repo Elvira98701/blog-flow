@@ -305,33 +305,36 @@ export const likes = [
   { postId: 10, userId: 3 },
 ];
 
-export const subscribers = [
+export const follows = [
+  // Подписчики пользователя 1 (кто подписан на user1)
   {
-    subscriberId: 2,
-    subscribedToId: 1,
+    followerId: 2, // user2 подписан
+    followingId: 1, // на user1
   },
   {
-    subscriberId: 3,
-    subscribedToId: 1,
+    followerId: 3, // user3 подписан
+    followingId: 1, // на user1
   },
   {
-    subscriberId: 4,
-    subscribedToId: 1,
+    followerId: 4, // user4 подписан
+    followingId: 1, // на user1
+  },
+  // Подписки пользователя 1 (на кого подписан user1)
+  {
+    followerId: 1, // user1 подписан
+    followingId: 2, // на user2
   },
   {
-    subscriberId: 1,
-    subscribedToId: 2,
+    followerId: 1, // user1 подписан
+    followingId: 3, // на user3
+  },
+  // Другие подписки
+  {
+    followerId: 2, // user2 подписан
+    followingId: 3, // на user3
   },
   {
-    subscriberId: 1,
-    subscribedToId: 3,
-  },
-  {
-    subscriberId: 2,
-    subscribedToId: 3,
-  },
-  {
-    subscriberId: 3,
-    subscribedToId: 4,
+    followerId: 3, // user3 подписан
+    followingId: 4, // на user4
   },
 ];

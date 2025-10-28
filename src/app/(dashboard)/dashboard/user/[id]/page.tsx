@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { notFound, redirect } from "next/navigation";
 
-import { TopUsersWidget, UserWidget } from "@/components/shared";
+import { TopUsersWidget, UserHead } from "@/components/shared";
 import { Loader } from "@/components/ui";
 import { CreatePostForm, PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
@@ -36,7 +36,9 @@ export default async function User({
   return (
     <section className="flex gap-4 items-start min-h-screen">
       <Suspense fallback={<Loader />}>
-        <UserWidget user={user} sessionUserId={sessionUserId} />
+        <div className="bg-linear-to-b from-popover to-card p-4 rounded-md border">
+          <UserHead user={user} sessionUserId={sessionUserId} />
+        </div>
       </Suspense>
 
       <div className="flex flex-col gap-4 items-center flex-1">

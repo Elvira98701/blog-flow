@@ -11,7 +11,7 @@ export const fetchHeroUsers = async (
         _count: {
           select: {
             posts: true,
-            subscribedTo: true,
+            followers: true,
           },
         },
       },

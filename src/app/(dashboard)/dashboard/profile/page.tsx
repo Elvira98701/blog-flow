@@ -1,11 +1,11 @@
 import { Suspense } from "react";
 
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 import { Gradient } from "@/components/shared";
 import { ProfileUserWidget } from "@/components/shared/profile-user-widget";
 import { Loader } from "@/components/ui";
-import { CreatePostForm, PostsByUser } from "@/features/posts";
+import { PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/db/user";
 
@@ -18,6 +18,8 @@ export default async function Profile() {
 
   const user = await fetchUserById(Number(session?.id));
 
+  if (!user) return notFound();
+
   const sessionUserId = Number(session.id);
 
   return (
@@ -28,10 +30,6 @@ export default async function Profile() {
         </Suspense>
 
         <div className="flex gap-4 flex-col">
-          {/* <Suspense fallback={<Loader />}>
-            <CreatePostForm sessionUserId={sessionUserId} className="w-full" />
-          </Suspense> */}
-
           <Suspense fallback={<Loader />}>
             <PostsByUser
               userId={sessionUserId}

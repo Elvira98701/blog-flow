@@ -6,13 +6,12 @@ import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { DropdownActions } from "@/components/shared";
 import { Button } from "@/components/ui";
 import { FeedComments } from "@/features/comments";
 import { LikeButton } from "@/features/likes";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
-
-import { DropdownActions } from "./dropdown-actions";
 
 interface BigPostCardProps {
   sessionUserId: number;

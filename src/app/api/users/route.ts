@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
         _count: {
           select: {
             posts: true,
-            subscribedTo: true,
+            followers: true,
           },
         },
       },
