@@ -15,7 +15,6 @@ export { SpotlightCard } from "./spotlight-card";
 export { UserCard } from "./user-card";
 export { UserRow } from "./user-row";
 export { UserHead } from "./user-head";
-export { UserSubscribersList } from "./user-subscribers-list";
 export { TopUsersWidget } from "./top-users-widget";
 
 export * from "./form";

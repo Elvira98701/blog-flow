@@ -1,4 +1,4 @@
-import { Comment, Post, User } from "@prisma/client";
+import { Comment, Follow, Post, User } from "@prisma/client";
 
 export type PostWithLikesAndAuthor = Post & {
   user: {
@@ -44,5 +44,18 @@ export type FeedUserResponse = {
 
 export type FeedCommentsResponse = {
   comments: CommentsWithUser[];
+  nextCursor: number | null;
+};
+
+export type FollowWithUser = Follow & {
+  follower: {
+    id: number;
+    name: string;
+    avatar: string | null;
+  };
+};
+
+export type FeedFollowersResponse = {
+  followers: FollowWithUser[];
   nextCursor: number | null;
 };

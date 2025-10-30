@@ -13,8 +13,7 @@ import gsap from "gsap";
 import { EllipsisVertical, Pencil } from "lucide-react";
 
 import { Button, Loader } from "@/components/ui";
-import { DeletePostButton } from "@/features/posts";
-import { EditPostForm } from "@/features/posts/edit-post-form";
+import { DeletePostButton, EditPostForm } from "@/features/posts";
 import { cn } from "@/lib/utils";
 import { PostWithLikesAndAuthor } from "@/types";
 
