@@ -5,6 +5,7 @@ import { notFound, redirect } from "next/navigation";
 import { Gradient } from "@/components/shared";
 import { ProfileUserWidget } from "@/components/shared/profile-user-widget";
 import { Loader } from "@/components/ui";
+import { FeedFollowers, FeedFollowings } from "@/features/followers";
 import { PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchUserById } from "@/services/db/user";
@@ -23,8 +24,8 @@ export default async function Profile() {
   const sessionUserId = Number(session.id);
 
   return (
-    <div className="min-h-screen relative">
-      <div className="flex gap-4 flex-col max-w-6xl mx-auto">
+    <div className="min-h-screen flex gap-4 items-start relative">
+      <div className="flex gap-4 flex-col flex-3/4">
         <Suspense fallback={<Loader />}>
           <ProfileUserWidget user={user} sessionUserId={sessionUserId} />
         </Suspense>
@@ -39,6 +40,13 @@ export default async function Profile() {
           </Suspense>
         </div>
       </div>
+
+      <Suspense fallback={<Loader />}>
+        <div className="bg-linear-to-b from-popover to-card p-4 rounded-md border flex-1/4">
+          <FeedFollowers userId={user.id} className="mt-10" />
+          <FeedFollowings userId={user.id} className="mt-10" />
+        </div>
+      </Suspense>
       <Gradient className="absolute right-0 -z-10" />
     </div>
   );

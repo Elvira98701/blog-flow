@@ -59,3 +59,16 @@ export type FeedFollowersResponse = {
   followers: FollowWithUser[];
   nextCursor: number | null;
 };
+
+export type FollowingsWithUser = Follow & {
+  following: {
+    id: number;
+    name: string;
+    avatar: string | null;
+  };
+};
+
+export type FeedFollowingsResponse = {
+  followings: FollowingsWithUser[];
+  nextCursor: number | null;
+};

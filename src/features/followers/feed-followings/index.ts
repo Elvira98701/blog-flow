@@ -1,2 +1,1 @@
-export { FeedFollowers } from "./feed-followers";
 export { FeedFollowings } from "./feed-followings";
