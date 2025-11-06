@@ -4,7 +4,11 @@ import { notFound, redirect } from "next/navigation";
 
 import { TopUsersWidget, UserHead } from "@/components/shared";
 import { Loader } from "@/components/ui";
-import { FeedFollowers, FeedFollowings } from "@/features/followers";
+import {
+  FeedFollowers,
+  FeedFollowings,
+  SubscribeButton,
+} from "@/features/followers";
 import { CreatePostForm, PostsByUser } from "@/features/posts";
 import { getUserSession } from "@/lib/get-user-session";
 import { fetchHeroUsers, fetchUserById } from "@/services/db/user";
@@ -39,6 +43,9 @@ export default async function User({
       <Suspense fallback={<Loader />}>
         <div className="bg-linear-to-b from-popover to-card p-4 rounded-md border">
           <UserHead user={user} sessionUserId={sessionUserId} />
+          {user.id !== sessionUserId && (
+            <SubscribeButton userId={user.id} className="w-full mt-4 h-10" />
+          )}
           <FeedFollowers userId={user.id} className="mt-10" />
           <FeedFollowings userId={user.id} className="mt-10" />
         </div>

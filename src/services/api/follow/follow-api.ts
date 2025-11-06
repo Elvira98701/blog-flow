@@ -1,4 +1,4 @@
-import { infiniteQueryOptions } from "@tanstack/react-query";
+import { infiniteQueryOptions, queryOptions } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/constants/query-keys";
 import {
@@ -7,9 +7,10 @@ import {
   InfiniteData,
 } from "@/types";
 
+import { jsonApiInstance } from "../api-instance";
 import { jsonApiWithParams } from "../api-with-params";
 
-export const followersApi = {
+export const followApi = {
   getFollowersInfinityQueryOptions: (userId: number) => {
     return infiniteQueryOptions<
       FeedFollowersResponse,
@@ -53,6 +54,22 @@ export const followersApi = {
         ),
       initialPageParam: null,
       getNextPageParam: (lastPage) => lastPage.nextCursor,
+    });
+  },
+
+  checkSubscriptionQueryOptions: (userId: number) => {
+    return queryOptions({
+      queryKey: [QUERY_KEYS.SUBSCRIBE, userId],
+      queryFn: (meta) =>
+        jsonApiInstance<boolean>(`/api/users/${userId}/subscribe`, {
+          signal: meta.signal,
+        }),
+    });
+  },
+
+  createFollow: (userId: number) => {
+    return jsonApiInstance(`/api/users/${userId}/subscribe`, {
+      method: "POST",
     });
   },
 };

@@ -5,4 +5,5 @@ export const QUERY_KEYS = {
   FEED_USERS: "feed-users",
   FOLLOWERS: "followers",
   FOLLOWINGS: "followings",
+  SUBSCRIBE: "subscribe",
 } as const;

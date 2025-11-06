@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 import { useInfiniteQuery } from "@tanstack/react-query";
 
-import { followersApi } from "@/services/api/followers/followers-api";
+import { followApi } from "@/services/api/follow/follow-api";
 
 export const useInfiniteFollowings = (userId: number) => {
   const {
@@ -15,7 +15,7 @@ export const useInfiniteFollowings = (userId: number) => {
     isLoading,
     isError,
   } = useInfiniteQuery({
-    ...followersApi.getFollowingsInfinityQueryOptions(userId),
+    ...followApi.getFollowingsInfinityQueryOptions(userId),
   });
 
   const followings = useMemo(() => {
