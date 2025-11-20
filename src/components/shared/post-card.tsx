@@ -25,7 +25,7 @@ export const PostCard = ({ post, sessionUserId, className }: PostCardProps) => {
           width={600}
           height={600}
           alt="user"
-          className="size-full rounded-md object-cover transition-transform duration-500 group-hover:scale-110"
+          className="h-full w-full rounded-md object-cover transition-transform duration-500 group-hover:scale-110"
         />
       </div>
       <div className="pt-3 flex flex-col justify-end gap-2 h-1/4 relative">

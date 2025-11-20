@@ -6,7 +6,7 @@ export default function Users() {
   return (
     <div className="flex justify-center relative">
       <section className="w-full">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between gap-4 sm:items-center flex-col sm:flex-row">
           <h2>Top Users</h2>
           <UsersSearchInput />
         </div>

@@ -11,7 +11,7 @@ export const FaqAccordion = () => {
     <Accordion
       type="single"
       collapsible
-      className="sm:w-2/3 mx-auto flex flex-col gap-2"
+      className="max-w-3xl mx-auto flex flex-col gap-2"
     >
       {faqList.map((item) => (
         <AccordionItem

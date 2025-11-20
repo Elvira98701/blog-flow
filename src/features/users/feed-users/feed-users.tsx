@@ -14,7 +14,7 @@ export const FeedUsers = () => {
 
   if (isLoading) {
     return (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2 mt-5">
         {Array.from({ length: 8 }, (_, i) => (
           <Skeleton key={i} className="w-full rounded-lg h-80 border" />
         ))}
@@ -30,7 +30,7 @@ export const FeedUsers = () => {
 
   return (
     <>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2 mt-5">
         {users.map((user) => {
           return <UserCard key={user.id} user={user} session={session} />;
         })}

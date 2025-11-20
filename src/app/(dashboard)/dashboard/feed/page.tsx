@@ -6,7 +6,7 @@ export default function Feed() {
   return (
     <div className="flex items-center relative">
       <section className="w-full">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between gap-4 sm:items-center flex-col sm:flex-row">
           <h2>Top Posts</h2>
           <PostsSearchInput />
         </div>
